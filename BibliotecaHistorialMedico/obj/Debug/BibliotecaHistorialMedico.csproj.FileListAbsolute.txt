@@ -20,5 +20,5 @@ C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHisto
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\Iesi.Collections.xml
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\NHibernate.xml
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache
-C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.dll
-C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.dll
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
