@@ -1,0 +1,13 @@
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.pdb
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\FluentNHibernate.dll
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\Iesi.Collections.dll
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\NHibernate.dll
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\FluentNHibernate.xml
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\Iesi.Collections.xml
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\NHibernate.xml
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Ezequiel Dalaison\documents\visual studio 2012\Projects\BibliotecaHistorialMedico\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historialmedico\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historialmedico\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
