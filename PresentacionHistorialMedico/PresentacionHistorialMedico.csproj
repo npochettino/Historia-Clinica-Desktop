@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{60E008E5-E1EA-479D-AE28-502D50E205A3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{39E7D486-C80B-4B4C-A5BA-139F4C8376AB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BibliotecaHistorialMedico</RootNamespace>
-    <AssemblyName>BibliotecaHistorialMedico</AssemblyName>
+    <RootNamespace>PresentacionHistorialMedico</RootNamespace>
+    <AssemblyName>PresentacionHistorialMedico</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,56 +31,49 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate">
-      <HintPath>..\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\packages\NHibernate.3.3.4.4000\lib\Net35\NHibernate.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalogos\CatalogoPacientes.cs" />
-    <Compile Include="ClasesComplementarias\ManejoNHibernate.cs" />
-    <Compile Include="Clases\Antecedente.cs" />
-    <Compile Include="Clases\AntecedentePaciente.cs" />
-    <Compile Include="Clases\ConsultaPaciente.cs" />
-    <Compile Include="Clases\Diagnostico.cs" />
-    <Compile Include="Clases\Estudio.cs" />
-    <Compile Include="Clases\EstudioConsulta.cs" />
-    <Compile Include="Clases\MotivoConsulta.cs" />
-    <Compile Include="Clases\Paciente.cs" />
-    <Compile Include="Clases\Tratamiento.cs" />
-    <Compile Include="Controladores\ControladorGeneral.cs" />
-    <Compile Include="Mapeos\AntecedenteMap.cs" />
-    <Compile Include="Mapeos\AntecedentePacienteMap.cs" />
-    <Compile Include="Mapeos\ConsultaPacienteMap.cs" />
-    <Compile Include="Mapeos\DiagnosticoMap.cs" />
-    <Compile Include="Mapeos\EstudioConsultaMap.cs" />
-    <Compile Include="Mapeos\EstudioMap.cs" />
-    <Compile Include="Mapeos\MotivoConsultaMap.cs" />
-    <Compile Include="Mapeos\PacienteMap.cs" />
-    <Compile Include="Mapeos\TratamientoMap.cs" />
-    <Compile Include="ModuloPrueba.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

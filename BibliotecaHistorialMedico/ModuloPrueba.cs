@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BibliotecaHistorialMedico.Clases;
 using BibliotecaHistorialMedico.ClasesComplementarias;
+using BibliotecaHistorialMedico.Controladores;
 using NHibernate;
 
 namespace BibliotecaHistorialMedico
@@ -13,9 +14,7 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-            string consulta = "from Antecedente";
-            ISession nhSesion = ManejoNHibernate.IniciarSesion();
-            List<Antecedente> listaAntecedentes = nhSesion.CreateQuery(consulta).List<Antecedente>().ToList();
+            ControladorGeneral.RecuperarPacientes();
         }
     }
 }
