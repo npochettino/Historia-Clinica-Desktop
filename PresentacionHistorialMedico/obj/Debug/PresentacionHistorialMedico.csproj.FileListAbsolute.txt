@@ -26,7 +26,6 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Presen
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\bin\Debug\NHibernate.xml
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmDiagnosticos.resources
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmAntecedentes.resources
-C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\bin\Debug\BibliotecaHistorialMedico.dll
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\bin\Debug\FluentNHibernate.dll
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\bin\Debug\Iesi.Collections.dll
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\bin\Debug\NHibernate.dll

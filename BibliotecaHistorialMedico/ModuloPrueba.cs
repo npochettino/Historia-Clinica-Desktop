@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,7 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-
-            ControladorGeneral.RecuperarPacientePorCodigo(16);
-            ControladorGeneral.InsertarActualizarPaciente(0, "Ezequiel Dalaison", "4444444", "ezequieldalaison13@gmail.com", "Viamonte 67 bis");
-            ControladorGeneral.EliminarPaciente(16);
+            ControladorGeneral.EliminarMotivoConsulta(2);
         }
     }
 }

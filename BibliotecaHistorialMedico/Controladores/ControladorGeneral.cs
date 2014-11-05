@@ -309,13 +309,13 @@ namespace BibliotecaHistorialMedico.Controladores
 
         public static void EliminarDiagnostico(int codigoDiagnostico)
         {
-            Diagnostico Diagnostico;
+            Diagnostico diagnostico;
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                Diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
-                CatalogoDiagnostico.Eliminar(Diagnostico, nhSesion);
+                diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
+                CatalogoDiagnostico.Eliminar(diagnostico, nhSesion);
             }
             catch (Exception ex)
             {
@@ -352,6 +352,116 @@ namespace BibliotecaHistorialMedico.Controladores
             }
 
             return tablaDiagnostico;
+        }
+
+        #endregion
+
+        #region Diagnostico
+
+        public static DataTable RecuperarTodosMotivosConsulta()
+        {
+            DataTable tablaMotivosConsulta = new DataTable();
+            tablaMotivosConsulta.Columns.Add("codigoMotivoConsulta");
+            tablaMotivosConsulta.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<MotivoConsulta> listaMotivosConsulta = CatalogoMotivoConsulta.RecuperarTodos(nhSesion);
+                tablaMotivosConsulta = (from p in listaMotivosConsulta select p).Aggregate(tablaMotivosConsulta, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaMotivosConsulta;
+        }
+
+        public static void InsertarActualizarMotivoConsulta(int codigoMotivoConsulta, string descripcion)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                MotivoConsulta motivoConsulta;
+
+                if (codigoMotivoConsulta == 0)
+                {
+                    motivoConsulta = new MotivoConsulta();
+                }
+                else
+                {
+                    motivoConsulta = CatalogoMotivoConsulta.RecuperarPorCodigo(codigoMotivoConsulta, nhSesion);
+                }
+
+                motivoConsulta.Descripcion = descripcion;
+
+                CatalogoMotivoConsulta.InsertarActualizar(motivoConsulta, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarMotivoConsulta(int codigoMotivoConsulta)
+        {
+            MotivoConsulta motivoConsulta;
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                motivoConsulta = CatalogoMotivoConsulta.RecuperarPorCodigo(codigoMotivoConsulta, nhSesion);
+                CatalogoMotivoConsulta.Eliminar(motivoConsulta, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static DataTable RecuperarMotivoConsultaPorCodigo(int codigoMotivoConsulta)
+        {
+            DataTable tablaMotivoConsulta = new DataTable();
+            tablaMotivoConsulta.Columns.Add("codigoMotivoConsulta");
+            tablaMotivoConsulta.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                MotivoConsulta motivoConsulta = CatalogoMotivoConsulta.RecuperarPorCodigo(codigoMotivoConsulta, nhSesion);
+                tablaMotivoConsulta.Rows.Add(new object[] { motivoConsulta.Codigo, motivoConsulta.Descripcion });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaMotivoConsulta;
         }
 
         #endregion

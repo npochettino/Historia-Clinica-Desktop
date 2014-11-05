@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{60E008E5-E1EA-479D-AE28-502D50E205A3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BibliotecaHistorialMedico</RootNamespace>
     <AssemblyName>BibliotecaHistorialMedico</AssemblyName>
@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Catalogos\CatalogoAntecedente.cs" />
     <Compile Include="Catalogos\CatalogoDiagnostico.cs" />
+    <Compile Include="Catalogos\CatalogoMotivoConsulta.cs" />
     <Compile Include="Catalogos\CatalogoPaciente.cs" />
     <Compile Include="ClasesComplementarias\ManejoNHibernate.cs" />
     <Compile Include="Clases\Antecedente.cs" />
