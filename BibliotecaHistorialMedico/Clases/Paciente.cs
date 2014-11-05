@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaHistorialMedico.Clases
 {
-    class Paciente
+   public class Paciente
     {
         public virtual int Codigo { get; set; }
         public virtual string ApellidoNombre { get; set; }
