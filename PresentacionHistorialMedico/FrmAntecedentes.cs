@@ -53,8 +53,9 @@ namespace PresentacionHistorialMedico
 
             DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
 
-            txtDescripcion.Text = dtAntecedente.Rows[0][1].ToString();
-            txtComentario.Text = dtAntecedente.Rows[0][2].ToString();
+
+            txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
+            txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
         }
 
 
@@ -74,21 +75,29 @@ namespace PresentacionHistorialMedico
             string titulo = "";
             if (operacion.Equals(agregarOperacion))
             {
-                operacionActual = "Agregó";
+                operacionActual = "agregó";
                 titulo = "Alta Antecedentes";
                 ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
             }
             else
             {
-                operacionActual = "Modificó";
-                titulo = "Modificacion Antecedentes";
+                operacionActual = "modificó";
+                titulo = "Modificación Antecedentes";
                 int codigo = obtenerCodigoFilaSeleccionada();
                 ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
             }
 
             Utils.MostrarMensajeDeInformacion("El Antecedente se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
+
+            LimpiarForm();
             CargarGrilla();
+        }
+
+        private void LimpiarForm()
+        {
+            txtComentario.Clear();
+            txtDescripcion.Clear();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -109,12 +118,12 @@ namespace PresentacionHistorialMedico
         private void Eliminar()
         {
 
-            if (Utils.MostrarMensajeConfirmacion("¿Esta seguro que desea eliminar el Antecedente?"))
+            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Antecedente?"))
 
                 try
                 {
                     ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se elimino el antecedente correctamente", "Eliminacion de Antecendete");
+                    Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
                 }
                 catch (Exception ex)
                 {
@@ -130,6 +139,7 @@ namespace PresentacionHistorialMedico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Utils.ActualizarEstadogbDatos(gbDatos);
+            LimpiarForm();
         }
     }
 }

@@ -63,14 +63,14 @@ namespace PresentacionHistorialMedico
             string titulo = "";
             if (operacion.Equals(agregarOperacion))
             {
-                operacionActual = "Agregó";
+                operacionActual = "agregó";
                 titulo = "Alta Paciente";
                 ControladorGeneral.InsertarActualizarPaciente(0, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text);
             }
             else
             {
-                operacionActual = "Modificó";
-                titulo = "Modificacion Paciente";
+                operacionActual = "modificó";
+                titulo = "Modificación Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
                 ControladorGeneral.InsertarActualizarPaciente(codigo, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text);
             }
@@ -78,6 +78,16 @@ namespace PresentacionHistorialMedico
             Utils.MostrarMensajeDeInformacion("El Paciente se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
             CargarGrilla();
+            LimpiarForm();
+        }
+
+        private void LimpiarForm()
+        {
+            txtDireccion.Clear();
+            txtDNI.Clear();
+            txtEmail.Clear();
+            txtNombreApellido.Clear();
+            txtTelefono.Clear();
         }
 
         private int obtenerCodigoFilaSeleccionada()
@@ -125,6 +135,7 @@ namespace PresentacionHistorialMedico
         {
 
             Eliminar();
+            LimpiarForm();
         }
 
 
@@ -132,12 +143,12 @@ namespace PresentacionHistorialMedico
         private void Eliminar()
         {
 
-            if (Utils.MostrarMensajeConfirmacion("¿Esta seguro que desea eliminar el paciente?"))
+            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el paciente?"))
 
                 try
                 {
                     ControladorGeneral.EliminarPaciente(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se elimino el paciente correctamente", "Eliminacion de Paciente");
+                    Utils.MostrarMensajeDeInformacion("Se eliminó el paciente correctamente", "Eliminación de Paciente");
                 }
                 catch (Exception ex)
                 {

@@ -88,23 +88,30 @@ namespace PresentacionHistorialMedico
             string titulo = "";
             if (operacion.Equals(agregarOperacion))
             {
-                operacionActual = "Agregó";
-                titulo = "Alta Diagnostico";
+                operacionActual = "agregó";
+                titulo = "Alta Diagnóstico";
                 ControladorGeneral.InsertarActualizarDiagnostico(0, txtDescripcion.Text);
             }
             else
             {
-                operacionActual = "Modificó";
-                titulo = "Modificacion Diagnostico";
+                operacionActual = "modificó";
+                titulo = "Modificación Diagnóstico";
                 int codigo = obtenerCodigoFilaSeleccionada();
                 ControladorGeneral.InsertarActualizarDiagnostico(codigo, txtDescripcion.Text);
             }
 
-            Utils.MostrarMensajeDeInformacion("El Diagnostico se" + " " + operacionActual + " " + "correctamente", titulo);
+            Utils.MostrarMensajeDeInformacion("El Diagnóstico se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
             CargarGrilla();
+            LimpiarForm();
         }
 
+
+        private void LimpiarForm()
+        {
+            txtDescripcion.Clear();
+
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Eliminar();
@@ -112,12 +119,12 @@ namespace PresentacionHistorialMedico
         private void Eliminar()
         {
 
-            if (Utils.MostrarMensajeConfirmacion("¿Esta seguro que desea eliminar el Diagnostico?"))
+            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Diagnóstico?"))
 
                 try
                 {
                     ControladorGeneral.EliminarDiagnostico(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se elimino el diagnostico correctamente", "Eliminacion de Diagnostico");
+                    Utils.MostrarMensajeDeInformacion("Se eliminó el diagnóstico correctamente", "Eliminación de Diagnóstico");
                 }
                 catch (Exception ex)
                 {
