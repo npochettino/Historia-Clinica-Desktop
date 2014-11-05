@@ -147,7 +147,7 @@ namespace BibliotecaHistorialMedico.Controladores
             try
             {
                 List<Antecedente> listaAntecedentes = CatalogoAntecedente.RecuperarTodos(nhSesion);
-                tablaAntecedentes = (from p in listaAntecedentes select p).Aggregate(tablaAntecedentes, (dt, r) => { dt.Rows.Add(r.Codigo, r.Comentario, r.Descripcion); return dt; });
+                tablaAntecedentes = (from p in listaAntecedentes select p).Aggregate(tablaAntecedentes, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion, r.Comentario); return dt; });
             }
             catch (Exception ex)
             {
@@ -340,7 +340,6 @@ namespace BibliotecaHistorialMedico.Controladores
             {
                 Diagnostico diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
                 tablaDiagnostico.Rows.Add(new object[] { diagnostico.Codigo, diagnostico.Descripcion });
-
             }
             catch (Exception ex)
             {

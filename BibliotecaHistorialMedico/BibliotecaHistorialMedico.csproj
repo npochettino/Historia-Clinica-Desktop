@@ -62,6 +62,7 @@
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\EstudioConsulta.cs" />
     <Compile Include="Clases\MotivoConsulta.cs" />
+    <Compile Include="Clases\ObraSocial.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\Tratamiento.cs" />
     <Compile Include="Controladores\ControladorGeneral.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Mapeos\EstudioConsultaMap.cs" />
     <Compile Include="Mapeos\EstudioMap.cs" />
     <Compile Include="Mapeos\MotivoConsultaMap.cs" />
+    <Compile Include="Mapeos\ObraSocialMap.cs" />
     <Compile Include="Mapeos\PacienteMap.cs" />
     <Compile Include="Mapeos\TratamientoMap.cs" />
     <Compile Include="ModuloPrueba.cs" />

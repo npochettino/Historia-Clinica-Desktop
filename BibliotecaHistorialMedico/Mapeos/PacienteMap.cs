@@ -18,6 +18,10 @@ namespace BibliotecaHistorialMedico.Mapeos
             Map(x => x.Telefono).Column("telefonoPaciente");
             Map(x => x.Mail).Column("emailPaciente");
             Map(x => x.Direccion).Column("direccionPaciente");
+            Map(x => x.Dni).Column("dni");
+            Map(x => x.Sexo).Column("sexo");
+
+            References(x => x.ObraSocial).Column("idObraSocial").Cascade.None().Not.LazyLoad();
         }
     }
 }
