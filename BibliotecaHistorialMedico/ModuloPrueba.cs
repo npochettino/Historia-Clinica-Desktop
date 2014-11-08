@@ -15,7 +15,11 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-            ControladorGeneral.EliminarMotivoConsulta(2);
+            ControladorGeneral.InsertarActualizarTratamiento(0, "TratamientoPrueba");
+            ControladorGeneral.InsertarActualizarTratamiento(1, "TratamientoPrueba1");
+            DataTable t = ControladorGeneral.RecuperarTratamientoPorCodigo(1);
+            DataTable t2 = ControladorGeneral.RecuperarTodosTratamientos();
+            ControladorGeneral.EliminarTratamiento(1);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BibliotecaHistorialMedico.Mapeos
         {
             Table("Tratamientos");
             Id(x => x.Codigo).Column("idTratamiento").GeneratedBy.Identity();
-            Map(x => x.Descripcion).Column("descipcionTratamiento");
+            Map(x => x.Descripcion).Column("descripcionTratamiento");
         }
     }
 }

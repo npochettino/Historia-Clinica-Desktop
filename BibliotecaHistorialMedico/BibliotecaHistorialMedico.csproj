@@ -53,8 +53,11 @@
   <ItemGroup>
     <Compile Include="Catalogos\CatalogoAntecedente.cs" />
     <Compile Include="Catalogos\CatalogoDiagnostico.cs" />
+    <Compile Include="Catalogos\CatalogoEstudio.cs" />
     <Compile Include="Catalogos\CatalogoMotivoConsulta.cs" />
+    <Compile Include="Catalogos\CatalogoObraSocial.cs" />
     <Compile Include="Catalogos\CatalogoPaciente.cs" />
+    <Compile Include="Catalogos\CatalogoTratamiento.cs" />
     <Compile Include="ClasesComplementarias\ManejoNHibernate.cs" />
     <Compile Include="Clases\Antecedente.cs" />
     <Compile Include="Clases\AntecedentePaciente.cs" />

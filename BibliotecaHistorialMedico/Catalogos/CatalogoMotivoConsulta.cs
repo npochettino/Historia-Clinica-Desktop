@@ -10,11 +10,11 @@ namespace BibliotecaHistorialMedico.Catalogos
 {
     class CatalogoMotivoConsulta
     {
-        public static void InsertarActualizar(MotivoConsulta MotivoConsulta, ISession nhSesion)
+        public static void InsertarActualizar(MotivoConsulta motivoConsulta, ISession nhSesion)
         {
             try
             {
-                nhSesion.SaveOrUpdate(MotivoConsulta);
+                nhSesion.SaveOrUpdate(motivoConsulta);
                 nhSesion.Flush();
             }
             catch (Exception ex)
@@ -25,13 +25,13 @@ namespace BibliotecaHistorialMedico.Catalogos
 
         public static List<MotivoConsulta> RecuperarTodos(ISession nhSesion)
         {
-            List<MotivoConsulta> listaMotivosDiagnostico = new List<MotivoConsulta>();
+            List<MotivoConsulta> listaMotivosConsulta = new List<MotivoConsulta>();
 
             try
             {
                 string consulta = "from MotivoConsulta";
-                listaMotivosDiagnostico = nhSesion.CreateQuery(consulta).List<MotivoConsulta>().ToList();
-                return listaMotivosDiagnostico;
+                listaMotivosConsulta = nhSesion.CreateQuery(consulta).List<MotivoConsulta>().ToList();
+                return listaMotivosConsulta;
             }
             catch (Exception ex)
             {
@@ -41,13 +41,13 @@ namespace BibliotecaHistorialMedico.Catalogos
 
         public static MotivoConsulta RecuperarPorCodigo(int codigoMotivoConsulta, ISession nhSesion)
         {
-            MotivoConsulta MotivoConsulta;
+            MotivoConsulta motivoConsulta;
 
             try
             {
                 string consulta = "from MotivoConsulta md where md.Codigo = " + codigoMotivoConsulta;
-                MotivoConsulta = nhSesion.CreateQuery(consulta).UniqueResult<MotivoConsulta>();
-                return MotivoConsulta;
+                motivoConsulta = nhSesion.CreateQuery(consulta).UniqueResult<MotivoConsulta>();
+                return motivoConsulta;
             }
             catch (Exception ex)
             {
@@ -55,11 +55,11 @@ namespace BibliotecaHistorialMedico.Catalogos
             }
         }
 
-        public static void Eliminar(MotivoConsulta MotivoConsulta, ISession nhSesion)
+        public static void Eliminar(MotivoConsulta motivoConsulta, ISession nhSesion)
         {
             try
             {
-                nhSesion.Delete(MotivoConsulta);
+                nhSesion.Delete(motivoConsulta);
                 nhSesion.Flush();
             }
             catch (Exception ex)

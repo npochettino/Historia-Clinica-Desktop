@@ -25,7 +25,7 @@ namespace BibliotecaHistorialMedico.Catalogos
 
         public static List<Antecedente> RecuperarTodos(ISession nhSesion)
         {
-            List<Antecedente> listaAntecedentes = new List<Antecedente>();
+            List<Antecedente> listaAntecedentes;
 
             try
             {

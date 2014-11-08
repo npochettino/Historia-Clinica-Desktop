@@ -356,7 +356,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #endregion
 
-        #region Diagnostico
+        #region MotivoConsulta
 
         public static DataTable RecuperarTodosMotivosConsulta()
         {
@@ -370,7 +370,6 @@ namespace BibliotecaHistorialMedico.Controladores
             {
                 List<MotivoConsulta> listaMotivosConsulta = CatalogoMotivoConsulta.RecuperarTodos(nhSesion);
                 tablaMotivosConsulta = (from p in listaMotivosConsulta select p).Aggregate(tablaMotivosConsulta, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
-
             }
             catch (Exception ex)
             {
@@ -462,6 +461,330 @@ namespace BibliotecaHistorialMedico.Controladores
             }
 
             return tablaMotivoConsulta;
+        }
+
+        #endregion
+
+        #region ObraSocial
+
+        public static DataTable RecuperarTodosObraSocial()
+        {
+            DataTable tablaObraSocial = new DataTable();
+            tablaObraSocial.Columns.Add("codigoObraSocial");
+            tablaObraSocial.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<ObraSocial> listaObraSocial = CatalogoObraSocial.RecuperarTodos(nhSesion);
+                tablaObraSocial = (from p in listaObraSocial select p).Aggregate(tablaObraSocial, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaObraSocial;
+        }
+
+        public static void InsertarActualizarObraSocial(int codigoObraSocial, string descripcion)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ObraSocial obraSocial;
+
+                if (codigoObraSocial == 0)
+                {
+                    obraSocial = new ObraSocial();
+                }
+                else
+                {
+                    obraSocial = CatalogoObraSocial.RecuperarPorCodigo(codigoObraSocial, nhSesion);
+                }
+
+                obraSocial.Descripcion = descripcion;
+
+                CatalogoObraSocial.InsertarActualizar(obraSocial, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarObraSocial(int codigoObraSocial)
+        {
+            ObraSocial obraSocial;
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                obraSocial = CatalogoObraSocial.RecuperarPorCodigo(codigoObraSocial, nhSesion);
+                CatalogoObraSocial.Eliminar(obraSocial, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static DataTable RecuperarObraSocialPorCodigo(int codigoObraSocial)
+        {
+            DataTable tablaObraSocial = new DataTable();
+            tablaObraSocial.Columns.Add("codigoObraSocial");
+            tablaObraSocial.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ObraSocial obraSocial = CatalogoObraSocial.RecuperarPorCodigo(codigoObraSocial, nhSesion);
+                tablaObraSocial.Rows.Add(new object[] { obraSocial.Codigo, obraSocial.Descripcion });
+                return tablaObraSocial;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        #endregion
+
+        #region Tratamiento
+
+        public static DataTable RecuperarTodosTratamientos()
+        {
+            DataTable tablaTratamientos = new DataTable();
+            tablaTratamientos.Columns.Add("codigoTratamiento");
+            tablaTratamientos.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<Tratamiento> listaTratamientos = CatalogoTratamiento.RecuperarTodos(nhSesion);
+                tablaTratamientos = (from p in listaTratamientos select p).Aggregate(tablaTratamientos, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaTratamientos;
+        }
+
+        public static void InsertarActualizarTratamiento(int codigoTratamiento, string descripcion)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                Tratamiento tratamiento;
+
+                if (codigoTratamiento == 0)
+                {
+                    tratamiento = new Tratamiento();
+                }
+                else
+                {
+                    tratamiento = CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion);
+                }
+
+                tratamiento.Descripcion = descripcion;
+
+                CatalogoTratamiento.InsertarActualizar(tratamiento, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarTratamiento(int codigoTratamiento)
+        {
+            Tratamiento tratamiento;
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                tratamiento = CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion);
+                CatalogoTratamiento.Eliminar(tratamiento, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static DataTable RecuperarTratamientoPorCodigo(int codigoTratamiento)
+        {
+            DataTable tablaTratamiento = new DataTable();
+            tablaTratamiento.Columns.Add("codigoTratamiento");
+            tablaTratamiento.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                Tratamiento tratamiento = CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion);
+                tablaTratamiento.Rows.Add(new object[] { tratamiento.Codigo, tratamiento.Descripcion });
+                return tablaTratamiento;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        #endregion
+        
+        #region Estudio
+
+        public static DataTable RecuperarTodosEstudios()
+        {
+            DataTable tablaEstudios = new DataTable();
+            tablaEstudios.Columns.Add("codigoEstudio");
+            tablaEstudios.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<Estudio> listaEstudios = CatalogoEstudio.RecuperarTodos(nhSesion);
+                tablaEstudios = (from p in listaEstudios select p).Aggregate(tablaEstudios, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaEstudios;
+        }
+
+        public static void InsertarActualizarEstudio(int codigoEstudio, string descripcion)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                Estudio estudio;
+
+                if (codigoEstudio == 0)
+                {
+                    estudio = new Estudio();
+                }
+                else
+                {
+                    estudio = CatalogoEstudio.RecuperarPorCodigo(codigoEstudio, nhSesion);
+                }
+
+                estudio.Descripcion = descripcion;
+
+                CatalogoEstudio.InsertarActualizar(estudio, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarEstudio(int codigoTratamiento)
+        {
+            Estudio estudio;
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                estudio = CatalogoEstudio.RecuperarPorCodigo(codigoTratamiento, nhSesion);
+                CatalogoEstudio.Eliminar(estudio, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static DataTable RecuperarEstudioPorCodigo(int codigoEstudio)
+        {
+            DataTable tablaEstudio = new DataTable();
+            tablaEstudio.Columns.Add("codigoEstudio");
+            tablaEstudio.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                Estudio estudio = CatalogoEstudio.RecuperarPorCodigo(codigoEstudio, nhSesion);
+                tablaEstudio.Rows.Add(new object[] { estudio.Codigo, estudio.Descripcion });
+                return tablaEstudio;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
         }
 
         #endregion

@@ -30,9 +30,6 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Biblio
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\bin\Debug\NHibernate.xml
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.dll
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
-<<<<<<< HEAD
-=======
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.exe
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
->>>>>>> Se agregan metodos en controlador y catalogo para ABM MotivoConsulta
