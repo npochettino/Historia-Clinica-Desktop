@@ -12,9 +12,9 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace PresentacionHistorialMedico
 {
-    public partial class FrmAntecedentes : Form
+    public partial class FrmEstudios : Form
     {
-        public FrmAntecedentes()
+        public FrmEstudios()
         {
             InitializeComponent();
         }
@@ -23,14 +23,14 @@ namespace PresentacionHistorialMedico
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
 
-        private void CargarGrilla()
-        {
-            gcAntecedentes.DataSource = ControladorGeneral.RecuperarTodosAntecedentes();
-        }
-
-        private void FrmAntecedentes_Load(object sender, EventArgs e)
+        private void FrmEstudios_Load(object sender, EventArgs e)
         {
             CargarGrilla();
+        }
+
+        private void CargarGrilla()
+        {
+            gcEstudios.DataSource = ControladorGeneral.RecuperarTodosEstudios();
         }
 
 
@@ -51,28 +51,24 @@ namespace PresentacionHistorialMedico
         private void CargarDatosForm(int codigo)
         {
 
-            DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
+            DataTable dtAntecedente = ControladorGeneral.RecuperarEstudioPorCodigo(codigo);
 
 
             txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
-            txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
+
         }
 
 
         private int obtenerCodigoFilaSeleccionada()
         {
             int codigo = 0;
-            int[] arrIntFilasSeleccionadas = ((GridView)this.gcAntecedentes.MainView).GetSelectedRows();
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudios.MainView).GetSelectedRows();
 
-            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcAntecedentes.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudios.MainView).GetRow(arrIntFilasSeleccionadas[0]));
 
             return codigo = Convert.ToInt32(drvFilaSeleccionada[0]);
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            GuardarDatos();
-        }
 
         private void GuardarDatos()
         {
@@ -81,18 +77,18 @@ namespace PresentacionHistorialMedico
             if (operacion.Equals(agregarOperacion))
             {
                 operacionActual = "agregó";
-                titulo = "Alta Antecedentes";
-                ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
+                titulo = "Alta Estudio";
+                ControladorGeneral.InsertarActualizarEstudio(0, txtDescripcion.Text);
             }
             else
             {
                 operacionActual = "modificó";
-                titulo = "Modificación Antecedentes";
+                titulo = "Modificación Estudio";
                 int codigo = obtenerCodigoFilaSeleccionada();
-                ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
+                ControladorGeneral.InsertarActualizarEstudio(codigo, txtDescripcion.Text);
             }
 
-            Utils.MostrarMensajeDeInformacion("El Antecedente se" + " " + operacionActual + " " + "correctamente", titulo);
+            Utils.MostrarMensajeDeInformacion("El Estudio se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
 
             LimpiarForm();
@@ -101,8 +97,28 @@ namespace PresentacionHistorialMedico
 
         private void LimpiarForm()
         {
-            txtComentario.Clear();
             txtDescripcion.Clear();
+        }
+
+        private void Eliminar()
+        {
+
+            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Estudio?"))
+
+                try
+                {
+                    ControladorGeneral.EliminarEstudio(obtenerCodigoFilaSeleccionada());
+                    Utils.MostrarMensajeDeInformacion("Se eliminó el estudio correctamente", "Eliminación de Estudio");
+                }
+                catch (Exception ex)
+                {
+                    Utils.MostrarMensajeDeError(ex);
+
+
+                }
+
+
+            CargarGrilla();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -120,31 +136,22 @@ namespace PresentacionHistorialMedico
             Eliminar();
         }
 
-        private void Eliminar()
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Antecedente?"))
-
-                try
-                {
-                    ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
-                }
-                catch (Exception ex)
-                {
-                    Utils.MostrarMensajeDeError(ex);
-
-
-                }
-
-
-            CargarGrilla();
+            GuardarDatos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+
+            Cancelar();
+        }
+
+        private void Cancelar()
+        {
             Utils.ActualizarEstadogbDatos(gbDatos);
             LimpiarForm();
         }
+
     }
 }

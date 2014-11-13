@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.gcAntecedentes = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbComentario = new System.Windows.Forms.Label();
+            this.txtComentario = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.lbDescripcion = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.lbComentario = new System.Windows.Forms.Label();
-            this.txtComentario = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
+            this.gcAntecedentes = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Descripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Comentario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAntecedentes)).BeginInit();
@@ -64,33 +64,6 @@
             this.panel1.Size = new System.Drawing.Size(337, 393);
             this.panel1.TabIndex = 1;
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(119, 93);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(99, 34);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(119, 182);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(99, 34);
-            this.btnModificar.TabIndex = 4;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(119, 266);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(99, 34);
-            this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // gbDatos
             // 
             this.gbDatos.Controls.Add(this.lbComentario);
@@ -108,40 +81,21 @@
             this.gbDatos.Text = "Datos Antecedentes";
             this.gbDatos.Visible = false;
             // 
-            // gcAntecedentes
+            // lbComentario
             // 
-            this.gcAntecedentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAntecedentes.Location = new System.Drawing.Point(346, 3);
-            this.gcAntecedentes.MainView = this.gridView1;
-            this.gcAntecedentes.Name = "gcAntecedentes";
-            this.gcAntecedentes.Size = new System.Drawing.Size(541, 393);
-            this.gcAntecedentes.TabIndex = 0;
-            this.gcAntecedentes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.lbComentario.AutoSize = true;
+            this.lbComentario.Location = new System.Drawing.Point(46, 167);
+            this.lbComentario.Name = "lbComentario";
+            this.lbComentario.Size = new System.Drawing.Size(60, 13);
+            this.lbComentario.TabIndex = 17;
+            this.lbComentario.Text = "Comentario";
             // 
-            // gridView1
+            // txtComentario
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Descripcion,
-            this.Comentario,
-            this.Codigo});
-            this.gridView1.GridControl = this.gcAntecedentes;
-            this.gridView1.Name = "gridView1";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.61256F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.38744F));
-            this.tableLayoutPanel1.Controls.Add(this.gcAntecedentes, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 399);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.txtComentario.Location = new System.Drawing.Point(136, 164);
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Size = new System.Drawing.Size(154, 20);
+            this.txtComentario.TabIndex = 16;
             // 
             // btnCancelar
             // 
@@ -177,21 +131,52 @@
             this.txtDescripcion.Size = new System.Drawing.Size(154, 20);
             this.txtDescripcion.TabIndex = 12;
             // 
-            // lbComentario
+            // btnEliminar
             // 
-            this.lbComentario.AutoSize = true;
-            this.lbComentario.Location = new System.Drawing.Point(46, 167);
-            this.lbComentario.Name = "lbComentario";
-            this.lbComentario.Size = new System.Drawing.Size(60, 13);
-            this.lbComentario.TabIndex = 17;
-            this.lbComentario.Text = "Comentario";
+            this.btnEliminar.Location = new System.Drawing.Point(119, 266);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(99, 34);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // txtComentario
+            // btnModificar
             // 
-            this.txtComentario.Location = new System.Drawing.Point(136, 164);
-            this.txtComentario.Name = "txtComentario";
-            this.txtComentario.Size = new System.Drawing.Size(154, 20);
-            this.txtComentario.TabIndex = 16;
+            this.btnModificar.Location = new System.Drawing.Point(119, 182);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(99, 34);
+            this.btnModificar.TabIndex = 4;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(119, 93);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(99, 34);
+            this.btnAgregar.TabIndex = 3;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // gcAntecedentes
+            // 
+            this.gcAntecedentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcAntecedentes.Location = new System.Drawing.Point(346, 3);
+            this.gcAntecedentes.MainView = this.gridView1;
+            this.gcAntecedentes.Name = "gcAntecedentes";
+            this.gcAntecedentes.Size = new System.Drawing.Size(541, 393);
+            this.gcAntecedentes.TabIndex = 0;
+            this.gcAntecedentes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Descripcion,
+            this.Comentario,
+            this.Codigo});
+            this.gridView1.GridControl = this.gcAntecedentes;
+            this.gridView1.Name = "gridView1";
             // 
             // Descripcion
             // 
@@ -221,6 +206,21 @@
             this.Codigo.FieldName = "codigoAntecedente";
             this.Codigo.Name = "Codigo";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.61256F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.38744F));
+            this.tableLayoutPanel1.Controls.Add(this.gcAntecedentes, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 399);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // FrmAntecedentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +228,7 @@
             this.ClientSize = new System.Drawing.Size(890, 399);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmAntecedentes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Antecedentes";
             this.Load += new System.EventHandler(this.FrmAntecedentes_Load);
             this.panel1.ResumeLayout(false);

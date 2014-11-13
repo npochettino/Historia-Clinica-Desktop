@@ -16,7 +16,7 @@ namespace PresentacionHistorialMedico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmAntecedentes());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

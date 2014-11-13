@@ -12,9 +12,9 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace PresentacionHistorialMedico
 {
-    public partial class FrmAntecedentes : Form
+    public partial class FrmMotivoConsulta : Form
     {
-        public FrmAntecedentes()
+        public FrmMotivoConsulta()
         {
             InitializeComponent();
         }
@@ -23,14 +23,16 @@ namespace PresentacionHistorialMedico
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
 
-        private void CargarGrilla()
-        {
-            gcAntecedentes.DataSource = ControladorGeneral.RecuperarTodosAntecedentes();
-        }
-
-        private void FrmAntecedentes_Load(object sender, EventArgs e)
+        private void FrmMotivoConsulta_Load(object sender, EventArgs e)
         {
             CargarGrilla();
+        }
+
+
+
+        private void CargarGrilla()
+        {
+            gcMotivoConsulta.DataSource = ControladorGeneral.RecuperarTodosMotivosConsulta();
         }
 
 
@@ -40,6 +42,7 @@ namespace PresentacionHistorialMedico
             Utils.ActualizarEstadogbDatos(gbDatos);
 
         }
+
 
         private void Modificar()
         {
@@ -51,84 +54,63 @@ namespace PresentacionHistorialMedico
         private void CargarDatosForm(int codigo)
         {
 
-            DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
+            DataTable dtAntecedente = ControladorGeneral.RecuperarMotivoConsultaPorCodigo(codigo);
 
 
             txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
-            txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
-        }
 
+        }
 
         private int obtenerCodigoFilaSeleccionada()
         {
             int codigo = 0;
-            int[] arrIntFilasSeleccionadas = ((GridView)this.gcAntecedentes.MainView).GetSelectedRows();
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcMotivoConsulta.MainView).GetSelectedRows();
 
-            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcAntecedentes.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcMotivoConsulta.MainView).GetRow(arrIntFilasSeleccionadas[0]));
 
             return codigo = Convert.ToInt32(drvFilaSeleccionada[0]);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GuardarDatos();
-        }
-
-        private void GuardarDatos()
-        {
             string operacionActual = "";
             string titulo = "";
             if (operacion.Equals(agregarOperacion))
             {
                 operacionActual = "agregó";
-                titulo = "Alta Antecedentes";
-                ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
+                titulo = "Alta Motivo de consulta";
+                ControladorGeneral.InsertarActualizarMotivoConsulta(0, txtDescripcion.Text);
             }
             else
             {
                 operacionActual = "modificó";
-                titulo = "Modificación Antecedentes";
+                titulo = "Modificación Motivo de consulta";
                 int codigo = obtenerCodigoFilaSeleccionada();
-                ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
+                ControladorGeneral.InsertarActualizarMotivoConsulta(codigo, txtDescripcion.Text);
             }
 
-            Utils.MostrarMensajeDeInformacion("El Antecedente se" + " " + operacionActual + " " + "correctamente", titulo);
+            Utils.MostrarMensajeDeInformacion("El Motivo se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
 
             LimpiarForm();
             CargarGrilla();
         }
 
+
         private void LimpiarForm()
         {
-            txtComentario.Clear();
             txtDescripcion.Clear();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Agregar();
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Modificar();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            Eliminar();
         }
 
         private void Eliminar()
         {
 
-            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Antecedente?"))
+            if (Utils.MostrarMensajeConfirmacion("¿Está seguro que desea eliminar el Motivo de consulta?"))
 
                 try
                 {
-                    ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
+                    ControladorGeneral.EliminarMotivoConsulta(obtenerCodigoFilaSeleccionada());
+                    Utils.MostrarMensajeDeInformacion("Se eliminó el motivo consulta correctamente", "Eliminación de Motivo de consulta");
                 }
                 catch (Exception ex)
                 {
@@ -141,10 +123,20 @@ namespace PresentacionHistorialMedico
             CargarGrilla();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Utils.ActualizarEstadogbDatos(gbDatos);
-            LimpiarForm();
+            Agregar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Modificar();
+        }
+
     }
 }

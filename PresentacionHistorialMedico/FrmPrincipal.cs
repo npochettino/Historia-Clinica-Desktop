@@ -16,5 +16,35 @@ namespace PresentacionHistorialMedico
         {
             InitializeComponent();
         }
+
+        private void tileItem1_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new frmPacientes().ShowDialog();
+        }
+
+        private void tileItem2_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmEstudios().ShowDialog();
+        }
+
+        private void tileItem4_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmDiagnosticos().ShowDialog();
+        }
+
+        private void tileItem5_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmAntecedentes().ShowDialog();
+        }
+
+        private void tileItem3_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmMotivoConsulta().ShowDialog();
+        }
+
+        private void tileItem6_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmObrasSociales().ShowDialog();
+        }
     }
 }
