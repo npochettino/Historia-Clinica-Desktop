@@ -85,7 +85,7 @@
             // 
             // Descripcion
             // 
-            this.Descripcion.Caption = "Descripcion";
+            this.Descripcion.Caption = "Descripción";
             this.Descripcion.FieldName = "descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.OptionsColumn.AllowEdit = false;
@@ -155,7 +155,7 @@
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lbDescripcion.TabIndex = 5;
-            this.lbDescripcion.Text = "Descripcion";
+            this.lbDescripcion.Text = "Descripción";
             // 
             // txtDescripcion
             // 

@@ -23,13 +23,17 @@ namespace BibliotecaHistorialMedico.Controladores
             tablaPacientes.Columns.Add("telefono");
             tablaPacientes.Columns.Add("mail");
             tablaPacientes.Columns.Add("direccion");
+            tablaPacientes.Columns.Add("dni");
+            tablaPacientes.Columns.Add("sexo");
+            tablaPacientes.Columns.Add("codigoObraSocial");
+            tablaPacientes.Columns.Add("descripcionObraSocial");
 
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
                 List<Paciente> listaPacientes = CatalogoPaciente.RecuperarTodos(nhSesion);
-                tablaPacientes = (from p in listaPacientes select p).Aggregate(tablaPacientes, (dt, r) => { dt.Rows.Add(r.Codigo, r.ApellidoNombre, r.Telefono, r.Mail, r.Direccion); return dt; });
+                tablaPacientes = (from p in listaPacientes select p).Aggregate(tablaPacientes, (dt, r) => { dt.Rows.Add(r.Codigo, r.ApellidoNombre, r.Telefono, r.Mail, r.Direccion, r.Dni, r.Sexo, r.ObraSocial == null ? 0 : r.ObraSocial.Codigo, r.ObraSocial == null ? "Sin obra social" : r.ObraSocial.Descripcion); return dt; });
 
             }
             catch (Exception ex)
@@ -45,7 +49,7 @@ namespace BibliotecaHistorialMedico.Controladores
             return tablaPacientes;
         }
 
-        public static void InsertarActualizarPaciente(int codigoPaciente, string apellidoNombre, string telefono, string mailPaciente, string direccion)
+        public static void InsertarActualizarPaciente(int codigoPaciente, string apellidoNombre, string telefono, string mailPaciente, string direccion, string dni, string sexo, int codigoObraSocial)
         {
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
@@ -66,6 +70,9 @@ namespace BibliotecaHistorialMedico.Controladores
                 paciente.Telefono = telefono;
                 paciente.Mail = mailPaciente;
                 paciente.Direccion = direccion;
+                paciente.Dni = dni;
+                paciente.Sexo = sexo;
+                paciente.ObraSocial = CatalogoObraSocial.RecuperarPorCodigo(codigoObraSocial, nhSesion);
 
                 CatalogoPaciente.InsertarActualizar(paciente, nhSesion);
             }
@@ -109,13 +116,17 @@ namespace BibliotecaHistorialMedico.Controladores
             tablaPaciente.Columns.Add("telefono");
             tablaPaciente.Columns.Add("mail");
             tablaPaciente.Columns.Add("direccion");
+            tablaPaciente.Columns.Add("dni");
+            tablaPaciente.Columns.Add("sexo");
+            tablaPaciente.Columns.Add("codigoObraSocial");
+            tablaPaciente.Columns.Add("descripcionObraSocial");
 
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
                 Paciente paciente = CatalogoPaciente.RecuperarPorCodigo(codigoPaciente, nhSesion);
-                tablaPaciente.Rows.Add(new object[] { paciente.Codigo, paciente.ApellidoNombre, paciente.Telefono, paciente.Mail, paciente.Direccion });
+                tablaPaciente.Rows.Add(new object[] { paciente.Codigo, paciente.ApellidoNombre, paciente.Telefono, paciente.Mail, paciente.Direccion, paciente.Dni, paciente.Sexo, paciente.ObraSocial == null ? 0 : paciente.ObraSocial.Codigo, paciente.ObraSocial == null ? "Sin obra social" : paciente.ObraSocial.Descripcion });
 
             }
             catch (Exception ex)
@@ -741,14 +752,14 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
-        public static void EliminarEstudio(int codigoTratamiento)
+        public static void EliminarEstudio(int codigoEstudio)
         {
             Estudio estudio;
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                estudio = CatalogoEstudio.RecuperarPorCodigo(codigoTratamiento, nhSesion);
+                estudio = CatalogoEstudio.RecuperarPorCodigo(codigoEstudio, nhSesion);
                 CatalogoEstudio.Eliminar(estudio, nhSesion);
             }
             catch (Exception ex)
@@ -775,6 +786,142 @@ namespace BibliotecaHistorialMedico.Controladores
                 Estudio estudio = CatalogoEstudio.RecuperarPorCodigo(codigoEstudio, nhSesion);
                 tablaEstudio.Rows.Add(new object[] { estudio.Codigo, estudio.Descripcion });
                 return tablaEstudio;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        #endregion
+
+        #region ConsultaPaciente
+
+        public static DataTable RecuperarTodosConsultaPaciente()
+        {
+            DataTable tablaConsultasPaciente = new DataTable();
+            tablaConsultasPaciente.Columns.Add("codigoConsultaPaciente");
+            tablaConsultasPaciente.Columns.Add("codigoPaciente");
+            tablaConsultasPaciente.Columns.Add("nombreApellidoPaciente");
+            tablaConsultasPaciente.Columns.Add("fecha");
+            tablaConsultasPaciente.Columns.Add("comentario");
+            tablaConsultasPaciente.Columns.Add("codigoMotivoConsulta");
+            tablaConsultasPaciente.Columns.Add("descripcionMotivoConsulta");
+            tablaConsultasPaciente.Columns.Add("codigoDiagnostico");
+            tablaConsultasPaciente.Columns.Add("descripcionDiagnostico");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion);
+                tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) => { dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre, r.Fecha, r.Comentario, r.MotivoConsulta == null ? 0 : r.MotivoConsulta.Codigo,
+                    r.MotivoConsulta == null ? "Sin motivo consulta" : r.MotivoConsulta.Descripcion, r.Diagnostico == null ? 0 : r.Diagnostico.Codigo, r.Diagnostico == null ? "Sin diagnóstico" : r.Diagnostico.Descripcion); return dt; });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaConsultasPaciente;
+        }
+
+        public static void InsertarActualizarConsultaPaciente(int codigoConsultaPaciente, int codigoPaciente, DateTime fecha, string comentario, int codigoMotivoConsulta, int codigoDiagnostico)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ConsultaPaciente consultaPaciente;
+
+                if (codigoConsultaPaciente == 0)
+                {
+                    consultaPaciente = new ConsultaPaciente();
+                }
+                else
+                {
+                    consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+                }
+
+                consultaPaciente.Paciente = CatalogoPaciente.RecuperarPorCodigo(codigoPaciente, nhSesion);
+                consultaPaciente.Fecha = fecha;
+                consultaPaciente.Comentario = comentario;
+                
+                if (codigoMotivoConsulta != 0)
+                {
+                    consultaPaciente.MotivoConsulta = CatalogoMotivoConsulta.RecuperarPorCodigo(codigoMotivoConsulta, nhSesion);
+                }
+
+                if (codigoDiagnostico != 0)
+                {
+                    consultaPaciente.Diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
+                }
+
+                CatalogoConsultaPaciente.InsertarActualizar(consultaPaciente, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarConsultaPaciente(int codigoConsultaPaciente)
+        {
+            ConsultaPaciente consultaPaciente;
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+                CatalogoConsultaPaciente.Eliminar(consultaPaciente, nhSesion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static DataTable RecuperarConsultaPacientePorCodigo(int codigoConsultaPaciente)
+        {
+            DataTable tablaConsultaPaciente = new DataTable();
+            tablaConsultaPaciente.Columns.Add("codigoConsultaPaciente");
+            tablaConsultaPaciente.Columns.Add("codigoPaciente");
+            tablaConsultaPaciente.Columns.Add("nombreApellidoPaciente");
+            tablaConsultaPaciente.Columns.Add("fecha");
+            tablaConsultaPaciente.Columns.Add("comentario");
+            tablaConsultaPaciente.Columns.Add("codigoMotivoConsulta");
+            tablaConsultaPaciente.Columns.Add("descripcionMotivoConsulta");
+            tablaConsultaPaciente.Columns.Add("codigoDiagnostico");
+            tablaConsultaPaciente.Columns.Add("descripcionDiagnostico");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ConsultaPaciente consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+                tablaConsultaPaciente.Rows.Add(new object[] { consultaPaciente.Codigo, consultaPaciente.Paciente.Codigo, consultaPaciente.Paciente.ApellidoNombre, consultaPaciente.Fecha, consultaPaciente.Comentario, consultaPaciente.MotivoConsulta == null ? 0 : consultaPaciente.MotivoConsulta.Codigo,
+                    consultaPaciente.MotivoConsulta == null ? "Sin motivo consulta" : consultaPaciente.MotivoConsulta.Descripcion, consultaPaciente.Diagnostico == null ? 0 : consultaPaciente.Diagnostico.Codigo, consultaPaciente.Diagnostico == null ? "Sin diagnóstico" : consultaPaciente.Diagnostico.Descripcion });
+                return tablaConsultaPaciente;
             }
             catch (Exception ex)
             {

@@ -43,3 +43,7 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Presen
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.pdb
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudios.resources
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmObrasSociales.resources
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudios.resources
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmMotivoConsulta.resources
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmObrasSociales.resources
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmTratamientos.resources

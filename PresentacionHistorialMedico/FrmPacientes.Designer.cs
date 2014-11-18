@@ -107,7 +107,7 @@
             // 
             // Nombre
             // 
-            this.Nombre.Caption = "Nombre Apellido";
+            this.Nombre.Caption = "Nombre y apellido";
             this.Nombre.FieldName = "apellidoNombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.OptionsColumn.AllowEdit = false;
@@ -129,7 +129,7 @@
             // 
             // Telefono
             // 
-            this.Telefono.Caption = "Telefono";
+            this.Telefono.Caption = "Teléfono";
             this.Telefono.FieldName = "telefono";
             this.Telefono.Name = "Telefono";
             this.Telefono.OptionsColumn.AllowEdit = false;
@@ -140,7 +140,7 @@
             // 
             // Direccion
             // 
-            this.Direccion.Caption = "Direccion";
+            this.Direccion.Caption = "Dirección";
             this.Direccion.FieldName = "direccion";
             this.Direccion.Name = "Direccion";
             this.Direccion.OptionsColumn.AllowEdit = false;
@@ -278,7 +278,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Direccion";
+            this.label4.Text = "Dirección";
             // 
             // lbEmail
             // 
@@ -296,16 +296,16 @@
             this.lbTelefono.Name = "lbTelefono";
             this.lbTelefono.Size = new System.Drawing.Size(49, 13);
             this.lbTelefono.TabIndex = 6;
-            this.lbTelefono.Text = "Telefono";
+            this.lbTelefono.Text = "Teléfono";
             // 
             // lbNombreApellido
             // 
             this.lbNombreApellido.AutoSize = true;
-            this.lbNombreApellido.Location = new System.Drawing.Point(18, 43);
+            this.lbNombreApellido.Location = new System.Drawing.Point(11, 43);
             this.lbNombreApellido.Name = "lbNombreApellido";
-            this.lbNombreApellido.Size = new System.Drawing.Size(84, 13);
+            this.lbNombreApellido.Size = new System.Drawing.Size(91, 13);
             this.lbNombreApellido.TabIndex = 5;
-            this.lbNombreApellido.Text = "Nombre Apellido";
+            this.lbNombreApellido.Text = "Nombre y apellido";
             // 
             // txtTelefono
             // 
