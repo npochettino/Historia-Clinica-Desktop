@@ -55,6 +55,7 @@
     <Compile Include="Catalogos\CatalogoConsultaPaciente.cs" />
     <Compile Include="Catalogos\CatalogoDiagnostico.cs" />
     <Compile Include="Catalogos\CatalogoEstudio.cs" />
+    <Compile Include="Catalogos\CatalogoEstudioConsulta.cs" />
     <Compile Include="Catalogos\CatalogoMotivoConsulta.cs" />
     <Compile Include="Catalogos\CatalogoObraSocial.cs" />
     <Compile Include="Catalogos\CatalogoPaciente.cs" />
