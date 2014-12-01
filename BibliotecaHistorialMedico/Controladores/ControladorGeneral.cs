@@ -691,7 +691,7 @@ namespace BibliotecaHistorialMedico.Controladores
         }
 
         #endregion
-        
+
         #region Estudio
 
         public static DataTable RecuperarTodosEstudios()
@@ -802,9 +802,13 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #region ConsultaPaciente
 
-        public static DataTable RecuperarTodosConsultaPaciente()
+        public static DataSet RecuperarTodosConsultaPaciente()
         {
-            DataTable tablaConsultasPaciente = new DataTable();
+            DataSet dsConsultaPaciente = new DataSet();
+            //dsConsultaPaciente.Tables.Add("tablaConsultaPaciente");
+            //dsConsultaPaciente.Tables.Add("tablaTratamientos");
+
+            DataTable tablaConsultasPaciente = new DataTable("tablaConsultaPaciente");
             tablaConsultasPaciente.Columns.Add("codigoConsultaPaciente");
             tablaConsultasPaciente.Columns.Add("codigoPaciente");
             tablaConsultasPaciente.Columns.Add("nombreApellidoPaciente");
@@ -815,13 +819,35 @@ namespace BibliotecaHistorialMedico.Controladores
             tablaConsultasPaciente.Columns.Add("codigoDiagnostico");
             tablaConsultasPaciente.Columns.Add("descripcionDiagnostico");
 
+            DataTable tablaTratamientos = new DataTable("tablaTratamientos");
+            tablaTratamientos.Columns.Add("codigoConsultaPaciente");
+            tablaTratamientos.Columns.Add("codigoTratamiento");
+            tablaTratamientos.Columns.Add("descripcionTratamiento");
+
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
                 List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion);
-                tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) => { dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre, r.Fecha, r.Comentario, r.MotivoConsulta == null ? 0 : r.MotivoConsulta.Codigo,
-                    r.MotivoConsulta == null ? "Sin motivo consulta" : r.MotivoConsulta.Descripcion, r.Diagnostico == null ? 0 : r.Diagnostico.Codigo, r.Diagnostico == null ? "Sin diagnóstico" : r.Diagnostico.Descripcion); return dt; });
+                
+                tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) =>
+                {
+                    dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre, r.Fecha, r.Comentario, r.MotivoConsulta == null ? 0 : r.MotivoConsulta.Codigo,
+                        r.MotivoConsulta == null ? "Sin motivo consulta" : r.MotivoConsulta.Descripcion, r.Diagnostico == null ? 0 : r.Diagnostico.Codigo, r.Diagnostico == null ? "Sin diagnóstico" : r.Diagnostico.Descripcion); return dt;
+                });
+
+                foreach (ConsultaPaciente cp in listaConsultasPaciente)
+                {
+                    foreach (Tratamiento t in cp.Tratamientos)
+                    {
+                        tablaTratamientos.Rows.Add(new object[] { cp.Codigo, t.Codigo, t.Descripcion });
+                    }
+                }
+
+                dsConsultaPaciente.Tables.Add(tablaConsultasPaciente);
+                dsConsultaPaciente.Tables.Add(tablaTratamientos);
+
+                return dsConsultaPaciente;
             }
             catch (Exception ex)
             {
@@ -832,11 +858,9 @@ namespace BibliotecaHistorialMedico.Controladores
                 nhSesion.Close();
                 nhSesion.Dispose();
             }
-
-            return tablaConsultasPaciente;
         }
 
-        public static void InsertarActualizarConsultaPaciente(int codigoConsultaPaciente, int codigoPaciente, DateTime fecha, string comentario, int codigoMotivoConsulta, int codigoDiagnostico)
+        public static void InsertarActualizarConsultaPaciente(int codigoConsultaPaciente, int codigoPaciente, DateTime fecha, string comentario, int codigoMotivoConsulta, int codigoDiagnostico, List<int> listaCodigosTratamientos)
         {
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
@@ -856,7 +880,7 @@ namespace BibliotecaHistorialMedico.Controladores
                 consultaPaciente.Paciente = CatalogoPaciente.RecuperarPorCodigo(codigoPaciente, nhSesion);
                 consultaPaciente.Fecha = fecha;
                 consultaPaciente.Comentario = comentario;
-                
+
                 if (codigoMotivoConsulta != 0)
                 {
                     consultaPaciente.MotivoConsulta = CatalogoMotivoConsulta.RecuperarPorCodigo(codigoMotivoConsulta, nhSesion);
@@ -865,6 +889,11 @@ namespace BibliotecaHistorialMedico.Controladores
                 if (codigoDiagnostico != 0)
                 {
                     consultaPaciente.Diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
+                }
+
+                foreach (int codigoTratamiento in listaCodigosTratamientos)
+                {
+                    consultaPaciente.Tratamientos.Add(CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion));
                 }
 
                 CatalogoConsultaPaciente.InsertarActualizar(consultaPaciente, nhSesion);
@@ -901,9 +930,11 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
-        public static DataTable RecuperarConsultaPacientePorCodigo(int codigoConsultaPaciente)
+        public static DataSet RecuperarConsultaPacientePorCodigo(int codigoConsultaPaciente)
         {
-            DataTable tablaConsultaPaciente = new DataTable();
+            DataSet dsConsultaPaciente = new DataSet();
+
+            DataTable tablaConsultaPaciente = new DataTable("tablaConsultaPaciente");
             tablaConsultaPaciente.Columns.Add("codigoConsultaPaciente");
             tablaConsultaPaciente.Columns.Add("codigoPaciente");
             tablaConsultaPaciente.Columns.Add("nombreApellidoPaciente");
@@ -914,6 +945,11 @@ namespace BibliotecaHistorialMedico.Controladores
             tablaConsultaPaciente.Columns.Add("codigoDiagnostico");
             tablaConsultaPaciente.Columns.Add("descripcionDiagnostico");
 
+            DataTable tablaTratamientos = new DataTable("tablaTratamientos");
+            tablaTratamientos.Columns.Add("codigoConsultaPaciente");
+            tablaTratamientos.Columns.Add("codigoTratamiento");
+            tablaTratamientos.Columns.Add("descripcionTratamiento");
+
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
@@ -921,7 +957,16 @@ namespace BibliotecaHistorialMedico.Controladores
                 ConsultaPaciente consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
                 tablaConsultaPaciente.Rows.Add(new object[] { consultaPaciente.Codigo, consultaPaciente.Paciente.Codigo, consultaPaciente.Paciente.ApellidoNombre, consultaPaciente.Fecha, consultaPaciente.Comentario, consultaPaciente.MotivoConsulta == null ? 0 : consultaPaciente.MotivoConsulta.Codigo,
                     consultaPaciente.MotivoConsulta == null ? "Sin motivo consulta" : consultaPaciente.MotivoConsulta.Descripcion, consultaPaciente.Diagnostico == null ? 0 : consultaPaciente.Diagnostico.Codigo, consultaPaciente.Diagnostico == null ? "Sin diagnóstico" : consultaPaciente.Diagnostico.Descripcion });
-                return tablaConsultaPaciente;
+
+                foreach (Tratamiento t in consultaPaciente.Tratamientos)
+                {
+                    tablaTratamientos.Rows.Add(new object[] { consultaPaciente.Codigo, t.Codigo, t.Descripcion });
+                }
+
+                dsConsultaPaciente.Tables.Add(tablaConsultaPaciente);
+                dsConsultaPaciente.Tables.Add(tablaTratamientos);
+
+                return dsConsultaPaciente;
             }
             catch (Exception ex)
             {
@@ -962,9 +1007,9 @@ namespace BibliotecaHistorialMedico.Controladores
                 List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarTodos(nhSesion);
                 tablaEstudioConsulta = (from p in listaEstudiosConsulta select p).Aggregate(tablaEstudioConsulta, (dt, r) =>
                 {
-                    dt.Rows.Add(r.Codigo, r.ConsultaPaciente.Codigo, r.ConsultaPaciente.Paciente.Codigo, r.ConsultaPaciente.Paciente.ApellidoNombre, r.ConsultaPaciente.Fecha, 
-                        r.ConsultaPaciente.Comentario, r.ConsultaPaciente.MotivoConsulta == null ? 0 : r.ConsultaPaciente.MotivoConsulta.Codigo, 
-                        r.ConsultaPaciente.MotivoConsulta.Descripcion == null ? "Sin motivo consulta" : r.ConsultaPaciente.MotivoConsulta.Descripcion, 
+                    dt.Rows.Add(r.Codigo, r.ConsultaPaciente.Codigo, r.ConsultaPaciente.Paciente.Codigo, r.ConsultaPaciente.Paciente.ApellidoNombre, r.ConsultaPaciente.Fecha,
+                        r.ConsultaPaciente.Comentario, r.ConsultaPaciente.MotivoConsulta == null ? 0 : r.ConsultaPaciente.MotivoConsulta.Codigo,
+                        r.ConsultaPaciente.MotivoConsulta.Descripcion == null ? "Sin motivo consulta" : r.ConsultaPaciente.MotivoConsulta.Descripcion,
                         r.ConsultaPaciente.Diagnostico == null ? 0 : r.ConsultaPaciente.Diagnostico.Codigo, r.ConsultaPaciente.Diagnostico == null ? "Sin diagnóstico" : r.ConsultaPaciente.Diagnostico.Descripcion,
                         r.Estudio == null ? 0 : r.Estudio.Codigo, r.Estudio == null ? "Sin estudio" : r.Estudio.Descripcion, r.Resultado); return dt;
                 });

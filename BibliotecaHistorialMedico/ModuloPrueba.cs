@@ -15,7 +15,7 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-
+            DataSet s = ControladorGeneral.RecuperarConsultaPacientePorCodigo(2);
         }
     }
 }
