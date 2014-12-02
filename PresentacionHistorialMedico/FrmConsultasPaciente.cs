@@ -14,20 +14,21 @@ namespace PresentacionHistorialMedico
 {
     public partial class FrmConsultasPaciente : Form
     {
-        private short mCondigoCliente;
+        public int mCondigoPaciente;
         private string operacion;
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
+
 
         public FrmConsultasPaciente()
         {
             InitializeComponent();
         }
 
-        public FrmConsultasPaciente(short CodigoCliente)
+        public FrmConsultasPaciente(int CodigoCliente)
         {
 
-            this.mCondigoCliente = CodigoCliente;
+            this.mCondigoPaciente = CodigoCliente;
         }
 
         private void FrmConsultasPaciente_Load(object sender, EventArgs e)
@@ -40,7 +41,8 @@ namespace PresentacionHistorialMedico
         private void CargarDatosPantalla()
         {
             //Cargo la grilla
-            gcConsultaPaciente.DataSource = ControladorGeneral.RecuperarTodosConsultaPaciente().Tables[0];
+            DataTable dtConsultaPaciente = ControladorGeneral.RecuperarTodosConsultaPaciente(mCondigoPaciente).Tables[0];
+            gcConsultaPaciente.DataSource = dtConsultaPaciente;
             //Cargo el combo del motivo consulta
             DataTable dsMotivosConsulta = ControladorGeneral.RecuperarTodosMotivosConsulta();
             cbMotivo.DataSource = dsMotivosConsulta;
@@ -51,6 +53,10 @@ namespace PresentacionHistorialMedico
             cbDiagnostico.DataSource = dsDiagnosticoConsulta;
             cbDiagnostico.DisplayMember = "descripcion";
             cbDiagnostico.ValueMember = "codigoDiagnostico";
+            //Cargo el textbox
+            txtPaciente.Text = dtConsultaPaciente.Rows[0]["nombreApellidoPaciente"].ToString();
+
+
 
 
 
@@ -66,7 +72,6 @@ namespace PresentacionHistorialMedico
 
         private void LimpiarForm()
         {
-            txtPaciente.Clear();
             rtComentario.Clear();
         }
 
@@ -157,13 +162,13 @@ namespace PresentacionHistorialMedico
             string operacionActual = "";
             string titulo = "";
 
-
+            int codigoDiagnosticoActual = cbDiagnostico.SelectedValue != null ? int.Parse(cbDiagnostico.SelectedValue.ToString()) : 0;
 
             if (operacion.Equals(agregarOperacion))
             {
                 operacionActual = "agregó";
                 titulo = "Alta Consulta Paciente";
-                ControladorGeneral.InsertarActualizarConsultaPaciente(0, obtenerCodigoPacienteFilaSeleccionada(), dtpFechaConsulta.Value, rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), int.Parse(cbDiagnostico.SelectedValue.ToString()), new List<int>());
+                ControladorGeneral.InsertarActualizarConsultaPaciente(0, obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual, new List<int>());
             }
             else
             {
@@ -171,7 +176,7 @@ namespace PresentacionHistorialMedico
                 titulo = "Modificación Consulta Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
 
-                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), obtenerCodigoPacienteFilaSeleccionada(), dtpFechaConsulta.Value, rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), int.Parse(cbDiagnostico.SelectedValue.ToString()), new List<int>());
+                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual, new List<int>());
             }
 
             Utils.MostrarMensajeDeInformacion("La consulta paciente se" + " " + operacionActual + " " + "correctamente", titulo);

@@ -180,8 +180,9 @@ namespace PresentacionHistorialMedico
 
             DataRowView selRow = (DataRowView)(((GridView)gcPacientes.MainView).GetRow(selRows[0]));
 
-            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(Convert.ToInt16(selRow[0].ToString()));
+            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(int.Parse(selRow[0].ToString()));
             FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente();
+            mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[0].ToString());
             mConsultasPacientes.ShowDialog();
 
         }

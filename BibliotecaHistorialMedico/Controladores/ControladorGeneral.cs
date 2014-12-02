@@ -802,7 +802,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #region ConsultaPaciente
 
-        public static DataSet RecuperarTodosConsultaPaciente()
+        public static DataSet RecuperarTodosConsultaPaciente(int codigoPaciente)
         {
             DataSet dsConsultaPaciente = new DataSet();
             //dsConsultaPaciente.Tables.Add("tablaConsultaPaciente");
@@ -828,7 +828,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
             try
             {
-                List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion);
+                List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion,codigoPaciente);
 
                 tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) =>
                 {
