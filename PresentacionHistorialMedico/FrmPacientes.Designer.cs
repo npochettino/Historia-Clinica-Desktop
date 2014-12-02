@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gcPacientes = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -58,11 +59,17 @@
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
+            this.CMSPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ObraSocial = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sexo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DNI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPacientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
+            this.CMSPacientes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -80,7 +87,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 399);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // gcPacientes
             // 
@@ -92,7 +98,7 @@
             this.gcPacientes.TabIndex = 0;
             this.gcPacientes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gcPacientes.Click += new System.EventHandler(this.gridControl1_Click);
+            this.gcPacientes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gcPacientes_MouseDown);
             // 
             // gridView1
             // 
@@ -101,7 +107,10 @@
             this.Email,
             this.Telefono,
             this.Direccion,
-            this.Codigo});
+            this.Codigo,
+            this.ObraSocial,
+            this.sexo,
+            this.DNI});
             this.gridView1.GridControl = this.gcPacientes;
             this.gridView1.Name = "gridView1";
             // 
@@ -114,7 +123,7 @@
             this.Nombre.OptionsColumn.AllowFocus = false;
             this.Nombre.OptionsColumn.ReadOnly = true;
             this.Nombre.Visible = true;
-            this.Nombre.VisibleIndex = 0;
+            this.Nombre.VisibleIndex = 1;
             // 
             // Email
             // 
@@ -125,7 +134,7 @@
             this.Email.OptionsColumn.AllowFocus = false;
             this.Email.OptionsColumn.ReadOnly = true;
             this.Email.Visible = true;
-            this.Email.VisibleIndex = 1;
+            this.Email.VisibleIndex = 2;
             // 
             // Telefono
             // 
@@ -136,7 +145,7 @@
             this.Telefono.OptionsColumn.AllowFocus = false;
             this.Telefono.OptionsColumn.ReadOnly = true;
             this.Telefono.Visible = true;
-            this.Telefono.VisibleIndex = 2;
+            this.Telefono.VisibleIndex = 3;
             // 
             // Direccion
             // 
@@ -147,7 +156,7 @@
             this.Direccion.OptionsColumn.AllowFocus = false;
             this.Direccion.OptionsColumn.ReadOnly = true;
             this.Direccion.Visible = true;
-            this.Direccion.VisibleIndex = 3;
+            this.Direccion.VisibleIndex = 4;
             // 
             // Codigo
             // 
@@ -369,6 +378,53 @@
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // CMSPacientes
+            // 
+            this.CMSPacientes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verConsultasToolStripMenuItem});
+            this.CMSPacientes.Name = "contextMenuStrip1";
+            this.CMSPacientes.Size = new System.Drawing.Size(145, 26);
+            // 
+            // verConsultasToolStripMenuItem
+            // 
+            this.verConsultasToolStripMenuItem.Name = "verConsultasToolStripMenuItem";
+            this.verConsultasToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.verConsultasToolStripMenuItem.Text = "Ver consultas";
+            this.verConsultasToolStripMenuItem.Click += new System.EventHandler(this.verConsultasToolStripMenuItem_Click);
+            // 
+            // ObraSocial
+            // 
+            this.ObraSocial.Caption = "Obra Social";
+            this.ObraSocial.FieldName = "descripcionObraSocial";
+            this.ObraSocial.Name = "ObraSocial";
+            this.ObraSocial.OptionsColumn.AllowEdit = false;
+            this.ObraSocial.OptionsColumn.AllowFocus = false;
+            this.ObraSocial.OptionsColumn.ReadOnly = true;
+            this.ObraSocial.Visible = true;
+            this.ObraSocial.VisibleIndex = 5;
+            // 
+            // sexo
+            // 
+            this.sexo.Caption = "Sexo";
+            this.sexo.FieldName = "sexo";
+            this.sexo.Name = "sexo";
+            this.sexo.OptionsColumn.AllowEdit = false;
+            this.sexo.OptionsColumn.AllowFocus = false;
+            this.sexo.OptionsColumn.ReadOnly = true;
+            this.sexo.Visible = true;
+            this.sexo.VisibleIndex = 6;
+            // 
+            // DNI
+            // 
+            this.DNI.Caption = "DNI";
+            this.DNI.FieldName = "dni";
+            this.DNI.Name = "DNI";
+            this.DNI.OptionsColumn.AllowEdit = false;
+            this.DNI.OptionsColumn.AllowFocus = false;
+            this.DNI.OptionsColumn.ReadOnly = true;
+            this.DNI.Visible = true;
+            this.DNI.VisibleIndex = 0;
+            // 
             // frmPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +441,7 @@
             this.panel1.ResumeLayout(false);
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
+            this.CMSPacientes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -421,6 +478,11 @@
         private System.Windows.Forms.RadioButton rbMasculino;
         private System.Windows.Forms.Label lblObraSocial;
         private System.Windows.Forms.ComboBox cbObraSocial;
+        private System.Windows.Forms.ContextMenuStrip CMSPacientes;
+        private System.Windows.Forms.ToolStripMenuItem verConsultasToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn ObraSocial;
+        private DevExpress.XtraGrid.Columns.GridColumn sexo;
+        private DevExpress.XtraGrid.Columns.GridColumn DNI;
     }
 }
 

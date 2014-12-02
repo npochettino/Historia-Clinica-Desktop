@@ -829,7 +829,7 @@ namespace BibliotecaHistorialMedico.Controladores
             try
             {
                 List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion);
-                
+
                 tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) =>
                 {
                     dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre, r.Fecha, r.Comentario, r.MotivoConsulta == null ? 0 : r.MotivoConsulta.Codigo,

@@ -18,6 +18,8 @@ namespace PresentacionHistorialMedico
         private string operacion;
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
+        private string TAG_SEXO_MASCULINO = "M";
+        private string TAG_SEXO_FEMENINO = "F";
 
 
         public frmPacientes()
@@ -25,24 +27,21 @@ namespace PresentacionHistorialMedico
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void gridControl1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmPacientes_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
+            CargarDatosPantalla();
+
         }
 
-        private void CargarGrilla()
+
+        private void CargarDatosPantalla()
         {
             gcPacientes.DataSource = ControladorGeneral.RecuperarTodosPacientes();
+            DataTable dtObraSocial = ControladorGeneral.RecuperarTodosObraSocial();
+            cbObraSocial.DataSource = dtObraSocial;
+            cbObraSocial.DisplayMember = "descripcion";
+            cbObraSocial.ValueMember = "codigoObraSocial";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -61,23 +60,30 @@ namespace PresentacionHistorialMedico
         {
             string operacionActual = "";
             string titulo = "";
+            string sexo = "";
+            if (rbMasculino.Checked)
+                sexo = TAG_SEXO_MASCULINO;
+            else
+                sexo = TAG_SEXO_FEMENINO;
+
             if (operacion.Equals(agregarOperacion))
             {
                 operacionActual = "agregó";
                 titulo = "Alta Paciente";
-                ControladorGeneral.InsertarActualizarPaciente(0, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text);
+                ControladorGeneral.InsertarActualizarPaciente(0, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()));
             }
             else
             {
                 operacionActual = "modificó";
                 titulo = "Modificación Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
-                ControladorGeneral.InsertarActualizarPaciente(codigo, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text);
+
+                ControladorGeneral.InsertarActualizarPaciente(codigo, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()));
             }
 
             Utils.MostrarMensajeDeInformacion("El Paciente se" + " " + operacionActual + " " + "correctamente", titulo);
             Utils.ActualizarEstadogbDatos(gbDatos);
-            CargarGrilla();
+            CargarDatosPantalla();
             LimpiarForm();
         }
 
@@ -105,11 +111,18 @@ namespace PresentacionHistorialMedico
 
             DataTable dtPacienteActual = ControladorGeneral.RecuperarPacientePorCodigo(codigo);
 
+
             txtNombreApellido.Text = dtPacienteActual.Rows[0][1].ToString();
             txtTelefono.Text = dtPacienteActual.Rows[0][2].ToString();
             txtEmail.Text = dtPacienteActual.Rows[0][3].ToString();
             txtDireccion.Text = dtPacienteActual.Rows[0][4].ToString();
             txtDNI.Text = dtPacienteActual.Rows[0][2].ToString();
+            if (dtPacienteActual.Rows[0]["sexo"].ToString().Equals(TAG_SEXO_FEMENINO))
+                rbFemenino.Checked = true;
+            else
+                rbMasculino.Checked = true;
+            cbObraSocial.SelectedValue = dtPacienteActual.Rows[0]["codigoObraSocial"].ToString();
+
 
 
         }
@@ -158,7 +171,24 @@ namespace PresentacionHistorialMedico
                 }
 
 
-            CargarGrilla();
+            CargarDatosPantalla();
+        }
+
+        private void verConsultasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] selRows = ((GridView)this.gcPacientes.MainView).GetSelectedRows();
+
+            DataRowView selRow = (DataRowView)(((GridView)gcPacientes.MainView).GetRow(selRows[0]));
+
+            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(Convert.ToInt16(selRow[0].ToString()));
+            FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente();
+            mConsultasPacientes.ShowDialog();
+
+        }
+
+        private void gcPacientes_MouseDown(object sender, MouseEventArgs e)
+        {
+            gcPacientes.ContextMenuStrip = CMSPacientes;
         }
 
 
