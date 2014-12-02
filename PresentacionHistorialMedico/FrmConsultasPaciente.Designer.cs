@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gcConsultaPaciente = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CodigoPaciente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Fecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Paciente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Motivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Diagnostico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CodigoMotivo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CodigoDiagnostico = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.txtPaciente = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.cbDiagnostico = new System.Windows.Forms.ComboBox();
             this.lblDiagnostico = new System.Windows.Forms.Label();
             this.cbMotivo = new System.Windows.Forms.ComboBox();
@@ -53,14 +56,15 @@
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
-            this.CodigoMotivo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CodigoPaciente = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CodigoDiagnostico = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
+            this.CMSEstudiosConsulta = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.estudiosRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcConsultaPaciente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
+            this.CMSEstudiosConsulta.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,6 +92,7 @@
             this.gcConsultaPaciente.TabIndex = 0;
             this.gcConsultaPaciente.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gcConsultaPaciente.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gcConsultaPaciente_MouseDown);
             // 
             // gridView1
             // 
@@ -111,6 +116,12 @@
             this.Codigo.OptionsColumn.AllowEdit = false;
             this.Codigo.OptionsColumn.AllowFocus = false;
             this.Codigo.OptionsColumn.ReadOnly = true;
+            // 
+            // CodigoPaciente
+            // 
+            this.CodigoPaciente.Caption = "CodigoPaciente";
+            this.CodigoPaciente.FieldName = "codigoPaciente";
+            this.CodigoPaciente.Name = "CodigoPaciente";
             // 
             // Fecha
             // 
@@ -155,6 +166,18 @@
             this.Diagnostico.OptionsColumn.ReadOnly = true;
             this.Diagnostico.Visible = true;
             this.Diagnostico.VisibleIndex = 3;
+            // 
+            // CodigoMotivo
+            // 
+            this.CodigoMotivo.Caption = "CodigoMotivo";
+            this.CodigoMotivo.FieldName = "codigoMotivoConsulta";
+            this.CodigoMotivo.Name = "CodigoMotivo";
+            // 
+            // CodigoDiagnostico
+            // 
+            this.CodigoDiagnostico.Caption = "CodigoDiagnostico";
+            this.CodigoDiagnostico.FieldName = "codigoDiagnostico";
+            this.CodigoDiagnostico.Name = "CodigoDiagnostico";
             // 
             // panel1
             // 
@@ -207,15 +230,6 @@
             this.btnCancelar.TabIndex = 18;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(51, 357);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
-            this.btnGuardar.TabIndex = 17;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cbDiagnostico
             // 
@@ -322,23 +336,28 @@
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // CodigoMotivo
+            // btnGuardar
             // 
-            this.CodigoMotivo.Caption = "CodigoMotivo";
-            this.CodigoMotivo.FieldName = "codigoMotivoConsulta";
-            this.CodigoMotivo.Name = "CodigoMotivo";
+            this.btnGuardar.Location = new System.Drawing.Point(51, 357);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
+            this.btnGuardar.TabIndex = 17;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // CodigoPaciente
+            // CMSEstudiosConsulta
             // 
-            this.CodigoPaciente.Caption = "CodigoPaciente";
-            this.CodigoPaciente.FieldName = "codigoPaciente";
-            this.CodigoPaciente.Name = "CodigoPaciente";
+            this.CMSEstudiosConsulta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.estudiosRealizadosToolStripMenuItem});
+            this.CMSEstudiosConsulta.Name = "CMSEstudiosConsulta";
+            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(177, 48);
             // 
-            // CodigoDiagnostico
+            // estudiosRealizadosToolStripMenuItem
             // 
-            this.CodigoDiagnostico.Caption = "CodigoDiagnostico";
-            this.CodigoDiagnostico.FieldName = "codigoDiagnostico";
-            this.CodigoDiagnostico.Name = "CodigoDiagnostico";
+            this.estudiosRealizadosToolStripMenuItem.Name = "estudiosRealizadosToolStripMenuItem";
+            this.estudiosRealizadosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.estudiosRealizadosToolStripMenuItem.Text = "Estudios Realizados";
+            this.estudiosRealizadosToolStripMenuItem.Click += new System.EventHandler(this.estudiosRealizadosToolStripMenuItem_Click);
             // 
             // FrmConsultasPaciente
             // 
@@ -356,6 +375,7 @@
             this.panel1.ResumeLayout(false);
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
+            this.CMSEstudiosConsulta.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -380,7 +400,6 @@
         private System.Windows.Forms.ComboBox cbDiagnostico;
         private System.Windows.Forms.Label lblDiagnostico;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
-        private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private System.Windows.Forms.TextBox txtPaciente;
         private DevExpress.XtraGrid.Columns.GridColumn Paciente;
         private DevExpress.XtraGrid.Columns.GridColumn Fecha;
@@ -390,5 +409,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn CodigoMotivo;
         private DevExpress.XtraGrid.Columns.GridColumn CodigoPaciente;
         private DevExpress.XtraGrid.Columns.GridColumn CodigoDiagnostico;
+        private DevExpress.XtraEditors.SimpleButton btnGuardar;
+        private System.Windows.Forms.ContextMenuStrip CMSEstudiosConsulta;
+        private System.Windows.Forms.ToolStripMenuItem estudiosRealizadosToolStripMenuItem;
     }
 }

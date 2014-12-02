@@ -183,6 +183,8 @@ namespace PresentacionHistorialMedico
             //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(int.Parse(selRow[0].ToString()));
             FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente();
             mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[0].ToString());
+            mConsultasPacientes.mNombrePaciente = selRow[1].ToString().ToString();
+
             mConsultasPacientes.ShowDialog();
 
         }

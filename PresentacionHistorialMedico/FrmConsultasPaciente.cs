@@ -15,6 +15,7 @@ namespace PresentacionHistorialMedico
     public partial class FrmConsultasPaciente : Form
     {
         public int mCondigoPaciente;
+        public string mNombrePaciente;
         private string operacion;
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
@@ -54,7 +55,7 @@ namespace PresentacionHistorialMedico
             cbDiagnostico.DisplayMember = "descripcion";
             cbDiagnostico.ValueMember = "codigoDiagnostico";
             //Cargo el textbox
-            txtPaciente.Text = dtConsultaPaciente.Rows[0]["nombreApellidoPaciente"].ToString();
+            txtPaciente.Text = mNombrePaciente;
 
 
 
@@ -195,6 +196,23 @@ namespace PresentacionHistorialMedico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Utils.ActualizarEstadogbDatos(gbDatos);
+        }
+
+        private void estudiosRealizadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] selRows = ((GridView)this.gcConsultaPaciente.MainView).GetSelectedRows();
+
+            DataRowView selRow = (DataRowView)(((GridView)gcConsultaPaciente.MainView).GetRow(selRows[0]));
+
+            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(int.Parse(selRow[0].ToString()));
+            FrmEstudiosConsultaPaciente mEstudiosConsultasPacientes = new FrmEstudiosConsultaPaciente();
+            //mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[1].ToString());
+            mEstudiosConsultasPacientes.ShowDialog();
+        }
+
+        private void gcConsultaPaciente_MouseDown(object sender, MouseEventArgs e)
+        {
+            gcConsultaPaciente.ContextMenuStrip = CMSEstudiosConsulta;
         }
 
     }
