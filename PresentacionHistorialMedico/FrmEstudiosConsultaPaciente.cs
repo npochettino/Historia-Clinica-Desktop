@@ -15,6 +15,9 @@ namespace PresentacionHistorialMedico
     public partial class FrmEstudiosConsultaPaciente : Form
     {
         DataTable tablaEstudios = new DataTable();
+        public int mCodigoConsulta;
+        private string operacionActual;
+        private string titulo;
 
         public FrmEstudiosConsultaPaciente()
         {
@@ -24,7 +27,8 @@ namespace PresentacionHistorialMedico
         private void FrmEstudiosConsultaPaciente_Load(object sender, EventArgs e)
         {
             tablaEstudios.Columns.Add("codigoEstudio");
-            tablaEstudios.Columns.Add("descripcion");
+            tablaEstudios.Columns.Add("descripcionEstudio");
+            tablaEstudios.Columns.Add("resultado");
             CargarDatosPantalla();
 
         }
@@ -32,14 +36,17 @@ namespace PresentacionHistorialMedico
         private void CargarDatosPantalla()
         {
             gcEstudios.DataSource = ControladorGeneral.RecuperarTodosEstudios();
+            tablaEstudios = ControladorGeneral.RecuperarTodosEstudioConsulta(mCodigoConsulta);
             gcEstudiosAsignados.DataSource = tablaEstudios;
+
 
 
         }
 
         private void btnDerecha_Click(object sender, EventArgs e)
         {
-            tablaEstudios.Rows.Add(obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios());
+
+            tablaEstudios.Rows.Add(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), 0);
             gcEstudiosAsignados.DataSource = tablaEstudios;
 
         }
@@ -65,6 +72,17 @@ namespace PresentacionHistorialMedico
             return codigo = drvFilaSeleccionada[1].ToString();
         }
 
+
+        private string obtenerResultadoFilaSeleccionadaEstudios()
+        {
+            string codigo = "";
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudios.MainView).GetSelectedRows();
+
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudios.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+            return codigo = drvFilaSeleccionada[2].ToString();
+        }
+
         private void btnIzquierda_Click(object sender, EventArgs e)
         {
             int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudiosAsignados.MainView).GetSelectedRows();
@@ -78,6 +96,30 @@ namespace PresentacionHistorialMedico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            operacionActual = "cargados";
+            titulo = "Estudios Consulta Paciente";
+
+            //Elimino todos los estudios cargados para esta consulta
+            //ControladorGeneral.EliminarEstudioConsulta();
+
+            //Vuelvo a cargar los estudios actualizados para esta consulta
+            for (int i = 0; i < tablaEstudios.Rows.Count; i++)
+            {
+
+                ControladorGeneral.InsertarActualizarEstudioConsulta(0, mCodigoConsulta, int.Parse(tablaEstudios.Rows[i]["codigoEstudio"].ToString()), rtResultado.Text);
+            }
+
+            Utils.MostrarMensajeDeInformacion("Los estudios consulta fueron" + " " + operacionActual + " " + "correctamente", titulo);
+        }
+
+        private void btnGuardarComentario_Click(object sender, EventArgs e)
+        {
+
+
         }
 
 

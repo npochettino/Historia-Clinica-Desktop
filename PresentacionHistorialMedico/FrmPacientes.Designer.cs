@@ -37,6 +37,9 @@
             this.Telefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Direccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ObraSocial = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sexo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DNI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.cbObraSocial = new System.Windows.Forms.ComboBox();
@@ -61,9 +64,6 @@
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
             this.CMSPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.verConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ObraSocial = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.sexo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DNI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPacientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -113,6 +113,7 @@
             this.DNI});
             this.gridView1.GridControl = this.gcPacientes;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Nombre
             // 
@@ -163,6 +164,39 @@
             this.Codigo.Caption = "Codigo";
             this.Codigo.FieldName = "codigoPaciente";
             this.Codigo.Name = "Codigo";
+            // 
+            // ObraSocial
+            // 
+            this.ObraSocial.Caption = "Obra Social";
+            this.ObraSocial.FieldName = "descripcionObraSocial";
+            this.ObraSocial.Name = "ObraSocial";
+            this.ObraSocial.OptionsColumn.AllowEdit = false;
+            this.ObraSocial.OptionsColumn.AllowFocus = false;
+            this.ObraSocial.OptionsColumn.ReadOnly = true;
+            this.ObraSocial.Visible = true;
+            this.ObraSocial.VisibleIndex = 5;
+            // 
+            // sexo
+            // 
+            this.sexo.Caption = "Sexo";
+            this.sexo.FieldName = "sexo";
+            this.sexo.Name = "sexo";
+            this.sexo.OptionsColumn.AllowEdit = false;
+            this.sexo.OptionsColumn.AllowFocus = false;
+            this.sexo.OptionsColumn.ReadOnly = true;
+            this.sexo.Visible = true;
+            this.sexo.VisibleIndex = 6;
+            // 
+            // DNI
+            // 
+            this.DNI.Caption = "DNI";
+            this.DNI.FieldName = "dni";
+            this.DNI.Name = "DNI";
+            this.DNI.OptionsColumn.AllowEdit = false;
+            this.DNI.OptionsColumn.AllowFocus = false;
+            this.DNI.OptionsColumn.ReadOnly = true;
+            this.DNI.Visible = true;
+            this.DNI.VisibleIndex = 0;
             // 
             // panel1
             // 
@@ -391,39 +425,6 @@
             this.verConsultasToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.verConsultasToolStripMenuItem.Text = "Ver consultas";
             this.verConsultasToolStripMenuItem.Click += new System.EventHandler(this.verConsultasToolStripMenuItem_Click);
-            // 
-            // ObraSocial
-            // 
-            this.ObraSocial.Caption = "Obra Social";
-            this.ObraSocial.FieldName = "descripcionObraSocial";
-            this.ObraSocial.Name = "ObraSocial";
-            this.ObraSocial.OptionsColumn.AllowEdit = false;
-            this.ObraSocial.OptionsColumn.AllowFocus = false;
-            this.ObraSocial.OptionsColumn.ReadOnly = true;
-            this.ObraSocial.Visible = true;
-            this.ObraSocial.VisibleIndex = 5;
-            // 
-            // sexo
-            // 
-            this.sexo.Caption = "Sexo";
-            this.sexo.FieldName = "sexo";
-            this.sexo.Name = "sexo";
-            this.sexo.OptionsColumn.AllowEdit = false;
-            this.sexo.OptionsColumn.AllowFocus = false;
-            this.sexo.OptionsColumn.ReadOnly = true;
-            this.sexo.Visible = true;
-            this.sexo.VisibleIndex = 6;
-            // 
-            // DNI
-            // 
-            this.DNI.Caption = "DNI";
-            this.DNI.FieldName = "dni";
-            this.DNI.Name = "DNI";
-            this.DNI.OptionsColumn.AllowEdit = false;
-            this.DNI.OptionsColumn.AllowFocus = false;
-            this.DNI.OptionsColumn.ReadOnly = true;
-            this.DNI.Visible = true;
-            this.DNI.VisibleIndex = 0;
             // 
             // frmPacientes
             // 

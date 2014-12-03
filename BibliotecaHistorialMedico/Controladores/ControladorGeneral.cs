@@ -698,7 +698,7 @@ namespace BibliotecaHistorialMedico.Controladores
         {
             DataTable tablaEstudios = new DataTable();
             tablaEstudios.Columns.Add("codigoEstudio");
-            tablaEstudios.Columns.Add("descripcion");
+            tablaEstudios.Columns.Add("descripcionEstudio");
 
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
@@ -983,7 +983,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #region EstudioConsulta
 
-        public static DataTable RecuperarTodosEstudioConsulta()
+        public static DataTable RecuperarTodosEstudioConsulta(int codigoConsulta)
         {
             DataTable tablaEstudioConsulta = new DataTable();
             tablaEstudioConsulta.Columns.Add("codigoEstudioConsulta");
@@ -1004,7 +1004,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
             try
             {
-                List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarTodos(nhSesion);
+                List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarTodos(nhSesion,codigoConsulta);
                 tablaEstudioConsulta = (from p in listaEstudiosConsulta select p).Aggregate(tablaEstudioConsulta, (dt, r) =>
                 {
                     dt.Rows.Add(r.Codigo, r.ConsultaPaciente.Codigo, r.ConsultaPaciente.Paciente.Codigo, r.ConsultaPaciente.Paciente.ApellidoNombre, r.ConsultaPaciente.Fecha,

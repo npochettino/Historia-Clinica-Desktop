@@ -82,6 +82,7 @@
             this.Id_ObraSocial});
             this.gridView1.GridControl = this.gcObraSocial;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Descripcion
             // 

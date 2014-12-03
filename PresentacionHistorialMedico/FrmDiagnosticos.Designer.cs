@@ -82,6 +82,7 @@
             this.CodigoDiagnostico});
             this.gridView1.GridControl = this.gcDiagnostico;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Descripcion
             // 

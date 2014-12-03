@@ -44,6 +44,7 @@
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.txtPaciente = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.cbDiagnostico = new System.Windows.Forms.ComboBox();
             this.lblDiagnostico = new System.Windows.Forms.Label();
             this.cbMotivo = new System.Windows.Forms.ComboBox();
@@ -56,7 +57,6 @@
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.CMSEstudiosConsulta = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.estudiosRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
@@ -107,6 +107,7 @@
             this.CodigoDiagnostico});
             this.gridView1.GridControl = this.gcConsultaPaciente;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Codigo
             // 
@@ -231,6 +232,15 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(51, 357);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
+            this.btnGuardar.TabIndex = 17;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // cbDiagnostico
             // 
             this.cbDiagnostico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -336,21 +346,12 @@
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(51, 357);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
-            this.btnGuardar.TabIndex = 17;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // CMSEstudiosConsulta
             // 
             this.CMSEstudiosConsulta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estudiosRealizadosToolStripMenuItem});
             this.CMSEstudiosConsulta.Name = "CMSEstudiosConsulta";
-            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(177, 48);
+            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(177, 26);
             // 
             // estudiosRealizadosToolStripMenuItem
             // 

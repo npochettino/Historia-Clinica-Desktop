@@ -23,13 +23,13 @@ namespace BibliotecaHistorialMedico.Catalogos
             }
         }
 
-        public static List<EstudioConsulta> RecuperarTodos(ISession nhSesion)
+        public static List<EstudioConsulta> RecuperarTodos(ISession nhSesion, int codigoConsulta)
         {
             List<EstudioConsulta> listaEstudiosConsulta = new List<EstudioConsulta>();
 
             try
             {
-                string consulta = "from EstudioConsulta";
+                string consulta = "from EstudioConsulta e where e.ConsultaPaciente.Codigo=" + codigoConsulta;
                 listaEstudiosConsulta = nhSesion.CreateQuery(consulta).List<EstudioConsulta>().ToList();
                 return listaEstudiosConsulta;
             }

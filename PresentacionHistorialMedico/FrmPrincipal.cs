@@ -46,5 +46,10 @@ namespace PresentacionHistorialMedico
         {
             new FrmObrasSociales().ShowDialog();
         }
+
+        private void tileItem8_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            new FrmTratamientos().ShowDialog();
+        }
     }
 }

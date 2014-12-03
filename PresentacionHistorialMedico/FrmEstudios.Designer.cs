@@ -82,6 +82,7 @@
             this.Id_Estudios});
             this.gridView1.GridControl = this.gcEstudios;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Descripcion
             // 

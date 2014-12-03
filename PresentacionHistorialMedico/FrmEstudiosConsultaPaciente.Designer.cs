@@ -31,23 +31,26 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gcEstudios = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.codigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Estudios = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Resultado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcEstudiosAsignados = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.codigoAsignado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.descripcionEstudioAsingado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ResultadoAsigando = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDerecha = new DevExpress.XtraEditors.SimpleButton();
             this.btnIzquierda = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDerecha = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblResultadoEstudio = new System.Windows.Forms.Label();
+            this.rtResultado = new System.Windows.Forms.RichTextBox();
+            this.btnGuardarComentario = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.Estudios = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.codigo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.codigoAsignado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.descripcionEstudioAsingado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcEstudios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -83,7 +86,7 @@
             this.gcEstudios.Location = new System.Drawing.Point(3, 3);
             this.gcEstudios.MainView = this.gridView1;
             this.gcEstudios.Name = "gcEstudios";
-            this.gcEstudios.Size = new System.Drawing.Size(308, 266);
+            this.gcEstudios.Size = new System.Drawing.Size(309, 266);
             this.gcEstudios.TabIndex = 0;
             this.gcEstudios.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -92,17 +95,44 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.codigo,
-            this.Estudios});
+            this.Estudios,
+            this.Resultado});
             this.gridView1.GridControl = this.gcEstudios;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            // 
+            // codigo
+            // 
+            this.codigo.Caption = "Codigo";
+            this.codigo.FieldName = "codigoEstudio";
+            this.codigo.Name = "codigo";
+            this.codigo.OptionsColumn.AllowEdit = false;
+            this.codigo.OptionsColumn.AllowFocus = false;
+            // 
+            // Estudios
+            // 
+            this.Estudios.Caption = "Descripcion Estudio";
+            this.Estudios.FieldName = "descripcionEstudio";
+            this.Estudios.Name = "Estudios";
+            this.Estudios.OptionsColumn.AllowEdit = false;
+            this.Estudios.OptionsColumn.AllowFocus = false;
+            this.Estudios.OptionsColumn.ReadOnly = true;
+            this.Estudios.Visible = true;
+            this.Estudios.VisibleIndex = 0;
+            // 
+            // Resultado
+            // 
+            this.Resultado.Caption = "Resultado";
+            this.Resultado.FieldName = "resultado";
+            this.Resultado.Name = "Resultado";
             // 
             // gcEstudiosAsignados
             // 
             this.gcEstudiosAsignados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcEstudiosAsignados.Location = new System.Drawing.Point(379, 3);
+            this.gcEstudiosAsignados.Location = new System.Drawing.Point(381, 3);
             this.gcEstudiosAsignados.MainView = this.gridView2;
             this.gcEstudiosAsignados.Name = "gcEstudiosAsignados";
-            this.gcEstudiosAsignados.Size = new System.Drawing.Size(311, 266);
+            this.gcEstudiosAsignados.Size = new System.Drawing.Size(309, 266);
             this.gcEstudiosAsignados.TabIndex = 1;
             this.gcEstudiosAsignados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -111,9 +141,33 @@
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.codigoAsignado,
-            this.descripcionEstudioAsingado});
+            this.descripcionEstudioAsingado,
+            this.ResultadoAsigando});
             this.gridView2.GridControl = this.gcEstudiosAsignados;
             this.gridView2.Name = "gridView2";
+            // 
+            // codigoAsignado
+            // 
+            this.codigoAsignado.Caption = "CodigoAsignado";
+            this.codigoAsignado.FieldName = "codigoEstudio";
+            this.codigoAsignado.Name = "codigoAsignado";
+            // 
+            // descripcionEstudioAsingado
+            // 
+            this.descripcionEstudioAsingado.Caption = "Descripcion Estdudio";
+            this.descripcionEstudioAsingado.FieldName = "descripcionEstudio";
+            this.descripcionEstudioAsingado.Name = "descripcionEstudioAsingado";
+            this.descripcionEstudioAsingado.OptionsColumn.AllowEdit = false;
+            this.descripcionEstudioAsingado.OptionsColumn.AllowFocus = false;
+            this.descripcionEstudioAsingado.OptionsColumn.ReadOnly = true;
+            this.descripcionEstudioAsingado.Visible = true;
+            this.descripcionEstudioAsingado.VisibleIndex = 0;
+            // 
+            // ResultadoAsigando
+            // 
+            this.ResultadoAsigando.Caption = "ResultadoAsignado";
+            this.ResultadoAsigando.FieldName = "resultado";
+            this.ResultadoAsigando.Name = "ResultadoAsigando";
             // 
             // tableLayoutPanel2
             // 
@@ -122,37 +176,37 @@
             this.tableLayoutPanel2.Controls.Add(this.btnIzquierda, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnDerecha, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(317, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(318, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(56, 266);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(57, 266);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // btnDerecha
-            // 
-            this.btnDerecha.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDerecha.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDerecha.Appearance.Options.UseFont = true;
-            this.btnDerecha.Location = new System.Drawing.Point(16, 55);
-            this.btnDerecha.Name = "btnDerecha";
-            this.btnDerecha.Size = new System.Drawing.Size(23, 23);
-            this.btnDerecha.TabIndex = 1;
-            this.btnDerecha.Text = ">>";
-            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
             // 
             // btnIzquierda
             // 
             this.btnIzquierda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIzquierda.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIzquierda.Appearance.Options.UseFont = true;
-            this.btnIzquierda.Location = new System.Drawing.Point(16, 188);
+            this.btnIzquierda.Location = new System.Drawing.Point(17, 188);
             this.btnIzquierda.Name = "btnIzquierda";
             this.btnIzquierda.Size = new System.Drawing.Size(23, 23);
             this.btnIzquierda.TabIndex = 2;
             this.btnIzquierda.Text = "<<";
             this.btnIzquierda.Click += new System.EventHandler(this.btnIzquierda_Click);
+            // 
+            // btnDerecha
+            // 
+            this.btnDerecha.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDerecha.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDerecha.Appearance.Options.UseFont = true;
+            this.btnDerecha.Location = new System.Drawing.Point(17, 55);
+            this.btnDerecha.Name = "btnDerecha";
+            this.btnDerecha.Size = new System.Drawing.Size(23, 23);
+            this.btnDerecha.TabIndex = 1;
+            this.btnDerecha.Text = ">>";
+            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -171,10 +225,12 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel4.Controls.Add(this.lblResultadoEstudio, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.richTextBox1, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.rtResultado, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnGuardarComentario, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -188,11 +244,30 @@
             // 
             this.lblResultadoEstudio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblResultadoEstudio.AutoSize = true;
-            this.lblResultadoEstudio.Location = new System.Drawing.Point(107, 3);
+            this.lblResultadoEstudio.Location = new System.Drawing.Point(68, 3);
             this.lblResultadoEstudio.Name = "lblResultadoEstudio";
             this.lblResultadoEstudio.Size = new System.Drawing.Size(96, 13);
             this.lblResultadoEstudio.TabIndex = 0;
             this.lblResultadoEstudio.Text = "Resultado Estudio:";
+            // 
+            // rtResultado
+            // 
+            this.rtResultado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtResultado.Location = new System.Drawing.Point(3, 22);
+            this.rtResultado.Name = "rtResultado";
+            this.rtResultado.Size = new System.Drawing.Size(226, 96);
+            this.rtResultado.TabIndex = 1;
+            this.rtResultado.Text = "";
+            // 
+            // btnGuardarComentario
+            // 
+            this.btnGuardarComentario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuardarComentario.Location = new System.Drawing.Point(235, 55);
+            this.btnGuardarComentario.Name = "btnGuardarComentario";
+            this.btnGuardarComentario.Size = new System.Drawing.Size(72, 30);
+            this.btnGuardarComentario.TabIndex = 16;
+            this.btnGuardarComentario.Text = "Guardar";
+            this.btnGuardarComentario.Click += new System.EventHandler(this.btnGuardarComentario_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -207,51 +282,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(371, 121);
             this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 22);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(304, 96);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            // 
-            // Estudios
-            // 
-            this.Estudios.Caption = "Descripcion Estudio";
-            this.Estudios.FieldName = "descripcion";
-            this.Estudios.Name = "Estudios";
-            this.Estudios.OptionsColumn.AllowEdit = false;
-            this.Estudios.OptionsColumn.AllowFocus = false;
-            this.Estudios.OptionsColumn.ReadOnly = true;
-            this.Estudios.Visible = true;
-            this.Estudios.VisibleIndex = 0;
-            // 
-            // codigo
-            // 
-            this.codigo.Caption = "Codigo";
-            this.codigo.FieldName = "codigoEstudio";
-            this.codigo.Name = "codigo";
-            this.codigo.OptionsColumn.AllowEdit = false;
-            this.codigo.OptionsColumn.AllowFocus = false;
-            // 
-            // codigoAsignado
-            // 
-            this.codigoAsignado.Caption = "CodigoAsignado";
-            this.codigoAsignado.FieldName = "codigoEstudio";
-            this.codigoAsignado.Name = "codigoAsignado";
-            // 
-            // descripcionEstudioAsingado
-            // 
-            this.descripcionEstudioAsingado.Caption = "Descripcion Estdudio";
-            this.descripcionEstudioAsingado.FieldName = "descripcion";
-            this.descripcionEstudioAsingado.Name = "descripcionEstudioAsingado";
-            this.descripcionEstudioAsingado.OptionsColumn.AllowEdit = false;
-            this.descripcionEstudioAsingado.OptionsColumn.AllowFocus = false;
-            this.descripcionEstudioAsingado.OptionsColumn.ReadOnly = true;
-            this.descripcionEstudioAsingado.Visible = true;
-            this.descripcionEstudioAsingado.VisibleIndex = 0;
             // 
             // tableLayoutPanel6
             // 
@@ -268,15 +298,6 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(308, 115);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuardar.Location = new System.Drawing.Point(31, 42);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.Text = "Guardar";
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -286,6 +307,16 @@
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuardar.Location = new System.Drawing.Point(31, 42);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(91, 30);
+            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FrmEstudiosConsultaPaciente
             // 
@@ -327,7 +358,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lblResultadoEstudio;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtResultado;
         private DevExpress.XtraGrid.Columns.GridColumn Estudios;
         private DevExpress.XtraGrid.Columns.GridColumn codigo;
         private DevExpress.XtraGrid.Columns.GridColumn codigoAsignado;
@@ -335,5 +366,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
+        private DevExpress.XtraEditors.SimpleButton btnGuardarComentario;
+        private DevExpress.XtraGrid.Columns.GridColumn Resultado;
+        private DevExpress.XtraGrid.Columns.GridColumn ResultadoAsigando;
     }
 }

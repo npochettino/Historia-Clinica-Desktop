@@ -32,3 +32,4 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Biblio
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\bin\Debug\NHibernate.xml
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.dll
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
+C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache

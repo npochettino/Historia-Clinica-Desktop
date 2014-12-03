@@ -203,10 +203,8 @@ namespace PresentacionHistorialMedico
             int[] selRows = ((GridView)this.gcConsultaPaciente.MainView).GetSelectedRows();
 
             DataRowView selRow = (DataRowView)(((GridView)gcConsultaPaciente.MainView).GetRow(selRows[0]));
-
-            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(int.Parse(selRow[0].ToString()));
             FrmEstudiosConsultaPaciente mEstudiosConsultasPacientes = new FrmEstudiosConsultaPaciente();
-            //mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[1].ToString());
+            mEstudiosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[1].ToString());
             mEstudiosConsultasPacientes.ShowDialog();
         }
 

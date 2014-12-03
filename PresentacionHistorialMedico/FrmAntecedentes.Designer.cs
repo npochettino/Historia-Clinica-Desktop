@@ -177,6 +177,7 @@
             this.Codigo});
             this.gridView1.GridControl = this.gcAntecedentes;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // Descripcion
             // 
