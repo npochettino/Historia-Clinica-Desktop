@@ -59,6 +59,7 @@
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
             this.CMSEstudiosConsulta = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.estudiosRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tratamientoRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcConsultaPaciente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -349,16 +350,24 @@
             // CMSEstudiosConsulta
             // 
             this.CMSEstudiosConsulta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.estudiosRealizadosToolStripMenuItem});
+            this.estudiosRealizadosToolStripMenuItem,
+            this.tratamientoRealizadosToolStripMenuItem});
             this.CMSEstudiosConsulta.Name = "CMSEstudiosConsulta";
-            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(177, 26);
+            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(198, 70);
             // 
             // estudiosRealizadosToolStripMenuItem
             // 
             this.estudiosRealizadosToolStripMenuItem.Name = "estudiosRealizadosToolStripMenuItem";
-            this.estudiosRealizadosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.estudiosRealizadosToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.estudiosRealizadosToolStripMenuItem.Text = "Estudios Realizados";
             this.estudiosRealizadosToolStripMenuItem.Click += new System.EventHandler(this.estudiosRealizadosToolStripMenuItem_Click);
+            // 
+            // tratamientoRealizadosToolStripMenuItem
+            // 
+            this.tratamientoRealizadosToolStripMenuItem.Name = "tratamientoRealizadosToolStripMenuItem";
+            this.tratamientoRealizadosToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.tratamientoRealizadosToolStripMenuItem.Text = "Tratamiento Realizados";
+            this.tratamientoRealizadosToolStripMenuItem.Click += new System.EventHandler(this.tratamientoRealizadosToolStripMenuItem_Click);
             // 
             // FrmConsultasPaciente
             // 
@@ -413,5 +422,6 @@
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private System.Windows.Forms.ContextMenuStrip CMSEstudiosConsulta;
         private System.Windows.Forms.ToolStripMenuItem estudiosRealizadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tratamientoRealizadosToolStripMenuItem;
     }
 }

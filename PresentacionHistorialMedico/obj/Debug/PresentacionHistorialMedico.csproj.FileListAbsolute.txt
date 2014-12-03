@@ -49,3 +49,4 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Presen
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\bin\Debug\PresentacionHistorialMedico.pdb
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.exe
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudiosConsultaPaciente.resources
+C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmTratamientosConsultaPaciente.resources

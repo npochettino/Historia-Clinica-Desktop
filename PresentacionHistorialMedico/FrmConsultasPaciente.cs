@@ -213,5 +213,15 @@ namespace PresentacionHistorialMedico
             gcConsultaPaciente.ContextMenuStrip = CMSEstudiosConsulta;
         }
 
+        private void tratamientoRealizadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] selRows = ((GridView)this.gcConsultaPaciente.MainView).GetSelectedRows();
+
+            DataRowView selRow = (DataRowView)(((GridView)gcConsultaPaciente.MainView).GetRow(selRows[0]));
+            FrmTratamientosConsultaPaciente mTratamientosConsultasPacientes = new FrmTratamientosConsultaPaciente();
+            mTratamientosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[1].ToString());
+            mTratamientosConsultasPacientes.ShowDialog();
+        }
+
     }
 }
