@@ -353,7 +353,7 @@
             this.estudiosRealizadosToolStripMenuItem,
             this.tratamientoRealizadosToolStripMenuItem});
             this.CMSEstudiosConsulta.Name = "CMSEstudiosConsulta";
-            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(198, 70);
+            this.CMSEstudiosConsulta.Size = new System.Drawing.Size(198, 48);
             // 
             // estudiosRealizadosToolStripMenuItem
             // 

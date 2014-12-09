@@ -46,7 +46,7 @@ namespace PresentacionHistorialMedico
         private void btnDerecha_Click(object sender, EventArgs e)
         {
 
-            tablaEstudios.Rows.Add(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), 0);
+            tablaEstudios.Rows.Add(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), "");
             gcEstudiosAsignados.DataSource = tablaEstudios;
 
         }
@@ -75,12 +75,15 @@ namespace PresentacionHistorialMedico
 
         private string obtenerResultadoFilaSeleccionadaEstudios()
         {
-            string codigo = "";
-            int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudios.MainView).GetSelectedRows();
 
-            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudios.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudiosAsignados.MainView).GetSelectedRows();
 
-            return codigo = drvFilaSeleccionada[2].ToString();
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+            return drvFilaSeleccionada[12].ToString();
+
+
+
         }
 
         private void btnIzquierda_Click(object sender, EventArgs e)
@@ -118,7 +121,25 @@ namespace PresentacionHistorialMedico
 
         private void btnGuardarComentario_Click(object sender, EventArgs e)
         {
+            GuardarResultadoEnDataTableEstudiosAsignados(rtResultado.Text);
+        }
 
+        private void GuardarResultadoEnDataTableEstudiosAsignados(string resultado)
+        {
+
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudiosAsignados.MainView).GetSelectedRows();
+
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+            drvFilaSeleccionada[12] = resultado;
+
+        }
+
+
+
+        private void gcEstudiosAsignados_Click(object sender, EventArgs e)
+        {
+            rtResultado.Text = obtenerResultadoFilaSeleccionadaEstudios();
 
         }
 

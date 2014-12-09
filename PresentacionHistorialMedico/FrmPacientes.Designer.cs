@@ -129,7 +129,7 @@
             // Email
             // 
             this.Email.Caption = "Email";
-            this.Email.FieldName = "email";
+            this.Email.FieldName = "mail";
             this.Email.Name = "Email";
             this.Email.OptionsColumn.AllowEdit = false;
             this.Email.OptionsColumn.AllowFocus = false;

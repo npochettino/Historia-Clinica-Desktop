@@ -136,6 +136,7 @@
             this.gcEstudiosAsignados.TabIndex = 1;
             this.gcEstudiosAsignados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gcEstudiosAsignados.Click += new System.EventHandler(this.gcEstudiosAsignados_Click);
             // 
             // gridView2
             // 

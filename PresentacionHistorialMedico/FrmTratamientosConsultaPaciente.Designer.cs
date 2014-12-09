@@ -229,7 +229,7 @@
             this.tableLayoutPanel6.Location = new System.Drawing.Point(379, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(311, 121);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
@@ -307,6 +307,7 @@
             this.Name = "FrmTratamientosConsultaPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tratamientos Consulta";
+            this.Load += new System.EventHandler(this.FrmTratamientosConsultaPaciente_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcTratamientos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

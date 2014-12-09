@@ -17,5 +17,10 @@ namespace PresentacionHistorialMedico
         {
             InitializeComponent();
         }
+
+        private void FrmTratamientosConsultaPaciente_Load(object sender, EventArgs e)
+        {
+            //Cargar
+        }
     }
 }
