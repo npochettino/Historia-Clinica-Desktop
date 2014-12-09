@@ -32,13 +32,11 @@
             this.gcTratamientos = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.codigo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Estudios = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Resultado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Tratamiento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTratamienosAsignados = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.codigoAsignado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.descripcionEstudioAsingado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ResultadoAsigando = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnIzquierda = new DevExpress.XtraEditors.SimpleButton();
             this.btnDerecha = new DevExpress.XtraEditors.SimpleButton();
@@ -93,8 +91,7 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.codigo,
-            this.Estudios,
-            this.Resultado});
+            this.Tratamiento});
             this.gridView1.GridControl = this.gcTratamientos;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
@@ -102,27 +99,21 @@
             // codigo
             // 
             this.codigo.Caption = "Codigo";
-            this.codigo.FieldName = "codigoEstudio";
+            this.codigo.FieldName = "codigoTratamiento";
             this.codigo.Name = "codigo";
             this.codigo.OptionsColumn.AllowEdit = false;
             this.codigo.OptionsColumn.AllowFocus = false;
             // 
-            // Estudios
+            // Tratamiento
             // 
-            this.Estudios.Caption = "Descripcion Estudio";
-            this.Estudios.FieldName = "descripcionEstudio";
-            this.Estudios.Name = "Estudios";
-            this.Estudios.OptionsColumn.AllowEdit = false;
-            this.Estudios.OptionsColumn.AllowFocus = false;
-            this.Estudios.OptionsColumn.ReadOnly = true;
-            this.Estudios.Visible = true;
-            this.Estudios.VisibleIndex = 0;
-            // 
-            // Resultado
-            // 
-            this.Resultado.Caption = "Resultado";
-            this.Resultado.FieldName = "resultado";
-            this.Resultado.Name = "Resultado";
+            this.Tratamiento.Caption = "Descripcion Tratamiento";
+            this.Tratamiento.FieldName = "descripcion";
+            this.Tratamiento.Name = "Tratamiento";
+            this.Tratamiento.OptionsColumn.AllowEdit = false;
+            this.Tratamiento.OptionsColumn.AllowFocus = false;
+            this.Tratamiento.OptionsColumn.ReadOnly = true;
+            this.Tratamiento.Visible = true;
+            this.Tratamiento.VisibleIndex = 0;
             // 
             // gcTratamienosAsignados
             // 
@@ -139,33 +130,26 @@
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.codigoAsignado,
-            this.descripcionEstudioAsingado,
-            this.ResultadoAsigando});
+            this.descripcionEstudioAsingado});
             this.gridView2.GridControl = this.gcTratamienosAsignados;
             this.gridView2.Name = "gridView2";
             // 
             // codigoAsignado
             // 
             this.codigoAsignado.Caption = "CodigoAsignado";
-            this.codigoAsignado.FieldName = "codigoEstudio";
+            this.codigoAsignado.FieldName = "codigoTratamiento";
             this.codigoAsignado.Name = "codigoAsignado";
             // 
             // descripcionEstudioAsingado
             // 
             this.descripcionEstudioAsingado.Caption = "Descripcion Estdudio";
-            this.descripcionEstudioAsingado.FieldName = "descripcionEstudio";
+            this.descripcionEstudioAsingado.FieldName = "descripcionTratamiento";
             this.descripcionEstudioAsingado.Name = "descripcionEstudioAsingado";
             this.descripcionEstudioAsingado.OptionsColumn.AllowEdit = false;
             this.descripcionEstudioAsingado.OptionsColumn.AllowFocus = false;
             this.descripcionEstudioAsingado.OptionsColumn.ReadOnly = true;
             this.descripcionEstudioAsingado.Visible = true;
             this.descripcionEstudioAsingado.VisibleIndex = 0;
-            // 
-            // ResultadoAsigando
-            // 
-            this.ResultadoAsigando.Caption = "ResultadoAsignado";
-            this.ResultadoAsigando.FieldName = "resultado";
-            this.ResultadoAsigando.Name = "ResultadoAsigando";
             // 
             // tableLayoutPanel2
             // 
@@ -192,6 +176,7 @@
             this.btnIzquierda.Size = new System.Drawing.Size(23, 23);
             this.btnIzquierda.TabIndex = 2;
             this.btnIzquierda.Text = "<<";
+            this.btnIzquierda.Click += new System.EventHandler(this.btnIzquierda_Click);
             // 
             // btnDerecha
             // 
@@ -203,6 +188,7 @@
             this.btnDerecha.Size = new System.Drawing.Size(23, 23);
             this.btnDerecha.TabIndex = 1;
             this.btnDerecha.Text = ">>";
+            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -241,6 +227,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(87, 30);
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -328,13 +315,11 @@
         private DevExpress.XtraGrid.GridControl gcTratamientos;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn codigo;
-        private DevExpress.XtraGrid.Columns.GridColumn Estudios;
-        private DevExpress.XtraGrid.Columns.GridColumn Resultado;
+        private DevExpress.XtraGrid.Columns.GridColumn Tratamiento;
         private DevExpress.XtraGrid.GridControl gcTratamienosAsignados;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn codigoAsignado;
         private DevExpress.XtraGrid.Columns.GridColumn descripcionEstudioAsingado;
-        private DevExpress.XtraGrid.Columns.GridColumn ResultadoAsigando;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraEditors.SimpleButton btnIzquierda;
         private DevExpress.XtraEditors.SimpleButton btnDerecha;
