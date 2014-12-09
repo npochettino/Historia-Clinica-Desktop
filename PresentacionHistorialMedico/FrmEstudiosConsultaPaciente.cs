@@ -107,13 +107,13 @@ namespace PresentacionHistorialMedico
             titulo = "Estudios Consulta Paciente";
 
             //Elimino todos los estudios cargados para esta consulta
-            //ControladorGeneral.EliminarEstudioConsulta();
+            ControladorGeneral.EliminarEstudioConsultaPorConsulta(mCodigoConsulta);
 
             //Vuelvo a cargar los estudios actualizados para esta consulta
             for (int i = 0; i < tablaEstudios.Rows.Count; i++)
             {
 
-                ControladorGeneral.InsertarActualizarEstudioConsulta(0, mCodigoConsulta, int.Parse(tablaEstudios.Rows[i]["codigoEstudio"].ToString()), rtResultado.Text);
+                ControladorGeneral.InsertarActualizarEstudioConsulta(0, mCodigoConsulta, int.Parse(tablaEstudios.Rows[i]["codigoEstudio"].ToString()), tablaEstudios.Rows[i]["resultado"].ToString());
             }
 
             Utils.MostrarMensajeDeInformacion("Los estudios consulta fueron" + " " + operacionActual + " " + "correctamente", titulo);

@@ -1004,7 +1004,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
             try
             {
-                List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarTodos(nhSesion,codigoConsulta);
+                List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarTodos(nhSesion, codigoConsulta);
                 tablaEstudioConsulta = (from p in listaEstudiosConsulta select p).Aggregate(tablaEstudioConsulta, (dt, r) =>
                 {
                     dt.Rows.Add(r.Codigo, r.ConsultaPaciente.Codigo, r.ConsultaPaciente.Paciente.Codigo, r.ConsultaPaciente.Paciente.ApellidoNombre, r.ConsultaPaciente.Fecha,
