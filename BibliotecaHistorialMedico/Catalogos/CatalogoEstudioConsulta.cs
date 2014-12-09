@@ -67,5 +67,21 @@ namespace BibliotecaHistorialMedico.Catalogos
                 throw ex;
             }
         }
+
+        public static List<EstudioConsulta> RecuperarPorCodigoConsulta(int codigoConsulta, ISession nhSesion)
+        {
+            List<EstudioConsulta> listaEstudioConsulta;
+
+            try
+            {
+                string consulta = "from EstudioConsulta ec where ec.ConsultaPaciente.Codigo = " + codigoConsulta;
+                listaEstudioConsulta = nhSesion.CreateQuery(consulta).List<EstudioConsulta>().ToList();
+                return listaEstudioConsulta;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

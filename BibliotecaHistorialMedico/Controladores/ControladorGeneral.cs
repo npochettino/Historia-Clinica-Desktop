@@ -828,7 +828,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
             try
             {
-                List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion,codigoPaciente);
+                List<ConsultaPaciente> listaConsultasPaciente = CatalogoConsultaPaciente.RecuperarTodos(nhSesion, codigoPaciente);
 
                 tablaConsultasPaciente = (from p in listaConsultasPaciente select p).Aggregate(tablaConsultasPaciente, (dt, r) =>
                 {
@@ -1114,6 +1114,31 @@ namespace BibliotecaHistorialMedico.Controladores
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void EliminarEstudioConsultaPorConsulta(int codigoConsulta)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+            ITransaction trans = nhSesion.BeginTransaction();
+            try
+            {
+                List<EstudioConsulta> listaEstudiosConsulta = CatalogoEstudioConsulta.RecuperarPorCodigoConsulta(codigoConsulta, nhSesion);
+                foreach (EstudioConsulta estudioConsulta in listaEstudiosConsulta)
+                {
+                    CatalogoEstudioConsulta.Eliminar(estudioConsulta, nhSesion);
+                }
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
                 throw ex;
             }
             finally

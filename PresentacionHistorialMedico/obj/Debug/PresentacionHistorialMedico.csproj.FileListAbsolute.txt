@@ -49,4 +49,9 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Presen
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\bin\Debug\PresentacionHistorialMedico.pdb
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.exe
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudiosConsultaPaciente.resources
+<<<<<<< HEAD
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmTratamientosConsultaPaciente.resources
+=======
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmConsultasPaciente.resources
+C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudiosConsultaPaciente.resources
+>>>>>>> Se agrega metodo EliminarEstudioConsultaPorConsulta en Controlador General
