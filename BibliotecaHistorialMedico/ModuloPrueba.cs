@@ -15,7 +15,8 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-            ControladorGeneral.EliminarEstudioConsultaPorConsulta(2);
+            DataTable t = ControladorGeneral.RecuperarTratamientosConsultaPorConsulta(2);
+            ControladorGeneral.EliminarTratamientosConsultaPorConsulta(2);
         }
     }
 }

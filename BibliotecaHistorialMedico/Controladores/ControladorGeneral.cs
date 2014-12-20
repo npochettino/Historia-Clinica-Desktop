@@ -612,6 +612,35 @@ namespace BibliotecaHistorialMedico.Controladores
             return tablaTratamientos;
         }
 
+        public static DataTable RecuperarTratamientosConsultaPorConsulta(int codigoConsultaPaciente)
+        {
+            DataTable tablaTratamientos = new DataTable();
+            tablaTratamientos.Columns.Add("codigoTratamiento");
+            tablaTratamientos.Columns.Add("descripcion");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ConsultaPaciente consulta = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+                if (consulta.Tratamientos.Count > 0)
+                {
+                    tablaTratamientos = (from p in consulta.Tratamientos select p).Aggregate(tablaTratamientos, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaTratamientos;
+        }
+
         public static void InsertarActualizarTratamiento(int codigoTratamiento, string descripcion)
         {
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
@@ -689,6 +718,37 @@ namespace BibliotecaHistorialMedico.Controladores
                 nhSesion.Dispose();
             }
         }
+
+        public static void EliminarTratamientosConsultaPorConsulta(int codigoConsultaPaciente)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+            ITransaction trans = nhSesion.BeginTransaction();
+            try
+            {
+                ConsultaPaciente consulta = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+                if (consulta.Tratamientos.Count > 0)
+                {
+                    consulta.Tratamientos = new List<Tratamiento>();
+                    CatalogoConsultaPaciente.InsertarActualizar(consulta, nhSesion);
+                    trans.Commit();
+                }
+                else
+                {
+                    trans.Rollback();
+                }
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
 
         #endregion
 
@@ -805,8 +865,6 @@ namespace BibliotecaHistorialMedico.Controladores
         public static DataSet RecuperarTodosConsultaPaciente(int codigoPaciente)
         {
             DataSet dsConsultaPaciente = new DataSet();
-            //dsConsultaPaciente.Tables.Add("tablaConsultaPaciente");
-            //dsConsultaPaciente.Tables.Add("tablaTratamientos");
 
             DataTable tablaConsultasPaciente = new DataTable("tablaConsultaPaciente");
             tablaConsultasPaciente.Columns.Add("codigoConsultaPaciente");
