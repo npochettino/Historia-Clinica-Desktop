@@ -25,7 +25,7 @@ namespace PresentacionHistorialMedico
 
         private void CargarGrilla()
         {
-            gcAntecedentes.DataSource = ControladorGeneral.RecuperarTodosAntecedentes();
+            //gcAntecedentes.DataSource = ControladorGeneral.RecuperarTodosAntecedentes();
         }
 
         private void FrmAntecedentes_Load(object sender, EventArgs e)
@@ -51,11 +51,11 @@ namespace PresentacionHistorialMedico
         private void CargarDatosForm(int codigo)
         {
 
-            DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
+            //DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
 
 
-            txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
-            txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
+            //txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
+            //txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
         }
 
 
@@ -82,14 +82,14 @@ namespace PresentacionHistorialMedico
             {
                 operacionActual = "agregó";
                 titulo = "Alta Antecedentes";
-                ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
+                //ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
             }
             else
             {
                 operacionActual = "modificó";
                 titulo = "Modificación Antecedentes";
                 int codigo = obtenerCodigoFilaSeleccionada();
-                ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
+                //ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
             }
 
             Utils.MostrarMensajeDeInformacion("El Antecedente se" + " " + operacionActual + " " + "correctamente", titulo);
@@ -127,8 +127,8 @@ namespace PresentacionHistorialMedico
 
                 try
                 {
-                    ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
-                    Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
+                    //ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
+                    //Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
                 }
                 catch (Exception ex)
                 {

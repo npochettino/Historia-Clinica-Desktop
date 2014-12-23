@@ -169,7 +169,7 @@ namespace PresentacionHistorialMedico
             {
                 operacionActual = "agregó";
                 titulo = "Alta Consulta Paciente";
-                ControladorGeneral.InsertarActualizarConsultaPaciente(0, obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual, new List<int>());
+                ControladorGeneral.InsertarActualizarConsultaPaciente(0, obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
             }
             else
             {
@@ -177,7 +177,7 @@ namespace PresentacionHistorialMedico
                 titulo = "Modificación Consulta Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
 
-                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual, new List<int>());
+                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
             }
 
             Utils.MostrarMensajeDeInformacion("La consulta paciente se" + " " + operacionActual + " " + "correctamente", titulo);
@@ -219,7 +219,7 @@ namespace PresentacionHistorialMedico
 
             DataRowView selRow = (DataRowView)(((GridView)gcConsultaPaciente.MainView).GetRow(selRows[0]));
             FrmTratamientosConsultaPaciente mTratamientosConsultasPacientes = new FrmTratamientosConsultaPaciente();
-            mTratamientosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[1].ToString());
+            mTratamientosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[0].ToString());
             mTratamientosConsultasPacientes.ShowDialog();
         }
 

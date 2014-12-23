@@ -90,10 +90,17 @@ namespace PresentacionHistorialMedico
         {
             int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudiosAsignados.MainView).GetSelectedRows();
 
-            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
 
-            tablaEstudiosAsignados.Rows.Remove(drvFilaSeleccionada.Row);
-            gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
+            if (arrIntFilasSeleccionadas.Length != 0)
+            {
+
+                DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+                tablaEstudiosAsignados.Rows.Remove(drvFilaSeleccionada.Row);
+                gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
+            }
+            else
+                Utils.MostrarMensajeDeInformacion("No hay fila seleccionada", "Error");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

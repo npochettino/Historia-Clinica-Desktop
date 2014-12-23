@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSReporteEstadistico" targetNamespace="http://tempuri.org/DSReporteEstadistico.xsd" xmlns:mstns="http://tempuri.org/DSReporteEstadistico.xsd" xmlns="http://tempuri.org/DSReporteEstadistico.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSReporteEstadistico" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReporteEstadistico" msprop:Generator_UserDSName="DSReporteEstadistico">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TablaReporte" msprop:Generator_TableClassName="TablaReporteDataTable" msprop:Generator_TableVarName="tableTablaReporte" msprop:Generator_TablePropName="TablaReporte" msprop:Generator_RowDeletingName="TablaReporteRowDeleting" msprop:Generator_RowChangingName="TablaReporteRowChanging" msprop:Generator_RowEvHandlerName="TablaReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="TablaReporteRowDeleted" msprop:Generator_UserTableName="TablaReporte" msprop:Generator_RowChangedName="TablaReporteRowChanged" msprop:Generator_RowEvArgName="TablaReporteRowChangeEvent" msprop:Generator_RowClassName="TablaReporteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FechaConsulta" msprop:Generator_ColumnVarNameInTable="columnFechaConsulta" msprop:Generator_ColumnPropNameInRow="FechaConsulta" msprop:Generator_ColumnPropNameInTable="FechaConsultaColumn" msprop:Generator_UserColumnName="FechaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreApellido" msprop:Generator_ColumnVarNameInTable="columnNombreApellido" msprop:Generator_ColumnPropNameInRow="NombreApellido" msprop:Generator_ColumnPropNameInTable="NombreApellidoColumn" msprop:Generator_UserColumnName="NombreApellido" type="xs:string" minOccurs="0" />
+              <xs:element name="Comentario" msprop:Generator_ColumnVarNameInTable="columnComentario" msprop:Generator_ColumnPropNameInRow="Comentario" msprop:Generator_ColumnPropNameInTable="ComentarioColumn" msprop:Generator_UserColumnName="Comentario" type="xs:string" minOccurs="0" />
+              <xs:element name="ObraSocial" msprop:Generator_ColumnVarNameInTable="columnObraSocial" msprop:Generator_ColumnPropNameInRow="ObraSocial" msprop:Generator_ColumnPropNameInTable="ObraSocialColumn" msprop:Generator_UserColumnName="ObraSocial" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

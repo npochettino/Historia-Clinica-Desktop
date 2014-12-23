@@ -32,7 +32,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cbDiagnostico = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lblFechaDesde = new System.Windows.Forms.Label();
             this.lblMotivoConsulta = new System.Windows.Forms.Label();
             this.lblFechaHasta = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.cbMotivo = new System.Windows.Forms.ComboBox();
             this.sbEmitir = new DevExpress.XtraEditors.SimpleButton();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rpvReporteEstadistico = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -51,7 +51,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.reportViewer1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.rpvReporteEstadistico, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,7 +85,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.cbDiagnostico, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker2, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dtpFechaHasta, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblFechaDesde, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblMotivoConsulta, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblFechaHasta, 2, 0);
@@ -112,13 +112,13 @@
             this.cbDiagnostico.Size = new System.Drawing.Size(154, 21);
             this.cbDiagnostico.TabIndex = 7;
             // 
-            // dateTimePicker2
+            // dtpFechaHasta
             // 
-            this.dateTimePicker2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker2.Location = new System.Drawing.Point(582, 12);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(190, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dtpFechaHasta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(582, 12);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(190, 20);
+            this.dtpFechaHasta.TabIndex = 5;
             // 
             // lblFechaDesde
             // 
@@ -186,14 +186,15 @@
             this.sbEmitir.Size = new System.Drawing.Size(103, 41);
             this.sbEmitir.TabIndex = 2;
             this.sbEmitir.Text = "Emitir";
+            this.sbEmitir.Click += new System.EventHandler(this.sbEmitir_Click);
             // 
-            // reportViewer1
+            // rpvReporteEstadistico
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.Location = new System.Drawing.Point(3, 106);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(1001, 472);
-            this.reportViewer1.TabIndex = 1;
+            this.rpvReporteEstadistico.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rpvReporteEstadistico.Location = new System.Drawing.Point(3, 106);
+            this.rpvReporteEstadistico.Name = "rpvReporteEstadistico";
+            this.rpvReporteEstadistico.Size = new System.Drawing.Size(1001, 472);
+            this.rpvReporteEstadistico.TabIndex = 1;
             // 
             // FrmReporteEstadistico
             // 
@@ -219,7 +220,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.Label lblFechaDesde;
         private System.Windows.Forms.Label lblMotivoConsulta;
         private System.Windows.Forms.Label lblFechaHasta;
@@ -228,6 +229,6 @@
         private DevExpress.XtraEditors.SimpleButton sbEmitir;
         private System.Windows.Forms.ComboBox cbDiagnostico;
         private System.Windows.Forms.ComboBox cbMotivo;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvReporteEstadistico;
     }
 }

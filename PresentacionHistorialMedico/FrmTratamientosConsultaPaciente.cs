@@ -15,10 +15,12 @@ namespace PresentacionHistorialMedico
     public partial class FrmTratamientosConsultaPaciente : Form
     {
 
-        DataTable tablaTratamientos = new DataTable();
+        DataTable tablaTratamientosAsignados = new DataTable();
+        DataTable tablaTratamientosTodos = new DataTable();
         public int mCodigoConsulta;
         private string operacionActual;
         private string titulo;
+
         public FrmTratamientosConsultaPaciente()
         {
             InitializeComponent();
@@ -26,22 +28,24 @@ namespace PresentacionHistorialMedico
 
         private void FrmTratamientosConsultaPaciente_Load(object sender, EventArgs e)
         {
-            tablaTratamientos.Columns.Add("codigoTratamiento");
-            tablaTratamientos.Columns.Add("descripcionTratamiento");
+            tablaTratamientosAsignados.Columns.Add("codigoTratamiento");
+            tablaTratamientosAsignados.Columns.Add("descripcionTratamiento");
             CargarDatosPantalla();
         }
 
         private void CargarDatosPantalla()
         {
-            gcTratamientos.DataSource = ControladorGeneral.RecuperarTodosTratamientos();
-            //tablaTratamientos = ControladorGeneral.RecuperarT
-            gcTratamienosAsignados.DataSource = tablaTratamientos;
+            tablaTratamientosTodos = ControladorGeneral.RecuperarTodosTratamientos();
+            gcTratamientos.DataSource = tablaTratamientosTodos;
+            tablaTratamientosAsignados = ControladorGeneral.RecuperarTratamientosConsultaPorConsulta(mCodigoConsulta);
+            gcTratamienosAsignados.DataSource = tablaTratamientosAsignados;
+
         }
 
         private void btnDerecha_Click(object sender, EventArgs e)
         {
-            tablaTratamientos.Rows.Add(obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios());
-            gcTratamienosAsignados.DataSource = tablaTratamientos;
+            tablaTratamientosAsignados.Rows.Add(obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios());
+            gcTratamienosAsignados.DataSource = tablaTratamientosAsignados;
         }
 
         private string obtenerDescripcionFilaSeleccionadaEstudios()
@@ -74,10 +78,34 @@ namespace PresentacionHistorialMedico
         {
             int[] arrIntFilasSeleccionadas = ((GridView)this.gcTratamienosAsignados.MainView).GetSelectedRows();
 
-            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcTratamienosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+            if (arrIntFilasSeleccionadas.Length != 0)
+            {
 
-            tablaTratamientos.Rows.Remove(drvFilaSeleccionada.Row);
-            gcTratamienosAsignados.DataSource = tablaTratamientos;
+                DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcTratamienosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+                tablaTratamientosAsignados.Rows.Remove(drvFilaSeleccionada.Row);
+                gcTratamienosAsignados.DataSource = tablaTratamientosAsignados;
+            }
+            else
+                Utils.MostrarMensajeDeInformacion("No hay fila seleccionada", "Error");
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            operacionActual = "cargados";
+            titulo = "Tragamientos Consulta Paciente";
+
+            //Elimino todos los tratamientos cargados para esta consulta
+            ControladorGeneral.EliminarTratamientosConsultaPorConsulta(mCodigoConsulta);
+
+            //Vuelvo a cargar los estudios actualizados para esta consulta
+            for (int i = 0; i < tablaTratamientosAsignados.Rows.Count; i++)
+            {
+
+                ControladorGeneral.InsertarConsultaTratamiento(mCodigoConsulta, int.Parse(tablaTratamientosAsignados.Rows[i]["codigoTratamiento"].ToString()));
+            }
+
+            Utils.MostrarMensajeDeInformacion("Los tratamientos consulta fueron" + " " + operacionActual + " " + "correctamente", titulo);
         }
     }
 }

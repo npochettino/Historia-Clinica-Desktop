@@ -35,7 +35,7 @@
             this.Tratamiento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTratamienosAsignados = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.codigoAsignado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.codigoTratamiento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.descripcionEstudioAsingado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnIzquierda = new DevExpress.XtraEditors.SimpleButton();
@@ -129,21 +129,21 @@
             // gridView2
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.codigoAsignado,
+            this.codigoTratamiento,
             this.descripcionEstudioAsingado});
             this.gridView2.GridControl = this.gcTratamienosAsignados;
             this.gridView2.Name = "gridView2";
             // 
-            // codigoAsignado
+            // codigoTratamiento
             // 
-            this.codigoAsignado.Caption = "CodigoAsignado";
-            this.codigoAsignado.FieldName = "codigoTratamiento";
-            this.codigoAsignado.Name = "codigoAsignado";
+            this.codigoTratamiento.Caption = "CodigoAsignado";
+            this.codigoTratamiento.FieldName = "codigoTratamiento";
+            this.codigoTratamiento.Name = "codigoTratamiento";
             // 
             // descripcionEstudioAsingado
             // 
             this.descripcionEstudioAsingado.Caption = "Descripcion Estdudio";
-            this.descripcionEstudioAsingado.FieldName = "descripcionTratamiento";
+            this.descripcionEstudioAsingado.FieldName = "descripcion";
             this.descripcionEstudioAsingado.Name = "descripcionEstudioAsingado";
             this.descripcionEstudioAsingado.OptionsColumn.AllowEdit = false;
             this.descripcionEstudioAsingado.OptionsColumn.AllowFocus = false;
@@ -237,6 +237,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(91, 30);
             this.btnGuardar.TabIndex = 15;
             this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -318,7 +319,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Tratamiento;
         private DevExpress.XtraGrid.GridControl gcTratamienosAsignados;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn codigoAsignado;
+        private DevExpress.XtraGrid.Columns.GridColumn codigoTratamiento;
         private DevExpress.XtraGrid.Columns.GridColumn descripcionEstudioAsingado;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraEditors.SimpleButton btnIzquierda;

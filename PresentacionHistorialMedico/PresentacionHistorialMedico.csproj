@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BibliotecaHistorialMedico">
-      <HintPath>..\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -69,6 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSReporteEstadistico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FrmConsultasPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +202,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DSReporteEstadistico.xsc">
+      <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
+    </None>
+    <None Include="DSReporteEstadistico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteEstadistico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSReporteEstadistico.xss">
+      <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -218,6 +231,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BibliotecaHistorialMedico\BibliotecaHistorialMedico.csproj">
+      <Project>{60e008e5-e1ea-479d-ae28-502d50e205a3}</Project>
+      <Name>BibliotecaHistorialMedico</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
