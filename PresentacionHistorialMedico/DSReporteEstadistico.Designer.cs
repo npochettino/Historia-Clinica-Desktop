@@ -279,13 +279,13 @@ namespace PresentacionHistorialMedico {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TablaReporteDataTable : global::System.Data.TypedTableBase<TablaReporteRow> {
             
-            private global::System.Data.DataColumn columnFechaConsulta;
+            private global::System.Data.DataColumn columnfecha;
             
-            private global::System.Data.DataColumn columnNombreApellido;
+            private global::System.Data.DataColumn columnnombreApellidoPaciente;
             
-            private global::System.Data.DataColumn columnComentario;
+            private global::System.Data.DataColumn columncomentario;
             
-            private global::System.Data.DataColumn columnObraSocial;
+            private global::System.Data.DataColumn columnobraSocial;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -322,33 +322,33 @@ namespace PresentacionHistorialMedico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaConsultaColumn {
+            public global::System.Data.DataColumn fechaColumn {
                 get {
-                    return this.columnFechaConsulta;
+                    return this.columnfecha;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NombreApellidoColumn {
+            public global::System.Data.DataColumn nombreApellidoPacienteColumn {
                 get {
-                    return this.columnNombreApellido;
+                    return this.columnnombreApellidoPaciente;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ComentarioColumn {
+            public global::System.Data.DataColumn comentarioColumn {
                 get {
-                    return this.columnComentario;
+                    return this.columncomentario;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ObraSocialColumn {
+            public global::System.Data.DataColumn obraSocialColumn {
                 get {
-                    return this.columnObraSocial;
+                    return this.columnobraSocial;
                 }
             }
             
@@ -389,13 +389,13 @@ namespace PresentacionHistorialMedico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TablaReporteRow AddTablaReporteRow(string FechaConsulta, string NombreApellido, string Comentario, string ObraSocial) {
+            public TablaReporteRow AddTablaReporteRow(string fecha, string nombreApellidoPaciente, string comentario, string obraSocial) {
                 TablaReporteRow rowTablaReporteRow = ((TablaReporteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        FechaConsulta,
-                        NombreApellido,
-                        Comentario,
-                        ObraSocial};
+                        fecha,
+                        nombreApellidoPaciente,
+                        comentario,
+                        obraSocial};
                 rowTablaReporteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTablaReporteRow);
                 return rowTablaReporteRow;
@@ -418,23 +418,23 @@ namespace PresentacionHistorialMedico {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnFechaConsulta = base.Columns["FechaConsulta"];
-                this.columnNombreApellido = base.Columns["NombreApellido"];
-                this.columnComentario = base.Columns["Comentario"];
-                this.columnObraSocial = base.Columns["ObraSocial"];
+                this.columnfecha = base.Columns["fecha"];
+                this.columnnombreApellidoPaciente = base.Columns["nombreApellidoPaciente"];
+                this.columncomentario = base.Columns["comentario"];
+                this.columnobraSocial = base.Columns["obraSocial"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnFechaConsulta = new global::System.Data.DataColumn("FechaConsulta", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaConsulta);
-                this.columnNombreApellido = new global::System.Data.DataColumn("NombreApellido", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombreApellido);
-                this.columnComentario = new global::System.Data.DataColumn("Comentario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComentario);
-                this.columnObraSocial = new global::System.Data.DataColumn("ObraSocial", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnObraSocial);
+                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha);
+                this.columnnombreApellidoPaciente = new global::System.Data.DataColumn("nombreApellidoPaciente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombreApellidoPaciente);
+                this.columncomentario = new global::System.Data.DataColumn("comentario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncomentario);
+                this.columnobraSocial = new global::System.Data.DataColumn("obraSocial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnobraSocial);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -577,114 +577,115 @@ namespace PresentacionHistorialMedico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FechaConsulta {
+            public string fecha {
                 get {
                     try {
-                        return ((string)(this[this.tableTablaReporte.FechaConsultaColumn]));
+                        return ((string)(this[this.tableTablaReporte.fechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaConsulta\' de la tabla \'TablaReporte\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha\' de la tabla \'TablaReporte\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTablaReporte.FechaConsultaColumn] = value;
+                    this[this.tableTablaReporte.fechaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NombreApellido {
+            public string nombreApellidoPaciente {
                 get {
                     try {
-                        return ((string)(this[this.tableTablaReporte.NombreApellidoColumn]));
+                        return ((string)(this[this.tableTablaReporte.nombreApellidoPacienteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreApellido\' de la tabla \'TablaReporte\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombreApellidoPaciente\' de la tabla \'TablaReporte\' es DBN" +
+                                "ull.", e);
                     }
                 }
                 set {
-                    this[this.tableTablaReporte.NombreApellidoColumn] = value;
+                    this[this.tableTablaReporte.nombreApellidoPacienteColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Comentario {
+            public string comentario {
                 get {
                     try {
-                        return ((string)(this[this.tableTablaReporte.ComentarioColumn]));
+                        return ((string)(this[this.tableTablaReporte.comentarioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comentario\' de la tabla \'TablaReporte\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'comentario\' de la tabla \'TablaReporte\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTablaReporte.ComentarioColumn] = value;
+                    this[this.tableTablaReporte.comentarioColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ObraSocial {
+            public string obraSocial {
                 get {
                     try {
-                        return ((string)(this[this.tableTablaReporte.ObraSocialColumn]));
+                        return ((string)(this[this.tableTablaReporte.obraSocialColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ObraSocial\' de la tabla \'TablaReporte\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'obraSocial\' de la tabla \'TablaReporte\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTablaReporte.ObraSocialColumn] = value;
+                    this[this.tableTablaReporte.obraSocialColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaConsultaNull() {
-                return this.IsNull(this.tableTablaReporte.FechaConsultaColumn);
+            public bool IsfechaNull() {
+                return this.IsNull(this.tableTablaReporte.fechaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaConsultaNull() {
-                this[this.tableTablaReporte.FechaConsultaColumn] = global::System.Convert.DBNull;
+            public void SetfechaNull() {
+                this[this.tableTablaReporte.fechaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNombreApellidoNull() {
-                return this.IsNull(this.tableTablaReporte.NombreApellidoColumn);
+            public bool IsnombreApellidoPacienteNull() {
+                return this.IsNull(this.tableTablaReporte.nombreApellidoPacienteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNombreApellidoNull() {
-                this[this.tableTablaReporte.NombreApellidoColumn] = global::System.Convert.DBNull;
+            public void SetnombreApellidoPacienteNull() {
+                this[this.tableTablaReporte.nombreApellidoPacienteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsComentarioNull() {
-                return this.IsNull(this.tableTablaReporte.ComentarioColumn);
+            public bool IscomentarioNull() {
+                return this.IsNull(this.tableTablaReporte.comentarioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetComentarioNull() {
-                this[this.tableTablaReporte.ComentarioColumn] = global::System.Convert.DBNull;
+            public void SetcomentarioNull() {
+                this[this.tableTablaReporte.comentarioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsObraSocialNull() {
-                return this.IsNull(this.tableTablaReporte.ObraSocialColumn);
+            public bool IsobraSocialNull() {
+                return this.IsNull(this.tableTablaReporte.obraSocialColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetObraSocialNull() {
-                this[this.tableTablaReporte.ObraSocialColumn] = global::System.Convert.DBNull;
+            public void SetobraSocialNull() {
+                this[this.tableTablaReporte.obraSocialColumn] = global::System.Convert.DBNull;
             }
         }
         

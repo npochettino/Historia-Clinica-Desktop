@@ -66,6 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSReporteEstadistico.cs">
+      <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DSReporteEstadistico.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +206,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteEstadistico.rdlc" />
     <None Include="DSReporteEstadistico.xsc">
       <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
     </None>

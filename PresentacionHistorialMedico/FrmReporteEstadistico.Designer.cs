@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -41,9 +43,13 @@
             this.cbMotivo = new System.Windows.Forms.ComboBox();
             this.sbEmitir = new DevExpress.XtraEditors.SimpleButton();
             this.rpvReporteEstadistico = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.DSReporteEstadistico = new PresentacionHistorialMedico.DSReporteEstadistico();
+            this.TablaReporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaReporteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -191,10 +197,24 @@
             // rpvReporteEstadistico
             // 
             this.rpvReporteEstadistico.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DSReporteEstadistico";
+            reportDataSource1.Value = this.TablaReporteBindingSource;
+            this.rpvReporteEstadistico.LocalReport.DataSources.Add(reportDataSource1);
+            this.rpvReporteEstadistico.LocalReport.ReportEmbeddedResource = "PresentacionHistorialMedico.ReporteEstadistico.rdlc";
             this.rpvReporteEstadistico.Location = new System.Drawing.Point(3, 106);
             this.rpvReporteEstadistico.Name = "rpvReporteEstadistico";
             this.rpvReporteEstadistico.Size = new System.Drawing.Size(1001, 472);
             this.rpvReporteEstadistico.TabIndex = 1;
+            // 
+            // DSReporteEstadistico
+            // 
+            this.DSReporteEstadistico.DataSetName = "DSReporteEstadistico";
+            this.DSReporteEstadistico.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // TablaReporteBindingSource
+            // 
+            this.TablaReporteBindingSource.DataMember = "TablaReporte";
+            this.TablaReporteBindingSource.DataSource = this.DSReporteEstadistico;
             // 
             // FrmReporteEstadistico
             // 
@@ -211,6 +231,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).EndInit();
+            
             this.ResumeLayout(false);
 
         }
@@ -230,5 +252,7 @@
         private System.Windows.Forms.ComboBox cbDiagnostico;
         private System.Windows.Forms.ComboBox cbMotivo;
         private Microsoft.Reporting.WinForms.ReportViewer rpvReporteEstadistico;
+        private System.Windows.Forms.BindingSource TablaReporteBindingSource;
+        private DSReporteEstadistico DSReporteEstadistico;
     }
 }

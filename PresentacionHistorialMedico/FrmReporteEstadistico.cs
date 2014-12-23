@@ -16,6 +16,7 @@ namespace PresentacionHistorialMedico
     {
 
         DSReporteEstadistico dsReporte = new DSReporteEstadistico();
+        DataTable tablaReporte = new DataTable();
         public FrmReporteEstadistico()
         {
             InitializeComponent();
@@ -48,30 +49,32 @@ namespace PresentacionHistorialMedico
 
         private void sbEmitir_Click(object sender, EventArgs e)
         {
+            dsReporte.TablaReporte.Clear();
             CargarReporte();
         }
 
         private void CargarReporte()
         {
-            ////DataTable tablaReporte = ControladorGeneral.rec
-            //foreach (DataRow fila in tablaReporte.Rows)
-            //{
-            //    DataRow filaReporte = dsReporte.TablaReporte.NewRow();
-            //    filaReporte["fecha"] = fila["fecha"];
-            //    filaReporte["nombreApellido"] = fila["nombreApellido"];
-            //    filaReporte["comentario"] = fila["comentario"];
-            //    filaReporte["obraSocial"] = fila["obraSocial"];
+            tablaReporte = ControladorGeneral.RecuperarConsultaPacientePorMotivoConsultaDiagnosticoYFecha(int.Parse(cbMotivo.SelectedValue.ToString()), int.Parse(cbDiagnostico.SelectedValue.ToString()), Convert.ToDateTime(dtpFechaDesde.Value), Convert.ToDateTime(dtpFechaHasta.Value));
 
-            //    dsReporte.TablaReporte.Rows.Add(filaReporte);
+            foreach (DataRow fila in tablaReporte.Rows)
+            {
+                DataRow filaReporte = dsReporte.TablaReporte.NewRow();
+                filaReporte["fecha"] = fila["fecha"];
+                filaReporte["nombreApellidoPaciente"] = fila["nombreApellidoPaciente"];
+                filaReporte["comentario"] = fila["comentario"];
+                filaReporte["obraSocial"] = fila["obraSocial"];
 
-            //}
+                dsReporte.TablaReporte.Rows.Add(filaReporte);
 
-            ////rpvReporteEstadistico.ProcessingMode = ProcessingMode.Local;
-            ////ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportPagoaProfesores.rdlc");
-            //DSReporteEstadistico dsReporte1 = dsReporte;
-            //ReportDataSource datasource = new ReportDataSource("DSReportePagoProfesores", dsReporte1.Tables[0]);
-            //rpvReporteEstadistico.LocalReport.DataSources.Clear();
-            //rpvReporteEstadistico.LocalReport.DataSources.Add(datasource);
+            }
+
+
+            DSReporteEstadistico dsReporte1 = dsReporte;
+            ReportDataSource datasource = new ReportDataSource("DSReporteEstadistico", dsReporte1.Tables[0]);
+            rpvReporteEstadistico.LocalReport.DataSources.Clear();
+            rpvReporteEstadistico.LocalReport.DataSources.Add(datasource);
+            rpvReporteEstadistico.RefreshReport();
         }
 
 
