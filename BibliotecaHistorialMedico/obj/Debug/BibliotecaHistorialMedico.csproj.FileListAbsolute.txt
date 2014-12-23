@@ -30,9 +30,14 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Biblio
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.dll
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.dll
-<<<<<<< HEAD
-C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.exe
-C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
-=======
-C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache
->>>>>>> Comiezo de pantalla antecedentes por pacientes
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\BibliotecaHistorialMedico.pdb
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\FluentNHibernate.dll
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\Iesi.Collections.dll
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\NHibernate.dll
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\FluentNHibernate.xml
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\Iesi.Collections.xml
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\bin\Debug\NHibernate.xml
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.exe
+C:\Users\Nicolas\SempaIT\historiaclinica\BibliotecaHistorialMedico\obj\Debug\BibliotecaHistorialMedico.pdb
