@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BibliotecaHistorialMedico.Clases;
 using NHibernate;
+using NHibernate.Linq;
 
 namespace BibliotecaHistorialMedico.Catalogos
 {
@@ -61,6 +62,19 @@ namespace BibliotecaHistorialMedico.Catalogos
             {
                 nhSesion.Delete(consultaPaciente);
                 nhSesion.Flush();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<ConsultaPaciente> RecuperarPorMotivoConsultaDiagnosticoYFecha(int codigoMotivoConsulta, int codigoDiagnostico, DateTime fechaDesde, DateTime fechaHasta, ISession nhSesion)
+        {
+            try
+            {
+                List<ConsultaPaciente> listaConsultaPaciente = nhSesion.Query<ConsultaPaciente>().Where(x => x.Diagnostico.Codigo == codigoDiagnostico && x.MotivoConsulta.Codigo == codigoMotivoConsulta && x.Fecha >= fechaDesde && x.Fecha <= fechaHasta).ToList(); //nhSesion.CreateQuery(consulta).List<ConsultaPaciente>().ToList();
+                return listaConsultaPaciente;
             }
             catch (Exception ex)
             {

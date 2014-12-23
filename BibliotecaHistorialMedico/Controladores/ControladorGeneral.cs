@@ -1057,6 +1057,35 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
+        public static DataTable RecuperarConsultaPacientePorMotivoConsultaDiagnosticoYFecha(int codigoMotivoConsulta, int codigoDiagnostico, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                DataTable tablaConsultaPaciente = new DataTable();
+                tablaConsultaPaciente.Columns.Add("nombreApellidoPaciente");
+                tablaConsultaPaciente.Columns.Add("fecha");
+                tablaConsultaPaciente.Columns.Add("comentario");
+                tablaConsultaPaciente.Columns.Add("obraSocial");
+
+                List<ConsultaPaciente> listaConsultas = CatalogoConsultaPaciente.RecuperarPorMotivoConsultaDiagnosticoYFecha(codigoMotivoConsulta, codigoDiagnostico, fechaDesde, fechaHasta, nhSesion);
+
+                (from t in listaConsultas select t).Aggregate(tablaConsultaPaciente, (dt, r) => { dt.Rows.Add(r.Paciente.ApellidoNombre, r.Fecha.ToString("dd/MM/yyyy"), r.Comentario, r.Paciente.ObraSocial.Descripcion); return dt; });
+
+                return tablaConsultaPaciente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
         #endregion
 
         #region EstudioConsulta
