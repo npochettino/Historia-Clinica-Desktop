@@ -24,7 +24,6 @@ C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHis
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmTratamientos.resources
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmConsultasPaciente.resources
 C:\Users\Ezequiel Dalaison\Documents\git\SempaIT\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudiosConsultaPaciente.resources
-C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmAntecedentes.resources
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmConsultasPaciente.resources
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudios.resources
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmEstudiosConsultaPaciente.resources
@@ -52,3 +51,6 @@ C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\Presen
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.csprojResolveAssemblyReference.cache
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.exe
 C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.pdb
+C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmAntecedentesPacientes.resources
+C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmReporteEstadistico.resources
+C:\Users\marti_000\Documents\gits\SempaIT\HistorialMedico\historiaclinica\PresentacionHistorialMedico\obj\Debug\PresentacionHistorialMedico.FrmReportes.resources

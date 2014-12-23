@@ -12,9 +12,9 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace PresentacionHistorialMedico
 {
-    public partial class FrmAntecedentes : Form
+    public partial class FrmAntecedentesPacientes : Form
     {
-        public FrmAntecedentes()
+        public FrmAntecedentesPacientes()
         {
             InitializeComponent();
         }

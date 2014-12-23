@@ -168,6 +168,7 @@
             this.tileItem7.Elements.Add(tileItemElement7);
             this.tileItem7.Id = 8;
             this.tileItem7.Name = "tileItem7";
+            this.tileItem7.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem7_ItemClick);
             // 
             // tileItem8
             // 

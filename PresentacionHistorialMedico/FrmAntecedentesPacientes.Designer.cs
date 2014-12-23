@@ -1,6 +1,6 @@
 ﻿namespace PresentacionHistorialMedico
 {
-    partial class FrmAntecedentes
+    partial class FrmAntecedentesPacientes
     {
         /// <summary>
         /// Required designer variable.

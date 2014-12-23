@@ -14,7 +14,8 @@ namespace PresentacionHistorialMedico
 {
     public partial class FrmEstudiosConsultaPaciente : Form
     {
-        DataTable tablaEstudios = new DataTable();
+        DataTable tablaEstudiosAsignados = new DataTable();
+        DataTable tablaEstudiosTodos = new DataTable();
         public int mCodigoConsulta;
         private string operacionActual;
         private string titulo;
@@ -26,28 +27,27 @@ namespace PresentacionHistorialMedico
 
         private void FrmEstudiosConsultaPaciente_Load(object sender, EventArgs e)
         {
-            tablaEstudios.Columns.Add("codigoEstudio");
-            tablaEstudios.Columns.Add("descripcionEstudio");
-            tablaEstudios.Columns.Add("resultado");
+            tablaEstudiosAsignados.Columns.Add("codigoEstudio");
+            tablaEstudiosAsignados.Columns.Add("descripcionEstudio");
+            tablaEstudiosAsignados.Columns.Add("resultado");
             CargarDatosPantalla();
 
         }
 
         private void CargarDatosPantalla()
         {
-            gcEstudios.DataSource = ControladorGeneral.RecuperarTodosEstudios();
-            tablaEstudios = ControladorGeneral.RecuperarTodosEstudioConsulta(mCodigoConsulta);
-            gcEstudiosAsignados.DataSource = tablaEstudios;
-
-
-
+            tablaEstudiosTodos = ControladorGeneral.RecuperarTodosEstudios();
+            gcEstudios.DataSource = tablaEstudiosTodos;
+            tablaEstudiosAsignados = ControladorGeneral.RecuperarTodosEstudioConsulta(mCodigoConsulta);
+            gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
+            RefrescarGrillaEstudios();
         }
 
         private void btnDerecha_Click(object sender, EventArgs e)
         {
 
-            tablaEstudios.Rows.Add(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), "");
-            gcEstudiosAsignados.DataSource = tablaEstudios;
+            tablaEstudiosAsignados.Rows.Add(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), "");
+            gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
 
         }
 
@@ -92,12 +92,14 @@ namespace PresentacionHistorialMedico
 
             DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
 
-            tablaEstudios.Rows.Remove(drvFilaSeleccionada.Row);
-            gcEstudiosAsignados.DataSource = tablaEstudios;
+            tablaEstudiosAsignados.Rows.Remove(drvFilaSeleccionada.Row);
+            gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            tablaEstudiosAsignados.Clear();
+
             this.Close();
         }
 
@@ -110,10 +112,10 @@ namespace PresentacionHistorialMedico
             ControladorGeneral.EliminarEstudioConsultaPorConsulta(mCodigoConsulta);
 
             //Vuelvo a cargar los estudios actualizados para esta consulta
-            for (int i = 0; i < tablaEstudios.Rows.Count; i++)
+            for (int i = 0; i < tablaEstudiosAsignados.Rows.Count; i++)
             {
 
-                ControladorGeneral.InsertarActualizarEstudioConsulta(0, mCodigoConsulta, int.Parse(tablaEstudios.Rows[i]["codigoEstudio"].ToString()), tablaEstudios.Rows[i]["resultado"].ToString());
+                ControladorGeneral.InsertarActualizarEstudioConsulta(0, mCodigoConsulta, int.Parse(tablaEstudiosAsignados.Rows[i]["codigoEstudio"].ToString()), tablaEstudiosAsignados.Rows[i]["resultado"].ToString());
             }
 
             Utils.MostrarMensajeDeInformacion("Los estudios consulta fueron" + " " + operacionActual + " " + "correctamente", titulo);
@@ -135,7 +137,22 @@ namespace PresentacionHistorialMedico
 
         }
 
+        private void RefrescarGrillaEstudios()
+        {
+            //DataTable tablaFiltrada = new DataTable();
+            //DataRow[] foundRows = tablaEstudiosTodos.Select("codigoEstudio < 4");
 
+            //tablaEstudiosTodos.Clear();
+            //tablaEstudiosTodos.Rows.agre
+
+            //for (int i = 0; i < foundRows.Length-1; i++)
+            //{
+            //    tablaFiltrada.Rows.Add(foundRows[i][0]);
+            //}
+            //gcEstudios.DataSource = tablaFiltrada;
+
+
+        }
 
         private void gcEstudiosAsignados_Click(object sender, EventArgs e)
         {

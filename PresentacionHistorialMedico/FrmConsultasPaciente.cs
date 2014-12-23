@@ -204,7 +204,7 @@ namespace PresentacionHistorialMedico
 
             DataRowView selRow = (DataRowView)(((GridView)gcConsultaPaciente.MainView).GetRow(selRows[0]));
             FrmEstudiosConsultaPaciente mEstudiosConsultasPacientes = new FrmEstudiosConsultaPaciente();
-            mEstudiosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[1].ToString());
+            mEstudiosConsultasPacientes.mCodigoConsulta = int.Parse(selRow[0].ToString());
             mEstudiosConsultasPacientes.ShowDialog();
         }
 
