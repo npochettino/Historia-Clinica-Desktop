@@ -144,21 +144,26 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #endregion
 
-        #region Antecedentes
+        #region AntecedentesPaciente
 
-        public static DataTable RecuperarTodosAntecedentes()
+        public static DataTable RecuperarTodosAntecedentesPaciente()
         {
             DataTable tablaAntecedentes = new DataTable();
-            tablaAntecedentes.Columns.Add("codigoAntecedente");
-            tablaAntecedentes.Columns.Add("descripcion");
+            tablaAntecedentes.Columns.Add("codigoAntecedentePaciente");
+            tablaAntecedentes.Columns.Add("codigoPaciente");
+            tablaAntecedentes.Columns.Add("nombreApellidoPaciente");
             tablaAntecedentes.Columns.Add("comentario");
+            tablaAntecedentes.Columns.Add("tipo");
+            tablaAntecedentes.Columns.Add("codigoDiagnostico");
+            tablaAntecedentes.Columns.Add("descripcionDiagnostico");
 
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                List<Antecedente> listaAntecedentes = CatalogoAntecedente.RecuperarTodos(nhSesion);
-                tablaAntecedentes = (from p in listaAntecedentes select p).Aggregate(tablaAntecedentes, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion, r.Comentario); return dt; });
+                List<AntecedentePaciente> listaAntecedentes = CatalogoAntecedentePaciente.RecuperarTodos(nhSesion);
+                tablaAntecedentes = (from p in listaAntecedentes select p).Aggregate(tablaAntecedentes, (dt, r) => { dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre,
+                    r.Comentario, r.Tipo, r.Diagnostico.Codigo, r.Diagnostico.Descripcion); return dt; });
             }
             catch (Exception ex)
             {
@@ -173,27 +178,29 @@ namespace BibliotecaHistorialMedico.Controladores
             return tablaAntecedentes;
         }
 
-        public static void InsertarActualizarAntecedente(int codigoAntecedente, string descripcion, string comentario)
+        public static void InsertarActualizarAntecedentePaciente(int codigoAntecedentePaciente, int codigoPaciente, int codigoDiagnostico, string comentario, string tipo)
         {
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                Antecedente antecedente;
+                AntecedentePaciente antecedente;
 
-                if (codigoAntecedente == 0)
+                if (codigoAntecedentePaciente == 0)
                 {
-                    antecedente = new Antecedente();
+                    antecedente = new AntecedentePaciente();
                 }
                 else
                 {
-                    antecedente = CatalogoAntecedente.RecuperarPorCodigo(codigoAntecedente, nhSesion);
+                    antecedente = CatalogoAntecedentePaciente.RecuperarPorCodigo(codigoAntecedentePaciente, nhSesion);
                 }
 
                 antecedente.Comentario = comentario;
-                antecedente.Descripcion = descripcion;
+                antecedente.Paciente = CatalogoPaciente.RecuperarPorCodigo(codigoPaciente, nhSesion);
+                antecedente.Diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
+                antecedente.Tipo = tipo;
 
-                CatalogoAntecedente.InsertarActualizar(antecedente, nhSesion);
+                CatalogoAntecedentePaciente.InsertarActualizar(antecedente, nhSesion);
             }
             catch (Exception ex)
             {
@@ -206,15 +213,15 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
-        public static void EliminarAntecedente(int codigoAntecedente)
+        public static void EliminarAntecedentePaciente(int codigoAntecedentePaciente)
         {
-            Antecedente antecedente;
+            AntecedentePaciente antecedente;
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                antecedente = CatalogoAntecedente.RecuperarPorCodigo(codigoAntecedente, nhSesion);
-                CatalogoAntecedente.Eliminar(antecedente, nhSesion);
+                antecedente = CatalogoAntecedentePaciente.RecuperarPorCodigo(codigoAntecedentePaciente, nhSesion);
+                CatalogoAntecedentePaciente.Eliminar(antecedente, nhSesion);
             }
             catch (Exception ex)
             {
@@ -227,19 +234,24 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
-        public static DataTable RecuperarAntecedentePorCodigo(int codigoAntecedente)
+        public static DataTable RecuperarAntecedentePacientePorCodigo(int codigoAntecedentePaciente)
         {
             DataTable tablaAntecedente = new DataTable();
-            tablaAntecedente.Columns.Add("codigoAntecedente");
-            tablaAntecedente.Columns.Add("descripcion");
+            tablaAntecedente.Columns.Add("codigoAntecedentePaciente");
+            tablaAntecedente.Columns.Add("codigoPaciente");
+            tablaAntecedente.Columns.Add("nombreApellidoPaciente");
             tablaAntecedente.Columns.Add("comentario");
+            tablaAntecedente.Columns.Add("tipo");
+            tablaAntecedente.Columns.Add("codigoDiagnostico");
+            tablaAntecedente.Columns.Add("descripcionDiagnostico");
 
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
             try
             {
-                Antecedente antecedente = CatalogoAntecedente.RecuperarPorCodigo(codigoAntecedente, nhSesion);
-                tablaAntecedente.Rows.Add(new object[] { antecedente.Codigo, antecedente.Descripcion, antecedente.Comentario });
+                AntecedentePaciente antecedente = CatalogoAntecedentePaciente.RecuperarPorCodigo(codigoAntecedentePaciente, nhSesion);
+                tablaAntecedente.Rows.Add(new object[] { antecedente.Codigo, antecedente.Paciente.Codigo, antecedente.Paciente.ApellidoNombre, antecedente.Comentario, 
+                    antecedente.Tipo, antecedente.Diagnostico.Codigo, antecedente.Diagnostico.Descripcion });
 
             }
             catch (Exception ex)

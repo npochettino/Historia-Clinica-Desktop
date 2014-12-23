@@ -11,7 +11,7 @@ namespace BibliotecaHistorialMedico.Clases
         public virtual int Codigo { get; set; }
         public virtual string Comentario { get; set; }
         public virtual string Tipo { get; set; }
-        public virtual Antecedente Antecedente { get; set; }
+        public virtual Diagnostico Diagnostico { get; set; }
         public virtual Paciente Paciente { get; set; }
     }
 }

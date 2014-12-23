@@ -13,12 +13,12 @@ namespace BibliotecaHistorialMedico.Mapeos
         public AntecedentePacienteMap()
         {
             Table("AntecedentesPaciente");
-            Id(x => x.Codigo).Column("idAntecendentePaciente").GeneratedBy.Identity();
-            Map(x => x.Comentario).Column("comentarioAntecedentePaciente");
+            Id(x => x.Codigo).Column("idPacienteAntecedente").GeneratedBy.Identity();
+            Map(x => x.Comentario).Column("comentarioPacienteAntecedente");
             Map(x => x.Tipo).Column("tipoAntecedente");
 
             References(x => x.Paciente).Column("idPaciente").Cascade.None().Not.LazyLoad();
-            References(x => x.Antecedente).Column("idAntecedente").Cascade.None().Not.LazyLoad();
+            References(x => x.Diagnostico).Column("idDiagnostico").Cascade.None().Not.LazyLoad();
         }
     }
 }

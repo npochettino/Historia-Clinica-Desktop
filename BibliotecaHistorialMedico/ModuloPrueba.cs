@@ -15,7 +15,10 @@ namespace BibliotecaHistorialMedico
     {
         public static void Main()
         {
-            DataTable t = ControladorGeneral.RecuperarConsultaPacientePorMotivoConsultaDiagnosticoYFecha(1, 1, DateTime.Now.AddYears(-1), DateTime.Now);
+            ControladorGeneral.InsertarActualizarAntecedentePaciente(1, 1, 1, "Paaaaaa", "s");
+            DataTable tttt = ControladorGeneral.RecuperarAntecedentePacientePorCodigo(1);
+            DataTable aaa = ControladorGeneral.RecuperarTodosAntecedentesPaciente();
+            ControladorGeneral.EliminarAntecedentePaciente(1);
         }
     }
 }
