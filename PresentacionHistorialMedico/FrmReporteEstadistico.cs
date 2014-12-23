@@ -57,6 +57,11 @@ namespace PresentacionHistorialMedico
         {
             tablaReporte = ControladorGeneral.RecuperarConsultaPacientePorMotivoConsultaDiagnosticoYFecha(int.Parse(cbMotivo.SelectedValue.ToString()), int.Parse(cbDiagnostico.SelectedValue.ToString()), Convert.ToDateTime(dtpFechaDesde.Value), Convert.ToDateTime(dtpFechaHasta.Value));
 
+
+
+
+
+
             foreach (DataRow fila in tablaReporte.Rows)
             {
                 DataRow filaReporte = dsReporte.TablaReporte.NewRow();
@@ -68,6 +73,13 @@ namespace PresentacionHistorialMedico
                 dsReporte.TablaReporte.Rows.Add(filaReporte);
 
             }
+
+
+            //ReportParameter[] parameters = new ReportParameter[2];
+            ////Establecemos el valor de los parámetros
+            //parameters[0] = new ReportParameter("motivoConsulta", cbMotivo.SelectedText);
+            //parameters[1] = new ReportParameter("diagnostico", cbDiagnostico.SelectedText);
+            //this.rpvReporteEstadistico.LocalReport.SetParameters(parameters);
 
 
             DSReporteEstadistico dsReporte1 = dsReporte;
