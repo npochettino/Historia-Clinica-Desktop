@@ -169,7 +169,7 @@ namespace PresentacionHistorialMedico
             {
                 operacionActual = "agregó";
                 titulo = "Alta Consulta Paciente";
-                ControladorGeneral.InsertarActualizarConsultaPaciente(0, obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
+                ControladorGeneral.InsertarActualizarConsultaPaciente(0, mCondigoPaciente, DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
             }
             else
             {
@@ -177,7 +177,7 @@ namespace PresentacionHistorialMedico
                 titulo = "Modificación Consulta Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
 
-                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), obtenerCodigoPacienteFilaSeleccionada(), DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
+                ControladorGeneral.InsertarActualizarConsultaPaciente(obtenerCodigoFilaSeleccionada(), mCondigoPaciente, DateTime.Parse(dtpFechaConsulta.Value.ToString()), rtComentario.Text, int.Parse(cbMotivo.SelectedValue.ToString()), codigoDiagnosticoActual);
             }
 
             Utils.MostrarMensajeDeInformacion("La consulta paciente se" + " " + operacionActual + " " + "correctamente", titulo);

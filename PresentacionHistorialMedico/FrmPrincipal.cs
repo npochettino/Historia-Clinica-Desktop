@@ -34,7 +34,7 @@ namespace PresentacionHistorialMedico
 
         private void tileItem5_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
-            new FrmAntecedentesPacientes().ShowDialog();
+            //new FrmAntecedentesPacientes().ShowDialog();
         }
 
         private void tileItem3_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)

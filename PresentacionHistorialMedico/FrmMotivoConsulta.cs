@@ -138,5 +138,18 @@ namespace PresentacionHistorialMedico
             Modificar();
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Cancelar();
+        }
+
+        private void Cancelar()
+        {
+
+            Utils.ActualizarEstadogbDatos(gbDatos);
+            LimpiarForm();
+
+        }
+
     }
 }

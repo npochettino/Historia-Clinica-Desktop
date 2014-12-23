@@ -87,7 +87,7 @@
             // Descripcion
             // 
             this.Descripcion.Caption = "Descripción";
-            this.Descripcion.FieldName = "descripcion";
+            this.Descripcion.FieldName = "descripcionEstudio";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.OptionsColumn.AllowEdit = false;
             this.Descripcion.OptionsColumn.AllowFocus = false;
