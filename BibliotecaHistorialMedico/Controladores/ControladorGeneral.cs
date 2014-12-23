@@ -918,7 +918,7 @@ namespace BibliotecaHistorialMedico.Controladores
             }
         }
 
-        public static void InsertarActualizarConsultaPaciente(int codigoConsultaPaciente, int codigoPaciente, DateTime fecha, string comentario, int codigoMotivoConsulta, int codigoDiagnostico, List<int> listaCodigosTratamientos)
+        public static void InsertarActualizarConsultaPaciente(int codigoConsultaPaciente, int codigoPaciente, DateTime fecha, string comentario, int codigoMotivoConsulta, int codigoDiagnostico)
         {
             ISession nhSesion = ManejoNHibernate.IniciarSesion();
 
@@ -929,6 +929,7 @@ namespace BibliotecaHistorialMedico.Controladores
                 if (codigoConsultaPaciente == 0)
                 {
                     consultaPaciente = new ConsultaPaciente();
+                    consultaPaciente.Tratamientos = new List<Tratamiento>();
                 }
                 else
                 {
@@ -947,11 +948,6 @@ namespace BibliotecaHistorialMedico.Controladores
                 if (codigoDiagnostico != 0)
                 {
                     consultaPaciente.Diagnostico = CatalogoDiagnostico.RecuperarPorCodigo(codigoDiagnostico, nhSesion);
-                }
-
-                foreach (int codigoTratamiento in listaCodigosTratamientos)
-                {
-                    consultaPaciente.Tratamientos.Add(CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion));
                 }
 
                 CatalogoConsultaPaciente.InsertarActualizar(consultaPaciente, nhSesion);
@@ -1025,6 +1021,30 @@ namespace BibliotecaHistorialMedico.Controladores
                 dsConsultaPaciente.Tables.Add(tablaTratamientos);
 
                 return dsConsultaPaciente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+        }
+
+        public static void InsertarConsultaTratamiento(int codigoConsultaPaciente, int codigoTratamiento)
+        {
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                ConsultaPaciente consultaPaciente;
+                consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
+
+                consultaPaciente.Tratamientos.Add(CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion));
+
+                CatalogoConsultaPaciente.InsertarActualizar(consultaPaciente, nhSesion);
             }
             catch (Exception ex)
             {
