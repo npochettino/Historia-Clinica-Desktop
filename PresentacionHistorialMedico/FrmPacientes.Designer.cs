@@ -64,6 +64,7 @@
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
             this.CMSPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.verConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verAntecedentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPacientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -415,16 +416,24 @@
             // CMSPacientes
             // 
             this.CMSPacientes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verConsultasToolStripMenuItem});
+            this.verConsultasToolStripMenuItem,
+            this.verAntecedentesToolStripMenuItem});
             this.CMSPacientes.Name = "contextMenuStrip1";
-            this.CMSPacientes.Size = new System.Drawing.Size(145, 26);
+            this.CMSPacientes.Size = new System.Drawing.Size(167, 70);
             // 
             // verConsultasToolStripMenuItem
             // 
             this.verConsultasToolStripMenuItem.Name = "verConsultasToolStripMenuItem";
-            this.verConsultasToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.verConsultasToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.verConsultasToolStripMenuItem.Text = "Ver consultas";
             this.verConsultasToolStripMenuItem.Click += new System.EventHandler(this.verConsultasToolStripMenuItem_Click);
+            // 
+            // verAntecedentesToolStripMenuItem
+            // 
+            this.verAntecedentesToolStripMenuItem.Name = "verAntecedentesToolStripMenuItem";
+            this.verAntecedentesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.verAntecedentesToolStripMenuItem.Text = "Ver Antecedentes";
+            this.verAntecedentesToolStripMenuItem.Click += new System.EventHandler(this.verAntecedentesToolStripMenuItem_Click);
             // 
             // frmPacientes
             // 
@@ -484,6 +493,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn ObraSocial;
         private DevExpress.XtraGrid.Columns.GridColumn sexo;
         private DevExpress.XtraGrid.Columns.GridColumn DNI;
+        private System.Windows.Forms.ToolStripMenuItem verAntecedentesToolStripMenuItem;
     }
 }
 

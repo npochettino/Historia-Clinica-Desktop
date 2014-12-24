@@ -180,7 +180,7 @@ namespace PresentacionHistorialMedico
 
             DataRowView selRow = (DataRowView)(((GridView)gcPacientes.MainView).GetRow(selRows[0]));
 
-            //FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente(int.Parse(selRow[0].ToString()));
+            
             FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente();
             mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[0].ToString());
             mConsultasPacientes.mNombrePaciente = selRow[1].ToString().ToString();
@@ -192,6 +192,20 @@ namespace PresentacionHistorialMedico
         private void gcPacientes_MouseDown(object sender, MouseEventArgs e)
         {
             gcPacientes.ContextMenuStrip = CMSPacientes;
+        }
+
+        private void verAntecedentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] selRows = ((GridView)this.gcPacientes.MainView).GetSelectedRows();
+
+            DataRowView selRow = (DataRowView)(((GridView)gcPacientes.MainView).GetRow(selRows[0]));
+
+
+            FrmAntecedentesPacientes mAntecedentesPacientes = new FrmAntecedentesPacientes();
+            mAntecedentesPacientes.mCondigoPaciente = int.Parse(selRow[0].ToString());
+            mAntecedentesPacientes.mNombrePaciente = selRow[1].ToString().ToString();
+
+            mAntecedentesPacientes.ShowDialog();
         }
 
 

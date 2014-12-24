@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.TablaReporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DSReporteEstadistico = new PresentacionHistorialMedico.DSReporteEstadistico();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,14 +45,22 @@
             this.cbMotivo = new System.Windows.Forms.ComboBox();
             this.sbEmitir = new DevExpress.XtraEditors.SimpleButton();
             this.rpvReporteEstadistico = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DSReporteEstadistico = new PresentacionHistorialMedico.DSReporteEstadistico();
-            this.TablaReporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.TablaReporteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaReporteBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TablaReporteBindingSource
+            // 
+            this.TablaReporteBindingSource.DataMember = "TablaReporte";
+            this.TablaReporteBindingSource.DataSource = this.DSReporteEstadistico;
+            // 
+            // DSReporteEstadistico
+            // 
+            this.DSReporteEstadistico.DataSetName = "DSReporteEstadistico";
+            this.DSReporteEstadistico.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -206,16 +216,6 @@
             this.rpvReporteEstadistico.Size = new System.Drawing.Size(1001, 472);
             this.rpvReporteEstadistico.TabIndex = 1;
             // 
-            // DSReporteEstadistico
-            // 
-            this.DSReporteEstadistico.DataSetName = "DSReporteEstadistico";
-            this.DSReporteEstadistico.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // TablaReporteBindingSource
-            // 
-            this.TablaReporteBindingSource.DataMember = "TablaReporte";
-            this.TablaReporteBindingSource.DataSource = this.DSReporteEstadistico;
-            // 
             // FrmReporteEstadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,12 +227,12 @@
             this.Text = "Reporte Estadístico";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReporteEstadistico_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TablaReporteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DSReporteEstadistico)).EndInit();
-            
             this.ResumeLayout(false);
 
         }

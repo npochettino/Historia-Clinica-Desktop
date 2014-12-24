@@ -19,26 +19,46 @@ namespace PresentacionHistorialMedico
             InitializeComponent();
         }
 
+        public int mCondigoPaciente;
+        public string mNombrePaciente;
         private string operacion;
         private string agregarOperacion = "A";
         private string modificarOperacion = "M";
 
         private void CargarGrilla()
         {
-            //gcAntecedentes.DataSource = ControladorGeneral.RecuperarTodosAntecedentes();
+            //Cargo la grilla
+            gcAntecedentes.DataSource = ControladorGeneral.RecuperarAntecedentesPorPaciente(mCondigoPaciente);
+
         }
 
         private void FrmAntecedentes_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
+
+            CargarDatosPantalla();
         }
+
+        private void CargarDatosPantalla()
+        {
+
+            //Cargo la grilla
+            gcAntecedentes.DataSource = ControladorGeneral.RecuperarAntecedentesPorPaciente(mCondigoPaciente);
+            //Cargo el combobox
+            DataTable dsDiagnosticoConsulta = ControladorGeneral.RecuperarTodosDiagnosticos();
+            cbDiagnostico.DataSource = dsDiagnosticoConsulta;
+            cbDiagnostico.DisplayMember = "descripcion";
+            cbDiagnostico.ValueMember = "codigoDiagnostico";
+            //Cargo el nombre del paciente
+            txtNombrePaciente.Text = mNombrePaciente;
+        }
+
+
 
 
         private void Agregar()
         {
             operacion = agregarOperacion;
             Utils.ActualizarEstadogbDatos(gbDatos);
-
         }
 
         private void Modificar()
@@ -50,12 +70,17 @@ namespace PresentacionHistorialMedico
 
         private void CargarDatosForm(int codigo)
         {
+            DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePacientePorCodigo(obtenerCodigoFilaSeleccionada());
 
-            //DataTable dtAntecedente = ControladorGeneral.RecuperarAntecedentePorCodigo(codigo);
+            cbDiagnostico.SelectedValue = dtAntecedente.Rows[0]["codigoDiagnostico"].ToString();
+            txtNombrePaciente.Text = mNombrePaciente;
+            txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
+            string mTipoDiagnostico = dtAntecedente.Rows[0]["tipo"].ToString();
 
-
-            //txtDescripcion.Text = dtAntecedente.Rows[0]["descripcion"].ToString();
-            //txtComentario.Text = dtAntecedente.Rows[0]["comentario"].ToString();
+            if (mTipoDiagnostico.Equals("P"))
+                rbPersonal.Checked = true;
+            else
+                rbFamiliar.Checked = true;
         }
 
 
@@ -78,18 +103,18 @@ namespace PresentacionHistorialMedico
         {
             string operacionActual = "";
             string titulo = "";
+
             if (operacion.Equals(agregarOperacion))
             {
                 operacionActual = "agregó";
                 titulo = "Alta Antecedentes";
-                //ControladorGeneral.InsertarActualizarAntecedente(0, txtDescripcion.Text, txtComentario.Text);
+                ControladorGeneral.InsertarActualizarAntecedentePaciente(0, mCondigoPaciente, int.Parse(cbDiagnostico.SelectedValue.ToString()), txtComentario.Text, ObtenerTipoAntecenteSeleccionado());
             }
             else
             {
                 operacionActual = "modificó";
                 titulo = "Modificación Antecedentes";
-                int codigo = obtenerCodigoFilaSeleccionada();
-                //ControladorGeneral.InsertarActualizarAntecedente(codigo, txtDescripcion.Text, txtComentario.Text);
+                ControladorGeneral.InsertarActualizarAntecedentePaciente(obtenerCodigoFilaSeleccionada(), mCondigoPaciente, int.Parse(cbDiagnostico.SelectedValue.ToString()), txtComentario.Text, ObtenerTipoAntecenteSeleccionado());
             }
 
             Utils.MostrarMensajeDeInformacion("El Antecedente se" + " " + operacionActual + " " + "correctamente", titulo);
@@ -99,10 +124,19 @@ namespace PresentacionHistorialMedico
             CargarGrilla();
         }
 
+        private string ObtenerTipoAntecenteSeleccionado()
+        {
+            if (rbFamiliar.Checked)
+                return "F";
+            else
+                return "P";
+
+        }
+
         private void LimpiarForm()
         {
             txtComentario.Clear();
-            txtDescripcion.Clear();
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -127,8 +161,8 @@ namespace PresentacionHistorialMedico
 
                 try
                 {
-                    //ControladorGeneral.EliminarAntecedente(obtenerCodigoFilaSeleccionada());
-                    //Utils.MostrarMensajeDeInformacion("Se eliminó el antecedente correctamente", "Eliminación de Antecedente");
+                    ControladorGeneral.EliminarAntecedentePaciente(obtenerCodigoFilaSeleccionada());
+                    Utils.MostrarMensajeDeInformacion("se eliminó el antecedente correctamente", "eliminación de antecedente");
                 }
                 catch (Exception ex)
                 {

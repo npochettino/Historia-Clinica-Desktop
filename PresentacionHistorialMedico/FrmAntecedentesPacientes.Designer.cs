@@ -30,12 +30,17 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNombrePaciente = new System.Windows.Forms.TextBox();
+            this.rbFamiliar = new System.Windows.Forms.RadioButton();
+            this.rbPersonal = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbDiagnostico = new System.Windows.Forms.ComboBox();
             this.lbComentario = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
-            this.lbDescripcion = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.lbDiagnostico = new System.Windows.Forms.Label();
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
@@ -45,6 +50,7 @@
             this.Comentario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Codigo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAntecedentes)).BeginInit();
@@ -66,12 +72,17 @@
             // 
             // gbDatos
             // 
+            this.gbDatos.Controls.Add(this.label2);
+            this.gbDatos.Controls.Add(this.txtNombrePaciente);
+            this.gbDatos.Controls.Add(this.rbFamiliar);
+            this.gbDatos.Controls.Add(this.rbPersonal);
+            this.gbDatos.Controls.Add(this.label1);
+            this.gbDatos.Controls.Add(this.cbDiagnostico);
             this.gbDatos.Controls.Add(this.lbComentario);
             this.gbDatos.Controls.Add(this.txtComentario);
             this.gbDatos.Controls.Add(this.btnCancelar);
             this.gbDatos.Controls.Add(this.btnGuardar);
-            this.gbDatos.Controls.Add(this.lbDescripcion);
-            this.gbDatos.Controls.Add(this.txtDescripcion);
+            this.gbDatos.Controls.Add(this.lbDiagnostico);
             this.gbDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDatos.Location = new System.Drawing.Point(0, 0);
             this.gbDatos.Name = "gbDatos";
@@ -80,6 +91,63 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos Antecedentes";
             this.gbDatos.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(46, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Paciente";
+            // 
+            // txtNombrePaciente
+            // 
+            this.txtNombrePaciente.Enabled = false;
+            this.txtNombrePaciente.Location = new System.Drawing.Point(136, 56);
+            this.txtNombrePaciente.Name = "txtNombrePaciente";
+            this.txtNombrePaciente.Size = new System.Drawing.Size(154, 20);
+            this.txtNombrePaciente.TabIndex = 22;
+            // 
+            // rbFamiliar
+            // 
+            this.rbFamiliar.AutoSize = true;
+            this.rbFamiliar.Location = new System.Drawing.Point(224, 218);
+            this.rbFamiliar.Name = "rbFamiliar";
+            this.rbFamiliar.Size = new System.Drawing.Size(60, 17);
+            this.rbFamiliar.TabIndex = 21;
+            this.rbFamiliar.TabStop = true;
+            this.rbFamiliar.Text = "Familiar";
+            this.rbFamiliar.UseVisualStyleBackColor = true;
+            // 
+            // rbPersonal
+            // 
+            this.rbPersonal.AutoSize = true;
+            this.rbPersonal.Location = new System.Drawing.Point(136, 218);
+            this.rbPersonal.Name = "rbPersonal";
+            this.rbPersonal.Size = new System.Drawing.Size(66, 17);
+            this.rbPersonal.TabIndex = 20;
+            this.rbPersonal.TabStop = true;
+            this.rbPersonal.Text = "Personal";
+            this.rbPersonal.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 218);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Tipo";
+            // 
+            // cbDiagnostico
+            // 
+            this.cbDiagnostico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDiagnostico.FormattingEnabled = true;
+            this.cbDiagnostico.Location = new System.Drawing.Point(136, 105);
+            this.cbDiagnostico.Name = "cbDiagnostico";
+            this.cbDiagnostico.Size = new System.Drawing.Size(154, 21);
+            this.cbDiagnostico.TabIndex = 18;
             // 
             // lbComentario
             // 
@@ -99,7 +167,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(203, 228);
+            this.btnCancelar.Location = new System.Drawing.Point(203, 280);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 30);
             this.btnCancelar.TabIndex = 15;
@@ -108,28 +176,21 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(82, 228);
+            this.btnGuardar.Location = new System.Drawing.Point(82, 280);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(91, 30);
             this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // lbDescripcion
+            // lbDiagnostico
             // 
-            this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(46, 114);
-            this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
-            this.lbDescripcion.TabIndex = 13;
-            this.lbDescripcion.Text = "Descripción";
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Location = new System.Drawing.Point(136, 111);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(154, 20);
-            this.txtDescripcion.TabIndex = 12;
+            this.lbDiagnostico.AutoSize = true;
+            this.lbDiagnostico.Location = new System.Drawing.Point(46, 105);
+            this.lbDiagnostico.Name = "lbDiagnostico";
+            this.lbDiagnostico.Size = new System.Drawing.Size(63, 13);
+            this.lbDiagnostico.TabIndex = 13;
+            this.lbDiagnostico.Text = "Diagnostico";
             // 
             // btnEliminar
             // 
@@ -174,7 +235,8 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Descripcion,
             this.Comentario,
-            this.Codigo});
+            this.Codigo,
+            this.Tipo});
             this.gridView1.GridControl = this.gcAntecedentes;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
@@ -182,7 +244,7 @@
             // Descripcion
             // 
             this.Descripcion.Caption = "Descripción";
-            this.Descripcion.FieldName = "descripcion";
+            this.Descripcion.FieldName = "descripcionDiagnostico";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.OptionsColumn.AllowEdit = false;
             this.Descripcion.OptionsColumn.AllowFocus = false;
@@ -222,13 +284,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 399);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // FrmAntecedentes
+            // Tipo
+            // 
+            this.Tipo.Caption = "Tipo";
+            this.Tipo.FieldName = "tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.OptionsColumn.AllowEdit = false;
+            this.Tipo.OptionsColumn.AllowFocus = false;
+            this.Tipo.OptionsColumn.ReadOnly = true;
+            this.Tipo.Visible = true;
+            this.Tipo.VisibleIndex = 2;
+            // 
+            // FrmAntecedentesPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 399);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "FrmAntecedentes";
+            this.Name = "FrmAntecedentesPacientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Antecedentes";
             this.Load += new System.EventHandler(this.FrmAntecedentes_Load);
@@ -248,19 +321,25 @@
         private System.Windows.Forms.GroupBox gbDatos;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
-        private System.Windows.Forms.Label lbDescripcion;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label lbDiagnostico;
         private DevExpress.XtraEditors.SimpleButton btnEliminar;
         private DevExpress.XtraEditors.SimpleButton btnModificar;
         private DevExpress.XtraEditors.SimpleButton btnAgregar;
         private DevExpress.XtraGrid.GridControl gcAntecedentes;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lbComentario;
         private System.Windows.Forms.TextBox txtComentario;
         private DevExpress.XtraGrid.Columns.GridColumn Descripcion;
         private DevExpress.XtraGrid.Columns.GridColumn Comentario;
         private DevExpress.XtraGrid.Columns.GridColumn Codigo;
+        private System.Windows.Forms.ComboBox cbDiagnostico;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbComentario;
+        private System.Windows.Forms.RadioButton rbPersonal;
+        private System.Windows.Forms.RadioButton rbFamiliar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNombrePaciente;
+        private DevExpress.XtraGrid.Columns.GridColumn Tipo;
 
     }
 }
