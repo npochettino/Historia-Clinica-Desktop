@@ -67,5 +67,21 @@ namespace BibliotecaHistorialMedico.Catalogos
                 throw ex;
             }
         }
+
+        public static List<AntecedentePaciente> RecuperarPorPaciente(int codigoPaciente, ISession nhSesion)
+        {
+            List<AntecedentePaciente> listaAntecedentesPaciente = new List<AntecedentePaciente>();
+
+            try
+            {
+                string consulta = "from AntecedentePaciente ap where ap.Paciente.Codigo = " + codigoPaciente;
+                listaAntecedentesPaciente = nhSesion.CreateQuery(consulta).List<AntecedentePaciente>().ToList();
+                return listaAntecedentesPaciente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

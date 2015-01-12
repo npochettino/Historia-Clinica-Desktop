@@ -267,6 +267,41 @@ namespace BibliotecaHistorialMedico.Controladores
             return tablaAntecedente;
         }
 
+        public static DataTable RecuperarAntecedentesPorPaciente(int codigoPaciente)
+        {
+            DataTable tablaAntecedentes = new DataTable();
+            tablaAntecedentes.Columns.Add("codigoAntecedentePaciente");
+            tablaAntecedentes.Columns.Add("codigoPaciente");
+            tablaAntecedentes.Columns.Add("nombreApellidoPaciente");
+            tablaAntecedentes.Columns.Add("comentario");
+            tablaAntecedentes.Columns.Add("tipo");
+            tablaAntecedentes.Columns.Add("codigoDiagnostico");
+            tablaAntecedentes.Columns.Add("descripcionDiagnostico");
+
+            ISession nhSesion = ManejoNHibernate.IniciarSesion();
+
+            try
+            {
+                List<AntecedentePaciente> listaAntecedentes = CatalogoAntecedentePaciente.RecuperarPorPaciente(codigoPaciente, nhSesion);
+                tablaAntecedentes = (from p in listaAntecedentes select p).Aggregate(tablaAntecedentes, (dt, r) =>
+                {
+                    dt.Rows.Add(r.Codigo, r.Paciente.Codigo, r.Paciente.ApellidoNombre,
+                        r.Comentario, r.Tipo, r.Diagnostico.Codigo, r.Diagnostico.Descripcion); return dt;
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                nhSesion.Close();
+                nhSesion.Dispose();
+            }
+
+            return tablaAntecedentes;
+        }
+
         #endregion
 
         #region Diagnostico
