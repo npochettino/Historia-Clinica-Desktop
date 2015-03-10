@@ -30,6 +30,7 @@ namespace PresentacionHistorialMedico
             tablaEstudiosAsignados.Columns.Add("codigoEstudio");
             tablaEstudiosAsignados.Columns.Add("descripcionEstudio");
             tablaEstudiosAsignados.Columns.Add("resultado");
+
             CargarDatosPantalla();
 
         }
@@ -130,10 +131,10 @@ namespace PresentacionHistorialMedico
 
         private void btnGuardarComentario_Click(object sender, EventArgs e)
         {
-            GuardarResultadoEnDataTableEstudiosAsignados(rtResultado.Text);
+
         }
 
-        private void GuardarResultadoEnDataTableEstudiosAsignados(string resultado)
+        public void GuardarEnDataTableAsignados(string resultado)
         {
 
             int[] arrIntFilasSeleccionadas = ((GridView)this.gcEstudiosAsignados.MainView).GetSelectedRows();
@@ -141,6 +142,12 @@ namespace PresentacionHistorialMedico
             DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcEstudiosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
 
             drvFilaSeleccionada[12] = resultado;
+
+            tablaEstudiosAsignados = (DataTable)gcEstudiosAsignados.DataSource;
+
+            gcEstudiosAsignados.DataSource = tablaEstudiosAsignados;
+
+
 
         }
 
@@ -161,12 +168,17 @@ namespace PresentacionHistorialMedico
 
         }
 
-        private void gcEstudiosAsignados_Click(object sender, EventArgs e)
+        private void modificarComentarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtResultado.Text = obtenerResultadoFilaSeleccionadaEstudios();
-
+            FrmComentario frmComentario = new FrmComentario(this);
+            frmComentario.isTratamiento = false;
+            frmComentario.ShowDialog();
         }
 
+        private void gcEstudiosAsignados_MouseDown(object sender, MouseEventArgs e)
+        {
+            gcEstudiosAsignados.ContextMenuStrip = CMSComentario;
+        }
 
 
     }

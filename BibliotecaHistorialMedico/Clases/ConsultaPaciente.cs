@@ -19,7 +19,7 @@ namespace BibliotecaHistorialMedico.Clases
         public virtual Paciente Paciente { get; set; }
         public virtual MotivoConsulta MotivoConsulta { get; set; }
         public virtual Diagnostico Diagnostico { get; set; }
-
         public virtual IList<Tratamiento> Tratamientos { get; set; }
+
     }
 }

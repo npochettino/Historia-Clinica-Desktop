@@ -11,6 +11,7 @@ namespace BibliotecaHistorialMedico.Clases
         public virtual int Codigo { get; set; }
         public virtual string ApellidoNombre { get; set; }
         public virtual string Telefono { get; set; }
+        public virtual string Telefono2 { get; set; }
         public virtual string Mail { get; set; }
         public virtual string Direccion { get; set; }
         public virtual string Dni { get; set; }

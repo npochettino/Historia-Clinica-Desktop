@@ -16,6 +16,7 @@ namespace BibliotecaHistorialMedico.Mapeos
             Id(x => x.Codigo).Column("idPaciente").GeneratedBy.Identity();
             Map(x => x.ApellidoNombre).Column("apellidoNombrePaciente");
             Map(x => x.Telefono).Column("telefonoPaciente");
+            Map(x => x.Telefono2).Column("telefono2Paciente");
             Map(x => x.Mail).Column("emailPaciente");
             Map(x => x.Direccion).Column("direccionPaciente");
             Map(x => x.Dni).Column("dni");

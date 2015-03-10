@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gcPacientes = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -42,6 +41,8 @@
             this.DNI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.lblTelefono2 = new System.Windows.Forms.Label();
+            this.txtTelefono2 = new System.Windows.Forms.TextBox();
             this.cbObraSocial = new System.Windows.Forms.ComboBox();
             this.lblObraSocial = new System.Windows.Forms.Label();
             this.rbFemenino = new System.Windows.Forms.RadioButton();
@@ -62,9 +63,10 @@
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnModificar = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregar = new DevExpress.XtraEditors.SimpleButton();
-            this.CMSPacientes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CMSPacientes = new System.Windows.Forms.ContextMenuStrip();
             this.verConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verAntecedentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Telefono2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPacientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -107,6 +109,7 @@
             this.Nombre,
             this.Email,
             this.Telefono,
+            this.Telefono2,
             this.Direccion,
             this.Codigo,
             this.ObraSocial,
@@ -158,7 +161,7 @@
             this.Direccion.OptionsColumn.AllowFocus = false;
             this.Direccion.OptionsColumn.ReadOnly = true;
             this.Direccion.Visible = true;
-            this.Direccion.VisibleIndex = 4;
+            this.Direccion.VisibleIndex = 5;
             // 
             // Codigo
             // 
@@ -175,7 +178,7 @@
             this.ObraSocial.OptionsColumn.AllowFocus = false;
             this.ObraSocial.OptionsColumn.ReadOnly = true;
             this.ObraSocial.Visible = true;
-            this.ObraSocial.VisibleIndex = 5;
+            this.ObraSocial.VisibleIndex = 6;
             // 
             // sexo
             // 
@@ -186,7 +189,7 @@
             this.sexo.OptionsColumn.AllowFocus = false;
             this.sexo.OptionsColumn.ReadOnly = true;
             this.sexo.Visible = true;
-            this.sexo.VisibleIndex = 6;
+            this.sexo.VisibleIndex = 7;
             // 
             // DNI
             // 
@@ -213,6 +216,8 @@
             // 
             // gbDatos
             // 
+            this.gbDatos.Controls.Add(this.lblTelefono2);
+            this.gbDatos.Controls.Add(this.txtTelefono2);
             this.gbDatos.Controls.Add(this.cbObraSocial);
             this.gbDatos.Controls.Add(this.lblObraSocial);
             this.gbDatos.Controls.Add(this.rbFemenino);
@@ -239,11 +244,27 @@
             this.gbDatos.Text = "Datos Paciente";
             this.gbDatos.Visible = false;
             // 
+            // lblTelefono2
+            // 
+            this.lblTelefono2.AutoSize = true;
+            this.lblTelefono2.Location = new System.Drawing.Point(18, 238);
+            this.lblTelefono2.Name = "lblTelefono2";
+            this.lblTelefono2.Size = new System.Drawing.Size(58, 13);
+            this.lblTelefono2.TabIndex = 19;
+            this.lblTelefono2.Text = "Teléfono 2";
+            // 
+            // txtTelefono2
+            // 
+            this.txtTelefono2.Location = new System.Drawing.Point(108, 238);
+            this.txtTelefono2.Name = "txtTelefono2";
+            this.txtTelefono2.Size = new System.Drawing.Size(152, 20);
+            this.txtTelefono2.TabIndex = 18;
+            // 
             // cbObraSocial
             // 
             this.cbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbObraSocial.FormattingEnabled = true;
-            this.cbObraSocial.Location = new System.Drawing.Point(108, 275);
+            this.cbObraSocial.Location = new System.Drawing.Point(108, 307);
             this.cbObraSocial.Name = "cbObraSocial";
             this.cbObraSocial.Size = new System.Drawing.Size(152, 21);
             this.cbObraSocial.TabIndex = 17;
@@ -251,7 +272,7 @@
             // lblObraSocial
             // 
             this.lblObraSocial.AutoSize = true;
-            this.lblObraSocial.Location = new System.Drawing.Point(21, 275);
+            this.lblObraSocial.Location = new System.Drawing.Point(21, 307);
             this.lblObraSocial.Name = "lblObraSocial";
             this.lblObraSocial.Size = new System.Drawing.Size(60, 13);
             this.lblObraSocial.TabIndex = 16;
@@ -260,7 +281,7 @@
             // rbFemenino
             // 
             this.rbFemenino.AutoSize = true;
-            this.rbFemenino.Location = new System.Drawing.Point(189, 240);
+            this.rbFemenino.Location = new System.Drawing.Point(189, 272);
             this.rbFemenino.Name = "rbFemenino";
             this.rbFemenino.Size = new System.Drawing.Size(71, 17);
             this.rbFemenino.TabIndex = 15;
@@ -271,7 +292,7 @@
             // rbMasculino
             // 
             this.rbMasculino.AutoSize = true;
-            this.rbMasculino.Location = new System.Drawing.Point(106, 240);
+            this.rbMasculino.Location = new System.Drawing.Point(106, 272);
             this.rbMasculino.Name = "rbMasculino";
             this.rbMasculino.Size = new System.Drawing.Size(73, 17);
             this.rbMasculino.TabIndex = 14;
@@ -282,7 +303,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 240);
+            this.label1.Location = new System.Drawing.Point(18, 272);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 13;
@@ -290,7 +311,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(173, 329);
+            this.btnCancelar.Location = new System.Drawing.Point(173, 353);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 30);
             this.btnCancelar.TabIndex = 11;
@@ -299,7 +320,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(56, 329);
+            this.btnGuardar.Location = new System.Drawing.Point(56, 353);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(91, 30);
             this.btnGuardar.TabIndex = 10;
@@ -419,7 +440,7 @@
             this.verConsultasToolStripMenuItem,
             this.verAntecedentesToolStripMenuItem});
             this.CMSPacientes.Name = "contextMenuStrip1";
-            this.CMSPacientes.Size = new System.Drawing.Size(167, 70);
+            this.CMSPacientes.Size = new System.Drawing.Size(167, 48);
             // 
             // verConsultasToolStripMenuItem
             // 
@@ -434,6 +455,17 @@
             this.verAntecedentesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.verAntecedentesToolStripMenuItem.Text = "Ver Antecedentes";
             this.verAntecedentesToolStripMenuItem.Click += new System.EventHandler(this.verAntecedentesToolStripMenuItem_Click);
+            // 
+            // Telefono2
+            // 
+            this.Telefono2.Caption = "Teléfono 2";
+            this.Telefono2.FieldName = "telefono2";
+            this.Telefono2.Name = "Telefono2";
+            this.Telefono2.OptionsColumn.AllowEdit = false;
+            this.Telefono2.OptionsColumn.AllowFocus = false;
+            this.Telefono2.OptionsColumn.ReadOnly = true;
+            this.Telefono2.Visible = true;
+            this.Telefono2.VisibleIndex = 4;
             // 
             // frmPacientes
             // 
@@ -494,6 +526,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn sexo;
         private DevExpress.XtraGrid.Columns.GridColumn DNI;
         private System.Windows.Forms.ToolStripMenuItem verAntecedentesToolStripMenuItem;
+        private System.Windows.Forms.Label lblTelefono2;
+        private System.Windows.Forms.TextBox txtTelefono2;
+        private DevExpress.XtraGrid.Columns.GridColumn Telefono2;
     }
 }
 

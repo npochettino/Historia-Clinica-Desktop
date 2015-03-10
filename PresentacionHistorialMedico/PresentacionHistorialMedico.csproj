@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSReporteEstadistico.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmComentarioTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmComentarioTratamiento.Designer.cs">
+      <DependentUpon>FrmComentarioTratamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConsultasPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <EmbeddedResource Include="FrmAntecedentesPacientes.resx">
       <DependentUpon>FrmAntecedentesPacientes.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmComentarioTratamiento.resx">
+      <DependentUpon>FrmComentarioTratamiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultasPaciente.resx">
       <DependentUpon>FrmConsultasPaciente.cs</DependentUpon>

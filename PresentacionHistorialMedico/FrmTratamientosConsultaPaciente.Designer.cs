@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gcTratamientos = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,6 +49,9 @@
             this.lblResultadoEstudio = new System.Windows.Forms.Label();
             this.rtResultado = new System.Windows.Forms.RichTextBox();
             this.btnGuardarComentario = new DevExpress.XtraEditors.SimpleButton();
+            this.comentario = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CTMTratamientoConsulta = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modificarComentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcTratamientos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -57,6 +61,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.CTMTratamientoConsulta.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -125,12 +130,14 @@
             this.gcTratamienosAsignados.TabIndex = 1;
             this.gcTratamienosAsignados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gcTratamienosAsignados.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gcTratamienosAsignados_MouseDown);
             // 
             // gridView2
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.codigoTratamiento,
-            this.descripcionEstudioAsingado});
+            this.descripcionEstudioAsingado,
+            this.comentario});
             this.gridView2.GridControl = this.gcTratamienosAsignados;
             this.gridView2.Name = "gridView2";
             // 
@@ -284,6 +291,31 @@
             this.btnGuardarComentario.TabIndex = 16;
             this.btnGuardarComentario.Text = "Guardar";
             // 
+            // comentario
+            // 
+            this.comentario.Caption = "Comentario";
+            this.comentario.FieldName = "comentario";
+            this.comentario.Name = "comentario";
+            this.comentario.OptionsColumn.AllowEdit = false;
+            this.comentario.OptionsColumn.AllowFocus = false;
+            this.comentario.OptionsColumn.ReadOnly = true;
+            this.comentario.Visible = true;
+            this.comentario.VisibleIndex = 1;
+            // 
+            // CTMTratamientoConsulta
+            // 
+            this.CTMTratamientoConsulta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modificarComentarioToolStripMenuItem});
+            this.CTMTratamientoConsulta.Name = "CTMTratamientoConsulta";
+            this.CTMTratamientoConsulta.Size = new System.Drawing.Size(192, 48);
+            // 
+            // modificarComentarioToolStripMenuItem
+            // 
+            this.modificarComentarioToolStripMenuItem.Name = "modificarComentarioToolStripMenuItem";
+            this.modificarComentarioToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.modificarComentarioToolStripMenuItem.Text = "Modificar Comentario";
+            this.modificarComentarioToolStripMenuItem.Click += new System.EventHandler(this.modificarComentarioToolStripMenuItem_Click);
+            // 
             // FrmTratamientosConsultaPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +338,7 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.CTMTratamientoConsulta.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,6 +365,9 @@
         private System.Windows.Forms.Label lblResultadoEstudio;
         private System.Windows.Forms.RichTextBox rtResultado;
         private DevExpress.XtraEditors.SimpleButton btnGuardarComentario;
+        private DevExpress.XtraGrid.Columns.GridColumn comentario;
+        private System.Windows.Forms.ContextMenuStrip CTMTratamientoConsulta;
+        private System.Windows.Forms.ToolStripMenuItem modificarComentarioToolStripMenuItem;
 
     }
 }

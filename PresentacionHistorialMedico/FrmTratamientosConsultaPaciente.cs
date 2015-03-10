@@ -30,6 +30,7 @@ namespace PresentacionHistorialMedico
         {
             tablaTratamientosAsignados.Columns.Add("codigoTratamiento");
             tablaTratamientosAsignados.Columns.Add("descripcionTratamiento");
+            tablaTratamientosAsignados.Columns.Add("comentario");
             CargarDatosPantalla();
         }
 
@@ -44,7 +45,7 @@ namespace PresentacionHistorialMedico
 
         private void btnDerecha_Click(object sender, EventArgs e)
         {
-            tablaTratamientosAsignados.Rows.Add(obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios());
+            tablaTratamientosAsignados.Rows.Add(obtenerCodigoFilaSeleccionadaEstudios(), obtenerDescripcionFilaSeleccionadaEstudios(), "");
             gcTratamienosAsignados.DataSource = tablaTratamientosAsignados;
         }
 
@@ -93,7 +94,7 @@ namespace PresentacionHistorialMedico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             operacionActual = "cargados";
-            titulo = "Tragamientos Consulta Paciente";
+            titulo = "Tratamientos Consulta Paciente";
 
             //Elimino todos los tratamientos cargados para esta consulta
             ControladorGeneral.EliminarTratamientosConsultaPorConsulta(mCodigoConsulta);
@@ -102,10 +103,42 @@ namespace PresentacionHistorialMedico
             for (int i = 0; i < tablaTratamientosAsignados.Rows.Count; i++)
             {
 
-                ControladorGeneral.InsertarConsultaTratamiento(mCodigoConsulta, int.Parse(tablaTratamientosAsignados.Rows[i]["codigoTratamiento"].ToString()));
+                ControladorGeneral.InsertarConsultaTratamiento(mCodigoConsulta, int.Parse(tablaTratamientosAsignados.Rows[i]["codigoTratamiento"].ToString()),tablaTratamientosAsignados.Rows[i]["comentario"].ToString());
             }
 
             Utils.MostrarMensajeDeInformacion("Los tratamientos consulta fueron" + " " + operacionActual + " " + "correctamente", titulo);
+        }
+
+        private void gcTratamienosAsignados_MouseDown(object sender, MouseEventArgs e)
+        {
+            gcTratamienosAsignados.ContextMenuStrip = CTMTratamientoConsulta;
+        }
+
+        private void modificarComentarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FrmComentario frmComentario = new FrmComentario(this);
+            frmComentario.isTratamiento = true;
+            frmComentario.ShowDialog();
+
+        }
+
+
+        public void GuardarEnDataTableAsignados(string resultado)
+        {
+
+            int[] arrIntFilasSeleccionadas = ((GridView)this.gcTratamienosAsignados.MainView).GetSelectedRows();
+
+            DataRowView drvFilaSeleccionada = (DataRowView)(((GridView)gcTratamienosAsignados.MainView).GetRow(arrIntFilasSeleccionadas[0]));
+
+            drvFilaSeleccionada[2] = resultado;
+
+            tablaTratamientosAsignados = (DataTable)gcTratamienosAsignados.DataSource;
+
+            gcTratamienosAsignados.DataSource = tablaTratamientosAsignados;
+
+
+
         }
     }
 }

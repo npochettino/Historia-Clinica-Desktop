@@ -43,14 +43,12 @@
             this.btnIzquierda = new DevExpress.XtraEditors.SimpleButton();
             this.btnDerecha = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblResultadoEstudio = new System.Windows.Forms.Label();
-            this.rtResultado = new System.Windows.Forms.RichTextBox();
-            this.btnGuardarComentario = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
+            this.CMSComentario = new System.Windows.Forms.ContextMenuStrip();
+            this.modificarComentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcEstudios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -58,9 +56,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.CMSComentario.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -136,7 +134,7 @@
             this.gcEstudiosAsignados.TabIndex = 1;
             this.gcEstudiosAsignados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            this.gcEstudiosAsignados.Click += new System.EventHandler(this.gcEstudiosAsignados_Click);
+            this.gcEstudiosAsignados.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gcEstudiosAsignados_MouseDown);
             // 
             // gridView2
             // 
@@ -155,7 +153,7 @@
             // 
             // descripcionEstudioAsingado
             // 
-            this.descripcionEstudioAsingado.Caption = "Descripcion Estdudio";
+            this.descripcionEstudioAsingado.Caption = "Descripcion Estudio";
             this.descripcionEstudioAsingado.FieldName = "descripcionEstudio";
             this.descripcionEstudioAsingado.Name = "descripcionEstudioAsingado";
             this.descripcionEstudioAsingado.OptionsColumn.AllowEdit = false;
@@ -169,6 +167,11 @@
             this.ResultadoAsigando.Caption = "ResultadoAsignado";
             this.ResultadoAsigando.FieldName = "resultado";
             this.ResultadoAsigando.Name = "ResultadoAsigando";
+            this.ResultadoAsigando.OptionsColumn.AllowEdit = false;
+            this.ResultadoAsigando.OptionsColumn.AllowFocus = false;
+            this.ResultadoAsigando.OptionsColumn.ReadOnly = true;
+            this.ResultadoAsigando.Visible = true;
+            this.ResultadoAsigando.VisibleIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -214,7 +217,6 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.59885F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.40115F));
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 272);
@@ -223,52 +225,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.68504F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(693, 127);
             this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel4.Controls.Add(this.lblResultadoEstudio, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.rtResultado, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btnGuardarComentario, 1, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.52892F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.47108F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(310, 121);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // lblResultadoEstudio
-            // 
-            this.lblResultadoEstudio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblResultadoEstudio.AutoSize = true;
-            this.lblResultadoEstudio.Location = new System.Drawing.Point(68, 3);
-            this.lblResultadoEstudio.Name = "lblResultadoEstudio";
-            this.lblResultadoEstudio.Size = new System.Drawing.Size(96, 13);
-            this.lblResultadoEstudio.TabIndex = 0;
-            this.lblResultadoEstudio.Text = "Resultado Estudio:";
-            // 
-            // rtResultado
-            // 
-            this.rtResultado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtResultado.Location = new System.Drawing.Point(3, 22);
-            this.rtResultado.Name = "rtResultado";
-            this.rtResultado.Size = new System.Drawing.Size(226, 96);
-            this.rtResultado.TabIndex = 1;
-            this.rtResultado.Text = "";
-            // 
-            // btnGuardarComentario
-            // 
-            this.btnGuardarComentario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuardarComentario.Location = new System.Drawing.Point(235, 55);
-            this.btnGuardarComentario.Name = "btnGuardarComentario";
-            this.btnGuardarComentario.Size = new System.Drawing.Size(72, 30);
-            this.btnGuardarComentario.TabIndex = 16;
-            this.btnGuardarComentario.Text = "Guardar";
-            this.btnGuardarComentario.Click += new System.EventHandler(this.btnGuardarComentario_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -319,6 +275,20 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // CMSComentario
+            // 
+            this.CMSComentario.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modificarComentarioToolStripMenuItem});
+            this.CMSComentario.Name = "CMSComentario";
+            this.CMSComentario.Size = new System.Drawing.Size(181, 26);
+            // 
+            // modificarComentarioToolStripMenuItem
+            // 
+            this.modificarComentarioToolStripMenuItem.Name = "modificarComentarioToolStripMenuItem";
+            this.modificarComentarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarComentarioToolStripMenuItem.Text = "Modificar Resultado";
+            this.modificarComentarioToolStripMenuItem.Click += new System.EventHandler(this.modificarComentarioToolStripMenuItem_Click);
+            // 
             // FrmEstudiosConsultaPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,10 +307,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.CMSComentario.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,10 +325,7 @@
         private DevExpress.XtraEditors.SimpleButton btnDerecha;
         private DevExpress.XtraEditors.SimpleButton btnIzquierda;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label lblResultadoEstudio;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.RichTextBox rtResultado;
         private DevExpress.XtraGrid.Columns.GridColumn Estudios;
         private DevExpress.XtraGrid.Columns.GridColumn codigo;
         private DevExpress.XtraGrid.Columns.GridColumn codigoAsignado;
@@ -367,8 +333,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
-        private DevExpress.XtraEditors.SimpleButton btnGuardarComentario;
         private DevExpress.XtraGrid.Columns.GridColumn Resultado;
         private DevExpress.XtraGrid.Columns.GridColumn ResultadoAsigando;
+        private System.Windows.Forms.ContextMenuStrip CMSComentario;
+        private System.Windows.Forms.ToolStripMenuItem modificarComentarioToolStripMenuItem;
     }
 }

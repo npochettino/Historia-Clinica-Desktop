@@ -70,7 +70,7 @@ namespace PresentacionHistorialMedico
             {
                 operacionActual = "agregó";
                 titulo = "Alta Paciente";
-                ControladorGeneral.InsertarActualizarPaciente(0, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()));
+                ControladorGeneral.InsertarActualizarPaciente(0, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()), txtTelefono2.Text);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace PresentacionHistorialMedico
                 titulo = "Modificación Paciente";
                 int codigo = obtenerCodigoFilaSeleccionada();
 
-                ControladorGeneral.InsertarActualizarPaciente(codigo, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()));
+                ControladorGeneral.InsertarActualizarPaciente(codigo, txtNombreApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtDNI.Text, sexo, int.Parse(cbObraSocial.SelectedValue.ToString()), txtTelefono2.Text);
             }
 
             Utils.MostrarMensajeDeInformacion("El Paciente se" + " " + operacionActual + " " + "correctamente", titulo);
@@ -94,6 +94,7 @@ namespace PresentacionHistorialMedico
             txtEmail.Clear();
             txtNombreApellido.Clear();
             txtTelefono.Clear();
+            txtTelefono2.Clear();
         }
 
         private int obtenerCodigoFilaSeleccionada()
@@ -114,9 +115,10 @@ namespace PresentacionHistorialMedico
 
             txtNombreApellido.Text = dtPacienteActual.Rows[0][1].ToString();
             txtTelefono.Text = dtPacienteActual.Rows[0][2].ToString();
-            txtEmail.Text = dtPacienteActual.Rows[0][3].ToString();
-            txtDireccion.Text = dtPacienteActual.Rows[0][4].ToString();
-            txtDNI.Text = dtPacienteActual.Rows[0][2].ToString();
+            txtTelefono2.Text = dtPacienteActual.Rows[0][3].ToString();
+            txtEmail.Text = dtPacienteActual.Rows[0][4].ToString();
+            txtDireccion.Text = dtPacienteActual.Rows[0][5].ToString();
+            txtDNI.Text = dtPacienteActual.Rows[0][6].ToString();
             if (dtPacienteActual.Rows[0]["sexo"].ToString().Equals(TAG_SEXO_FEMENINO))
                 rbFemenino.Checked = true;
             else
@@ -180,7 +182,7 @@ namespace PresentacionHistorialMedico
 
             DataRowView selRow = (DataRowView)(((GridView)gcPacientes.MainView).GetRow(selRows[0]));
 
-            
+
             FrmConsultasPaciente mConsultasPacientes = new FrmConsultasPaciente();
             mConsultasPacientes.mCondigoPaciente = int.Parse(selRow[0].ToString());
             mConsultasPacientes.mNombrePaciente = selRow[1].ToString().ToString();
