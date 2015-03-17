@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace BibliotecaHistorialMedico.Clases
 {
-    public class Tratamiento
+    class ConsultaPacienteTratamiento
     {
         public virtual int Codigo { get; set; }
-        public virtual string Descripcion { get; set; }
+        public virtual string Comentario { get; set; }
+
+        public virtual Tratamiento Tratamiento { get; set; }
     }
 }

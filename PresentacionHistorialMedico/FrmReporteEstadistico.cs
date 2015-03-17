@@ -42,7 +42,7 @@ namespace PresentacionHistorialMedico
             cbMotivo.DisplayMember = "descripcion";
             cbMotivo.ValueMember = "codigoMotivoConsulta";
 
-            cbDiagnostico.DataSource = ControladorGeneral.RecuperarTodosDiagnosticos();
+            cbDiagnostico.DataSource = ControladorGeneral.RecuperarTodosDiagnosticos(true);
             cbDiagnostico.DisplayMember = "descripcion";
             cbDiagnostico.ValueMember = "codigoDiagnostico";
         }

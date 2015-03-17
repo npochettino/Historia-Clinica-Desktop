@@ -21,7 +21,7 @@ namespace BibliotecaHistorialMedico.Mapeos
             References(x => x.MotivoConsulta).Column("idMotivoConsulta").Cascade.None().Not.LazyLoad();
             References(x => x.Diagnostico).Column("idDiagnostico").Cascade.None().Not.LazyLoad();
 
-            HasManyToMany(x => x.Tratamientos).Table("ConsultasPacienteTratamiento").ParentKeyColumn("idConsultaPaciente").ChildKeyColumn("idTratamiento").Cascade.None();
+            HasMany<ConsultaPacienteTratamiento>(x => x.ConsultasPacienteTratamientos).Table("ConsultasPacienteTratamiento").KeyColumn("idConsultaPaciente").Cascade.AllDeleteOrphan();
         }
     }
 }

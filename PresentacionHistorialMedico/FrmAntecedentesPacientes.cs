@@ -44,7 +44,7 @@ namespace PresentacionHistorialMedico
             //Cargo la grilla
             gcAntecedentes.DataSource = ControladorGeneral.RecuperarAntecedentesPorPaciente(mCondigoPaciente);
             //Cargo el combobox
-            DataTable dsDiagnosticoConsulta = ControladorGeneral.RecuperarTodosDiagnosticos();
+            DataTable dsDiagnosticoConsulta = ControladorGeneral.RecuperarTodosDiagnosticos(false);
             cbDiagnostico.DataSource = dsDiagnosticoConsulta;
             cbDiagnostico.DisplayMember = "descripcion";
             cbDiagnostico.ValueMember = "codigoDiagnostico";

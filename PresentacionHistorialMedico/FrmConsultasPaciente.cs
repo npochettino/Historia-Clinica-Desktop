@@ -50,7 +50,7 @@ namespace PresentacionHistorialMedico
             cbMotivo.DisplayMember = "descripcion";
             cbMotivo.ValueMember = "codigoMotivoConsulta";
             //Cargo el combo Diagnostico consulta
-            DataTable dsDiagnosticoConsulta = ControladorGeneral.RecuperarTodosDiagnosticos();
+            DataTable dsDiagnosticoConsulta = ControladorGeneral.RecuperarTodosDiagnosticos(true);
             cbDiagnostico.DataSource = dsDiagnosticoConsulta;
             cbDiagnostico.DisplayMember = "descripcion";
             cbDiagnostico.ValueMember = "codigoDiagnostico";

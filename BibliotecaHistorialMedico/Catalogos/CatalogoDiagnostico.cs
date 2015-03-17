@@ -39,6 +39,23 @@ namespace BibliotecaHistorialMedico.Catalogos
             }
         }
 
+        public static List<Diagnostico> RecuperarTodosMenosSinDiagnostico(ISession nhSesion)
+        {
+            List<Diagnostico> listaDiagnosticos = new List<Diagnostico>();
+
+            try
+            {
+                string consulta = "from Diagnostico";
+                listaDiagnosticos = nhSesion.CreateQuery(consulta).List<Diagnostico>().Where(x=>x.Codigo != 1).ToList();
+                return listaDiagnosticos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static Diagnostico RecuperarPorCodigo(int codigoDiagnostico, ISession nhSesion)
         {
             Diagnostico diagnostico;

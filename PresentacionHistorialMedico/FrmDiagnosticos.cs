@@ -31,7 +31,7 @@ namespace PresentacionHistorialMedico
 
         private void CargarGrilla()
         {
-            gcDiagnostico.DataSource = ControladorGeneral.RecuperarTodosDiagnosticos();
+            gcDiagnostico.DataSource = ControladorGeneral.RecuperarTodosDiagnosticos(true);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{60E008E5-E1EA-479D-AE28-502D50E205A3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BibliotecaHistorialMedico</RootNamespace>
     <AssemblyName>BibliotecaHistorialMedico</AssemblyName>
@@ -63,6 +63,7 @@
     <Compile Include="ClasesComplementarias\ManejoNHibernate.cs" />
     <Compile Include="Clases\AntecedentePaciente.cs" />
     <Compile Include="Clases\ConsultaPaciente.cs" />
+    <Compile Include="Clases\ConsultaPacienteTratamiento.cs" />
     <Compile Include="Clases\Diagnostico.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\EstudioConsulta.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Controladores\ControladorGeneral.cs" />
     <Compile Include="Mapeos\AntecedentePacienteMap.cs" />
     <Compile Include="Mapeos\ConsultaPacienteMap.cs" />
+    <Compile Include="Mapeos\ConsultaPacienteTratamientoMap.cs" />
     <Compile Include="Mapeos\DiagnosticoMap.cs" />
     <Compile Include="Mapeos\EstudioConsultaMap.cs" />
     <Compile Include="Mapeos\EstudioMap.cs" />

@@ -312,7 +312,7 @@ namespace BibliotecaHistorialMedico.Controladores
 
         #region Diagnostico
 
-        public static DataTable RecuperarTodosDiagnosticos()
+        public static DataTable RecuperarTodosDiagnosticos(bool traerSinDiagnostico)
         {
             DataTable tablaDiagnosticos = new DataTable();
             tablaDiagnosticos.Columns.Add("codigoDiagnostico");
@@ -322,7 +322,16 @@ namespace BibliotecaHistorialMedico.Controladores
 
             try
             {
-                List<Diagnostico> listaDiagnosticos = CatalogoDiagnostico.RecuperarTodos(nhSesion);
+                List<Diagnostico> listaDiagnosticos = new List<Diagnostico>();
+                if (traerSinDiagnostico)
+                {
+                    listaDiagnosticos = CatalogoDiagnostico.RecuperarTodos(nhSesion);
+                }
+                else
+                {
+                    listaDiagnosticos = CatalogoDiagnostico.RecuperarTodosMenosSinDiagnostico(nhSesion);
+                }
+
                 tablaDiagnosticos = (from p in listaDiagnosticos select p).Aggregate(tablaDiagnosticos, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion); return dt; });
 
             }
@@ -677,9 +686,9 @@ namespace BibliotecaHistorialMedico.Controladores
             try
             {
                 ConsultaPaciente consulta = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
-                if (consulta.Tratamientos.Count > 0)
+                if (consulta.ConsultasPacienteTratamientos.Count > 0)
                 {
-                    tablaTratamientos = (from p in consulta.Tratamientos select p).Aggregate(tablaTratamientos, (dt, r) => { dt.Rows.Add(r.Codigo, r.Descripcion, r.Comentario); return dt; });
+                    tablaTratamientos = (from p in consulta.ConsultasPacienteTratamientos select p).Aggregate(tablaTratamientos, (dt, r) => { dt.Rows.Add(r.Tratamiento.Codigo, r.Tratamiento.Descripcion, r.Comentario); return dt; });
                 }
             }
             catch (Exception ex)
@@ -780,9 +789,9 @@ namespace BibliotecaHistorialMedico.Controladores
             try
             {
                 ConsultaPaciente consulta = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
-                if (consulta.Tratamientos.Count > 0)
+                if (consulta.ConsultasPacienteTratamientos.Count > 0)
                 {
-                    consulta.Tratamientos = new List<Tratamiento>();
+                    consulta.ConsultasPacienteTratamientos.Clear();
                     CatalogoConsultaPaciente.InsertarActualizar(consulta, nhSesion);
                     trans.Commit();
                 }
@@ -951,9 +960,9 @@ namespace BibliotecaHistorialMedico.Controladores
 
                 foreach (ConsultaPaciente cp in listaConsultasPaciente)
                 {
-                    foreach (Tratamiento t in cp.Tratamientos)
+                    foreach (ConsultaPacienteTratamiento cpt in cp.ConsultasPacienteTratamientos)
                     {
-                        tablaTratamientos.Rows.Add(new object[] { cp.Codigo, t.Codigo, t.Descripcion, t.Comentario });
+                        tablaTratamientos.Rows.Add(new object[] { cp.Codigo, cpt.Tratamiento.Codigo, cpt.Tratamiento.Descripcion, cpt.Comentario });
                     }
                 }
 
@@ -984,7 +993,7 @@ namespace BibliotecaHistorialMedico.Controladores
                 if (codigoConsultaPaciente == 0)
                 {
                     consultaPaciente = new ConsultaPaciente();
-                    consultaPaciente.Tratamientos = new List<Tratamiento>();
+                    consultaPaciente.ConsultasPacienteTratamientos = new List<ConsultaPacienteTratamiento>();
                 }
                 else
                 {
@@ -1068,9 +1077,9 @@ namespace BibliotecaHistorialMedico.Controladores
                 tablaConsultaPaciente.Rows.Add(new object[] { consultaPaciente.Codigo, consultaPaciente.Paciente.Codigo, consultaPaciente.Paciente.ApellidoNombre, consultaPaciente.Fecha, consultaPaciente.Comentario, consultaPaciente.MotivoConsulta == null ? 0 : consultaPaciente.MotivoConsulta.Codigo,
                     consultaPaciente.MotivoConsulta == null ? "Sin motivo consulta" : consultaPaciente.MotivoConsulta.Descripcion, consultaPaciente.Diagnostico == null ? 0 : consultaPaciente.Diagnostico.Codigo, consultaPaciente.Diagnostico == null ? "Sin diagnóstico" : consultaPaciente.Diagnostico.Descripcion });
 
-                foreach (Tratamiento t in consultaPaciente.Tratamientos)
+                foreach (ConsultaPacienteTratamiento cpt in consultaPaciente.ConsultasPacienteTratamientos)
                 {
-                    tablaTratamientos.Rows.Add(new object[] { consultaPaciente.Codigo, t.Codigo, t.Descripcion });
+                    tablaTratamientos.Rows.Add(new object[] { consultaPaciente.Codigo, cpt.Tratamiento.Codigo, cpt.Tratamiento.Descripcion });
                 }
 
                 dsConsultaPaciente.Tables.Add(tablaConsultaPaciente);
@@ -1097,10 +1106,11 @@ namespace BibliotecaHistorialMedico.Controladores
             {
                 ConsultaPaciente consultaPaciente;
                 consultaPaciente = CatalogoConsultaPaciente.RecuperarPorCodigo(codigoConsultaPaciente, nhSesion);
-
+                ConsultaPacienteTratamiento cpt = new ConsultaPacienteTratamiento();
                 Tratamiento t = CatalogoTratamiento.RecuperarPorCodigo(codigoTratamiento, nhSesion);
-                t.Comentario = comentario;
-                consultaPaciente.Tratamientos.Add(t);
+                cpt.Tratamiento = t;
+                cpt.Comentario = comentario;
+                consultaPaciente.ConsultasPacienteTratamientos.Add(cpt);
 
                 CatalogoConsultaPaciente.InsertarActualizar(consultaPaciente, nhSesion);
             }
