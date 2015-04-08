@@ -40,6 +40,8 @@ namespace PresentacionHistorialMedico
 
         private void FrmComentario_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = rtComentario;
+
             if (isTratamiento)
             {
                 lblComentario.Text = "Comentario";
